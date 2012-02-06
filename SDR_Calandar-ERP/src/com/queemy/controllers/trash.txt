@@ -1,0 +1,102 @@
+   HttpTransport transport = GoogleTransport.create();
+    transport.addParser(new JsonCParser());
+    try {
+      // authenticate with ClientLogin
+      ClientLogin authenticator = new ClientLogin();
+      authenticator.authTokenType = "ndev";
+      authenticator.username = "...";
+      authenticator.password = "...";
+      authenticator.authenticate().setAuthorizationHeader(transport);
+      // make query request
+      HttpRequest request = transport.buildGetRequest();
+      request.setUrl("https://www.googleapis.com/bigquery/v1/query");
+      request.url.put(
+          "q", "select count(*) from [bigquery/samples/shakespeare];");
+      System.out.println(request.execute().parseAsString());
+    } catch (HttpResponseException e) {
+      System.err.println(e.response.parseAsString());
+      throw e;
+    }
+
+    
+    ************************************************
+    
+    String authorizationUrl = "";
+		
+		HttpTransport httpTransport = new NetHttpTransport();
+		JacksonFactory jsonFactory = new JacksonFactory();
+		 
+		String clientId = "578636039071.apps.googleusercontent.com";
+		String clientSecret = "LJoazqmKGv_JOWhatXEaE-QS";
+		
+		// Or your redirect URL for web based applications.
+		//String redirectUrl = "urn:ietf:wg:oauth:2.0:oob";
+		String redirectUrl = "https://localhost:8443/oauth2callback";
+		String scope = "https://www.googleapis.com/auth/calendar";
+		
+
+		if ( ((Integer) (session.getAttribute("number"))) == 0) {
+			
+			
+
+			// Step 1: Authorize -->
+				authorizationUrl = new GoogleAuthorizationRequestUrl(
+						clientId, redirectUrl, scope).build();
+				
+			// Point or redirect your user to the authorizationUrl.
+				System.out.println("Go to the following link in your browser:");
+				System.out.println(authorizationUrl);
+				
+				session.setAttribute("number", (Integer) (session.getAttribute("number")) + 1);
+				response.sendRedirect(authorizationUrl);
+				
+		}
+
+		else if ((Integer) (session.getAttribute("number")) == 1) {		
+		
+
+				
+
+				// Read the authorization code from the standard input stream.
+//				BufferedReader in = new BufferedReader(new InputStreamReader(
+//						System.in));
+//				System.out.println("What is the authorization code?");
+//				String code = in.readLine();
+			
+			System.out.println("The authorization code is: " + request.getParameter("code"));
+			String code = request.getParameter("code");
+				// End of Step 1 <--
+			
+			GoogleHeaders headers = new GoogleHeaders();
+			headers.setApplicationName("ERP/1.0");
+			headers.gdataVersion = "2"; 
+//			request.headers = headers;
+
+				// Step 2: Exchange -->
+//			AccessTokenResponse responseg = new GoogleAuthorizationCodeGrant(httpTransport, jsonFactory,
+//			        clientId, clientSecret, code, redirectUrl).execute();
+
+			AccessTokenRequest requestg = new AccessTokenRequest(new NetHttpTransport(), new JacksonFactory(),
+					"https://localhost:8443/SDR_myShop/oaut2callback", clientId, clientSecret);
+			
+					AccessTokenResponse responseg = requestg.execute();
+					System.out.println("Access token: " + responseg.accessToken);
+					
+				// End of Step 2 <--
+
+				GoogleAccessProtectedResource accessProtectedResource = new GoogleAccessProtectedResource(
+						responseg.accessToken, httpTransport, jsonFactory,
+						clientId, clientSecret, responseg.refreshToken);
+
+				Calendar service = Calendar.builder(httpTransport, jsonFactory)
+						.setApplicationName("ERP/1.0")
+						.setHttpRequestInitializer(accessProtectedResource)
+						.build();
+				
+				session.setAttribute("number", (Integer) (session.getAttribute("number")) + 1);
+				//response.sendRedirect(service);
+		} 
+		
+
+		// Return to shopping
+		//request.getRequestDispatcher("JSP").forward(request, response);

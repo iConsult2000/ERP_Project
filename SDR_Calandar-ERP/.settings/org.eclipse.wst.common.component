@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-modules id="moduleCoreId" project-version="1.5.0">
+    <wb-module deploy-name="SDR_Calandar-ERP">
+        <wb-resource deploy-path="/" source-path="/WebContent" tag="defaultRootSource"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src"/>
+        <property name="context-root" value="SDR_Calandar-ERP"/>
+        <property name="java-output-path" value="/SDR_Calandar-ERP/build/classes"/>
+    </wb-module>
+</project-modules>
