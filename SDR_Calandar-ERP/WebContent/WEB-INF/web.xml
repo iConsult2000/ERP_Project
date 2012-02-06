@@ -26,7 +26,7 @@
   </servlet>
   <servlet-mapping>
     <servlet-name>CalandarController</servlet-name>
-    <url-pattern>/oauth2callback</url-pattern>
+    <url-pattern>/calandar</url-pattern>
   </servlet-mapping>
   <security-constraint>
     <web-resource-collection>

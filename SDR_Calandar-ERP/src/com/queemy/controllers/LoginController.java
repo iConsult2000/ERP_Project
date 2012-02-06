@@ -12,7 +12,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-
 /**
  * Servlet implementation class LoginServlet
  */
@@ -28,63 +27,49 @@ public class LoginController extends HttpServlet {
 		// TODO Auto-generated constructor stub
 	}
 
+
+
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
 	 *      response)
 	 */
-	protected void doGet(HttpServletRequest request,
-			HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-
-
+	public void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		doGet(request, response);
 	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
 	 *      response)
 	 */
-	protected void doPost(HttpServletRequest request,
+	protected void doGet(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 
-		
 		Integer step = 0;
-		
 
 		// 2. Cr�ation Session Http � partir de l'objet Request
 		HttpSession session = request.getSession();
 
+		// 1. Mise en attribut de session des param requetes
 
-		//0. Recuperation des parametres
-		
-		String login= (String) session.getAttribute("myname");
-		String passwd = (String) session.getAttribute("mypwd");
+		session.setAttribute("step", step);
+		session.setAttribute("login", request.getParameter("myname"));
+		session.setAttribute("passwd", request.getParameter("mypwd"));
 
-			//1. Mise en attribut de session des param requetes
-			
-			session.setAttribute("step", step);
+		// 4. Je suis logg�
 
+		Cookie c1 = new Cookie("logcookie1", request.getParameter("myname"));
+		c1.setMaxAge(30);
+		response.addCookie(c1);
 
-			//4. Je suis logg�
+		System.out.println("Vous �tes logg� manuellement");
 
+		// 4. Redirection vers JSP
+		// 3. Initialisation du dispatcher
 
-			Cookie c1 = new Cookie("logcookie1", login);
-			c1.setMaxAge(30);
-			response.addCookie(c1);
+		// response.sendRedirect("shopreal");
+		response.sendRedirect("calandar");
 
+	}
 
-
-			System.out.println("Vous �tes logg� manuellement");
-
-			// 4. Redirection vers JSP
-			// 3. Initialisation du dispatcher
-			
-			//response.sendRedirect("shopreal");
-			response.sendRedirect("oauth2callback");
-
-		}
-	
 }
-	
-
-
-

@@ -16,7 +16,7 @@
 	<div id="connexion">
 		<br>
 		
-		<form method="post" action="login">
+		<form method="get" action="login">
 			<label>Login : </label><input type="text" name="myname"><br>
 			<label>Passw : </label><input type="password" name="mypwd"><br>
 

@@ -34,7 +34,8 @@
 		<br>
 		<hr>
 		<p>iConsult2000 ERP Project !</p>
-		<p>Pour accéder au service calandar, connectez-vous !</p>
+		<p>Pour accéder au service calandar, connectez-vous </p>
+		<p>en utilisant votre commpte Google</p>
 	</div>
 	
 	<div class="container">
