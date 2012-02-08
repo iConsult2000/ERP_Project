@@ -42,7 +42,7 @@ import com.google.api.services.calendar.Calendar;
 /**
  * Servlet implementation class CalandarController
  */
-@WebServlet("/oauth2callback")
+
 public class CalandarController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -55,7 +55,13 @@ public class CalandarController extends HttpServlet {
 
 	public void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		doPost(request, response);
+		
+
+		HttpSession session = request.getSession();
+		
+		if ((Integer) session.getAttribute("step") == 0) {
+			doPost(request, response);
+		}
 	}
 
 	/**
@@ -129,7 +135,7 @@ public class CalandarController extends HttpServlet {
 
 			// L'url ou les données sont stocké.
 			URL feedUrl = new URL(
-					"https://www.google.com/calendar/feeds/default");
+					"https://www.google.com/calendar/feeds/"+email+"/private/full");
 
 			// on crée une requéte pour récupérer des données événement.
 			CalendarQuery myQuery = new CalendarQuery(feedUrl);

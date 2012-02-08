@@ -21,6 +21,14 @@
     <url-pattern>/logout</url-pattern>
   </servlet-mapping>
   <servlet>
+    <servlet-name>CalendarServiceController</servlet-name>
+    <servlet-class>com.queemy.controllers.CalendarServiceController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>CalendarServiceController</servlet-name>
+    <url-pattern>/e-Calendar</url-pattern>
+  </servlet-mapping>
+    <servlet>
     <servlet-name>CalandarController</servlet-name>
     <servlet-class>com.queemy.controllers.CalandarController</servlet-class>
   </servlet>

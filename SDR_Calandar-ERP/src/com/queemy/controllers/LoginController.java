@@ -68,7 +68,7 @@ public class LoginController extends HttpServlet {
 		// 3. Initialisation du dispatcher
 
 		// response.sendRedirect("shopreal");
-		response.sendRedirect("calandar");
+		response.sendRedirect("e-Calendar");
 
 	}
 
