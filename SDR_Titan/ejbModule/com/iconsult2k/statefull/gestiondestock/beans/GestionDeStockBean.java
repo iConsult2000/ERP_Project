@@ -1,6 +1,7 @@
 package com.iconsult2k.statefull.gestiondestock.beans;
 
 import java.io.Serializable;
+import java.util.Iterator;
 import java.util.List;
 
 
@@ -12,6 +13,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 
 import org.hibernate.ejb.Ejb3Configuration;
 
@@ -37,21 +39,22 @@ public class GestionDeStockBean implements GestionDeStockRemote, Serializable{
 	// Retrieve an application managed entity manager
 	// Work with the EM
 		
-	public String rechercherProduit(int REF_PRODUIT) {
+	public Produit rechercherProduit(int REF_PRODUIT) {
 		
-		System.out.println("GestionDeStockBean rechercherProduit in progress...");
+		System.out.println("GestionDeStockBean rechercherProduit en cours...");
 		Produit myproduit = em.find(Produit.class, REF_PRODUIT);
-		System.out.println("myproduit has been found, it is: " + myproduit);
-		return myproduit.toString();
+		System.out.println("myproduit a été trouvé, c'est le : " + myproduit);
+		return myproduit;
 	}
 
 
 	@SuppressWarnings("unchecked")
 	public List<Produit> listerTousLesProduits() {
 		System.out.println("listerTousLesProduits in progress");
-		return em.createQuery(
-				"SELECT p FROM PRODUITS p ORDER BY p.UNITES_STOCK")
-				.getResultList();
+		
+		Query qSQL = em.createQuery("SELECT p FROM Produit p ");
+		List<Produit> results = qSQL.getResultList();
+		return results;
 	}
 	
 	@Remove
