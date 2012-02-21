@@ -9,7 +9,7 @@ import com.iconsult2k.components.Produit;
 public interface GestionDeStock {
 	Produit rechercherProduit(int REF_PRODUIT);
 	List<Produit> listerTousLesProduits();
-	
+	void enregistrerProduit(Produit myprod);
 	@Remove void checkout();
 
 }

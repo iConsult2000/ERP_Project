@@ -54,7 +54,7 @@ public class Produit implements java.io.Serializable {
 	/**
 	 * @return the nOM_PRODUIT
 	 */
-	@Column(name="NOM_PRODUIT")
+	
 	public String getNOM_PRODUIT() {
 		return NOM_PRODUIT;
 	}
@@ -68,7 +68,7 @@ public class Produit implements java.io.Serializable {
 	/**
 	 * @return the nO_FOURNISSEUR
 	 */
-	@Column(name="NO_FOURNISSEUR")
+	
 	public int getNO_FOURNISSEUR() {
 		return NO_FOURNISSEUR;
 	}
@@ -82,7 +82,7 @@ public class Produit implements java.io.Serializable {
 	/**
 	 * @return the cODE_CATEGORIE
 	 */
-	@Column(name="CODE_CATEGORIE")
+	
 	public int getCODE_CATEGORIE() {
 		return CODE_CATEGORIE;
 	}
@@ -96,7 +96,7 @@ public class Produit implements java.io.Serializable {
 	/**
 	 * @return the qUANTITE
 	 */
-	@Column(name="QUANTITE")
+	
 	public String getQUANTITE() {
 		return QUANTITE;
 	}
@@ -110,7 +110,7 @@ public class Produit implements java.io.Serializable {
 	/**
 	 * @return the pRIX_UNITAIRE
 	 */
-	@Column(name="PRIX_UNITAIRE")
+	
 	public int getPRIX_UNITAIRE() {
 		return PRIX_UNITAIRE;
 	}
@@ -124,7 +124,7 @@ public class Produit implements java.io.Serializable {
 	/**
 	 * @return the uNITES_STOCK
 	 */
-	@Column(name="UNITES_STOCK")
+	
 	public int getUNITES_STOCK() {
 		return UNITES_STOCK;
 	}

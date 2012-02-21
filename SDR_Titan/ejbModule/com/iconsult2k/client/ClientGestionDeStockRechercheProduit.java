@@ -31,7 +31,7 @@ public class ClientGestionDeStockRechercheProduit {
 					.lookup("GestionDeStockBean/remote");
 
 			//Recherche du produit dans la BDD
-			testProduit = beanRemote.rechercherProduit(48);
+			testProduit = beanRemote.rechercherProduit(80);
 			
 			System.out.println("Description du produit de test");
 			
