@@ -6,6 +6,7 @@
    <persistence-unit name="TableProduits" transaction-type="JTA">
       <jta-data-source>java:Iconsult2KDB</jta-data-source>
       <class>com.iconsult2k.components.Produit</class>
+      
       <properties>
       <property name="hibernate.dialect" value="org.hibernate.dialect.MySQLInnoDBDialect"/>
          <property name="hibernate.connection.username" value="jboss"/>

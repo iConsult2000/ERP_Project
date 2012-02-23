@@ -8,7 +8,8 @@ import javax.naming.InitialContext;
 import javax.naming.NamingException;
 
 import com.iconsult2k.components.Produit;
-import com.iconsult2k.statefull.gestiondestock.beans.GestionDeStock;
+
+import com.iconsult2k.statefull.gestiondestock.beans.GestionDeStockRemote;
 
 /**
  * @author sdacalor
@@ -27,11 +28,11 @@ public class ClientGestionDeStockRechercheProduit {
 			System.out.println("Utilisation d'un produit de test");
 			Produit testProduit = new Produit();
 
-			GestionDeStock beanRemote = (GestionDeStock) context
+			GestionDeStockRemote beanRemote = (GestionDeStockRemote) context
 					.lookup("GestionDeStockBean/remote");
 
 			//Recherche du produit dans la BDD
-			testProduit = beanRemote.rechercherProduit(80);
+			testProduit = beanRemote.rechercherProduit(12);
 			
 			System.out.println("Description du produit de test");
 			

@@ -1,0 +1,14 @@
+<testng-results>
+  <reporter-output>
+  </reporter-output>
+  <suite name="Command line suite">
+    <groups>
+    </groups>
+    <test name="Command line test">
+      <class name="com.ic2k.erp.util.VersionTest">
+        <test-method status="PASS" signature="testVersion()" name="testVersion" duration-ms="20" started-at="2012-02-23T17:42:55Z" finished-at="2012-02-23T17:42:55Z">
+        </test-method>
+      </class>
+    </test>
+  </suite>
+</testng-results>

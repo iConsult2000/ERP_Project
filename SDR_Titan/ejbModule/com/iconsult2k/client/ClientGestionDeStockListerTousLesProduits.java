@@ -7,7 +7,7 @@ import java.util.Iterator;
 import java.util.List;
 
 import com.iconsult2k.components.Produit;
-import com.iconsult2k.statefull.gestiondestock.beans.GestionDeStock;
+import com.iconsult2k.statefull.gestiondestock.beans.GestionDeStockRemote;
 public class ClientGestionDeStockListerTousLesProduits {
 
 	/**
@@ -20,7 +20,7 @@ public class ClientGestionDeStockListerTousLesProduits {
 			//Utilisation d'un produit de test
 			System.out.println("Recupération de la liste des produits");
 			
-			GestionDeStock beanRemote = (GestionDeStock) context
+			GestionDeStockRemote beanRemote = (GestionDeStockRemote) context
 					.lookup("GestionDeStockBean/remote");
 
 			

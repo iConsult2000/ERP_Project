@@ -35,7 +35,7 @@ public class GestionDeStockBean implements GestionDeStockRemote, Serializable {
 			
 		}
 
-	public void enregistrerProduit(Produit myprod) {
+	public void ajouterProduit(Produit myprod) {
 		System.out.println("Enregistrement en cours");
 		em.persist(myprod);
 		System.out.println("Enregistrement terminée");
@@ -49,6 +49,24 @@ public class GestionDeStockBean implements GestionDeStockRemote, Serializable {
 		List<Produit> results = qSQL.getResultList();
 
 		return results;
+	}
+	
+	public void effacerProduit(String nomProduit){
+		System.out.println("effacement du produit " + nomProduit + "en cours...");
+		Query q = em.createQuery("select p from Produit p where p.NOM_PRODUIT = :name");
+		q.setParameter("name", nomProduit);
+		
+		Produit myprod = (Produit) q.getSingleResult();
+		em.remove(myprod);
+		
+		System.out.println("effacement du produit " + nomProduit + "terminé");
+		
+	}
+	
+	public void modifierProduit(Produit newproduit) {
+		
+		//Mettre a jour
+		em.merge(newproduit);		
 	}
 
 	@Remove

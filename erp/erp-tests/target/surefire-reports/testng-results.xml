@@ -1,0 +1,32 @@
+<testng-results>
+  <reporter-output>
+  </reporter-output>
+  <suite name="erp-tests by packages">
+    <groups>
+    </groups>
+    <test name="com.ic2k.erp.tests">
+      <class name="com.ic2k.erp.tests.LoginIntegrationTest">
+        <test-method status="PASS" signature="startSeam()" name="startSeam" is-config="true" duration-ms="136762" started-at="2012-02-23T17:54:08Z" finished-at="2012-02-23T17:56:25Z">
+        </test-method>
+        <test-method status="PASS" signature="setupClass()" name="setupClass" is-config="true" duration-ms="31" started-at="2012-02-23T17:56:25Z" finished-at="2012-02-23T17:56:25Z">
+        </test-method>
+        <test-method status="PASS" signature="begin()" name="begin" is-config="true" duration-ms="6886" started-at="2012-02-23T17:56:25Z" finished-at="2012-02-23T17:56:32Z">
+        </test-method>
+        <test-method status="PASS" signature="testLogin()" name="testLogin" duration-ms="458" started-at="2012-02-23T17:56:32Z" finished-at="2012-02-23T17:56:32Z">
+        </test-method>
+        <test-method status="PASS" signature="end()" name="end" is-config="true" duration-ms="1" started-at="2012-02-23T17:56:32Z" finished-at="2012-02-23T17:56:32Z">
+        </test-method>
+        <test-method status="PASS" signature="begin()" name="begin" is-config="true" duration-ms="1" started-at="2012-02-23T17:56:32Z" finished-at="2012-02-23T17:56:32Z">
+        </test-method>
+        <test-method status="PASS" signature="testLoginComponent()" name="testLoginComponent" duration-ms="7" started-at="2012-02-23T17:56:32Z" finished-at="2012-02-23T17:56:32Z">
+        </test-method>
+        <test-method status="PASS" signature="end()" name="end" is-config="true" duration-ms="0" started-at="2012-02-23T17:56:32Z" finished-at="2012-02-23T17:56:32Z">
+        </test-method>
+        <test-method status="PASS" signature="cleanupClass()" name="cleanupClass" is-config="true" duration-ms="0" started-at="2012-02-23T17:56:32Z" finished-at="2012-02-23T17:56:32Z">
+        </test-method>
+        <test-method status="PASS" signature="stopSeam()" name="stopSeam" is-config="true" duration-ms="2" started-at="2012-02-23T17:56:32Z" finished-at="2012-02-23T17:56:32Z">
+        </test-method>
+      </class>
+    </test>
+  </suite>
+</testng-results>
