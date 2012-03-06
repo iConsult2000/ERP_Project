@@ -1,0 +1,22 @@
+drop database if exists titan;
+create database titan;
+use titan;
+
+CREATE TABLE Principals (
+        NO int primary key auto_increment,
+        PrincipalID varchar(30),
+        Password varchar(30)
+) ENGINE InnoDB;
+
+CREATE TABLE Roles (
+        NA int primary key auto_increment,
+        PrincipalID VARCHAR(30) ,
+        Role VARCHAR(30),
+        RoleGroup VARCHAR(30)
+) ENGINE InnoDB;
+
+INSERT INTO Principals VALUES ('', 'steeve', 'Dora24');
+INSERT INTO Principals VALUES ('', 'manuel', 'javaman');
+
+INSERT INTO Roles VALUES ('', 'steeve', 'visitor', 'Roles');
+INSERT INTO Roles VALUES ('', 'manuel', 'shopper', 'Roles');

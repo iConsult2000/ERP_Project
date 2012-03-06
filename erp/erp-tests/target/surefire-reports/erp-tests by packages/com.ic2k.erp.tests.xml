@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.ic2k.erp.tests" failures="0" tests="2" time="7.479" errors="0">
+<testsuite name="com.ic2k.erp.tests" failures="0" tests="2" time="17.069" errors="0">
   <properties/>
-  <testcase name="testLogin" time="0.458" classname="com.ic2k.erp.tests.LoginIntegrationTest"/>
-  <testcase name="testLoginComponent" time="0.007" classname="com.ic2k.erp.tests.LoginIntegrationTest"/>
+  <testcase name="testLogin" time="1.66" classname="com.ic2k.erp.tests.LoginIntegrationTest"/>
+  <testcase name="testLoginComponent" time="0.012" classname="com.ic2k.erp.tests.LoginIntegrationTest"/>
 </testsuite>
