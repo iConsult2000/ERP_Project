@@ -10,7 +10,7 @@ import com.iconsult2k.statefull.gestiondestock.beans.GestionDeStockRemote;
 
 public class ClientGestionDeStockAjouterProduit {
 
-	public static void main(String[] args) {
+	public static void main(int args) {
 		try {
 			Context context = new InitialContext();
 
@@ -18,7 +18,7 @@ public class ClientGestionDeStockAjouterProduit {
 			System.out.println("Enregistrement d'un produit");
 
 			GestionDeStockRemote beanRemote = (GestionDeStockRemote) context
-					.lookup("GestionDeStockBean/remote");
+					.lookup("MarketEJB/remote");
 			
 			Produit myprod = new Produit(78);
 			myprod.setNOM_PRODUIT("Lori");

@@ -22,7 +22,7 @@ public class ClientGestionDeStockEffacerProduit {
 	/**
 	 * @param args
 	 */
-	public static void main(String[] args) {
+	public static void main(int args) {
 		try {
 			Context context = new InitialContext();
 
@@ -30,7 +30,7 @@ public class ClientGestionDeStockEffacerProduit {
 			String nameProduit = "Lori";
 
 			GestionDeStockRemote beanRemote = (GestionDeStockRemote) context
-					.lookup("GestionDeStockBean/remote");
+					.lookup("MarketEJB/remote");
 
 			beanRemote.effacerProduit(nameProduit);
 			System.out.println("Suppression du produit " + nameProduit);

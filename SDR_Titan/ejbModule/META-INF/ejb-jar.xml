@@ -2,45 +2,7 @@
 <ejb-jar xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/ejb-jar_3_0.xsd"
 	version="3.0">
-	<description>JBoss Stateful Session Bean Tutorial</description>
+
 	<display-name>JBoss Stateful Session Bean Tutorial</display-name>
-	<enterprise-beans>
-		<session>
-			<ejb-name>GestionDeStockEJB</ejb-name>
-			<business-local>com.iconsult2k.statefull.gestiondestock.beans.GestionDeStockLocal</business-local>
-			<business-remote>com.iconsult2k.statefull.gestiondestock.beans.GestionDeStockRemote</business-remote>			
-			<ejb-class>com.iconsult2k.statefull.gestiondestock.beans.GestionDeStockBean</ejb-class>
-			<session-type>Stateful</session-type>			
-			<remove-method>
-				<bean-method>
-					<method-name>checkout</method-name>
-				</bean-method>
-				<retain-if-exception>false</retain-if-exception>
-			</remove-method>
-			<transaction-type>Container</transaction-type>
-			<security-identity>
-				<run-as>
-					<role-name>shopper</role-name>
-				</run-as>
-			</security-identity>
-		</session>
-		
-	</enterprise-beans>
-	<assembly-descriptor>
-		<security-role>
-			<description>
-         This role represents everyone who is allowed full access to the Cabin EJB.
-      </description>
 
-			<role-name>shopper</role-name>
-		</security-role>
-		<method-permission>
-			<role-name>shopper</role-name>
-			<method>
-				<ejb-name>GestionDeStockEJB</ejb-name>
-				<method-name>*</method-name>
-			</method>
-		</method-permission>
-
-	</assembly-descriptor>
 </ejb-jar>

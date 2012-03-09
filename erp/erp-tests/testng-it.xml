@@ -1,9 +1,0 @@
-<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="erp-tests by packages">
-	<test verbose="1" name="com.ic2k.erp.tests"
-		annotations="JDK">
-		<packages>
-			<package name="com.ic2k.erp.tests.*" />
-		</packages>
-	</test>
-</suite>

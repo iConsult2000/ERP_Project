@@ -5,11 +5,14 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import org.jboss.ejb3.annotation.SecurityDomain;
+
 
 
 
 @Entity
 @Table(name="PRODUITS")
+
 public class Produit implements java.io.Serializable {
 
 	/**
@@ -18,15 +21,15 @@ public class Produit implements java.io.Serializable {
 	private static final long serialVersionUID = 8293392041711334540L;
 	
 	
-	private int REF_PRODUIT;
-	private String NOM_PRODUIT;
-	private int NO_FOURNISSEUR;
-	private int CODE_CATEGORIE;
-	private String QUANTITE;
-	private int PRIX_UNITAIRE;
-	private int UNITES_STOCK;
-	private int UNITES_COMMANDEES;
-	private int INDISPONIBLE;
+	private int ref_produit;
+	private String nom_produit;
+	private int no_fournisseur;
+	private int code_categorie;
+	private String quantite;
+	private int prix_unitaire;
+	private int unitees_stock;
+	private int unites_commande;
+	private int indisponible;
 	
 
 
@@ -35,7 +38,7 @@ public class Produit implements java.io.Serializable {
 	}
 	
 	public Produit(int REF_PRODUIT) {
-		this.REF_PRODUIT = REF_PRODUIT; 
+		this.ref_produit = REF_PRODUIT; 
 	}
 	
 	/**
@@ -43,26 +46,26 @@ public class Produit implements java.io.Serializable {
 	 */
 	@Id	@Column(name="REF_PRODUIT")
 	public int getREF_PRODUIT() {
-		return REF_PRODUIT;
+		return ref_produit;
 	}
 	/**
 	 * @param rEF_PRODUIT the rEF_PRODUIT to set
 	 */
 	public void setREF_PRODUIT(int rEF_PRODUIT) {
-		REF_PRODUIT = rEF_PRODUIT;
+		ref_produit = rEF_PRODUIT;
 	}
 	/**
 	 * @return the nOM_PRODUIT
 	 */
 	
 	public String getNOM_PRODUIT() {
-		return NOM_PRODUIT;
+		return nom_produit;
 	}
 	/**
 	 * @param nOM_PRODUIT the nOM_PRODUIT to set
 	 */
 	public void setNOM_PRODUIT(String nOM_PRODUIT) {
-		NOM_PRODUIT = nOM_PRODUIT;
+		nom_produit = nOM_PRODUIT;
 	}
 
 	/**
@@ -70,13 +73,13 @@ public class Produit implements java.io.Serializable {
 	 */
 	
 	public int getNO_FOURNISSEUR() {
-		return NO_FOURNISSEUR;
+		return no_fournisseur;
 	}
 	/**
 	 * @param nO_FOURNISSEUR the nO_FOURNISSEUR to set
 	 */
 	public void setNO_FOURNISSEUR(int nO_FOURNISSEUR) {
-		NO_FOURNISSEUR = nO_FOURNISSEUR;
+		no_fournisseur = nO_FOURNISSEUR;
 	}
 
 	/**
@@ -84,13 +87,13 @@ public class Produit implements java.io.Serializable {
 	 */
 	
 	public int getCODE_CATEGORIE() {
-		return CODE_CATEGORIE;
+		return code_categorie;
 	}
 	/**
 	 * @param cODE_CATEGORIE the cODE_CATEGORIE to set
 	 */
 	public void setCODE_CATEGORIE(int cODE_CATEGORIE) {
-		CODE_CATEGORIE = cODE_CATEGORIE;
+		code_categorie = cODE_CATEGORIE;
 	}
 
 	/**
@@ -98,13 +101,13 @@ public class Produit implements java.io.Serializable {
 	 */
 	
 	public String getQUANTITE() {
-		return QUANTITE;
+		return quantite;
 	}
 	/**
 	 * @param qUANTITE the qUANTITE to set
 	 */
 	public void setQUANTITE(String qUANTITE) {
-		QUANTITE = qUANTITE;
+		quantite = qUANTITE;
 	}
 
 	/**
@@ -112,13 +115,13 @@ public class Produit implements java.io.Serializable {
 	 */
 	
 	public int getPRIX_UNITAIRE() {
-		return PRIX_UNITAIRE;
+		return prix_unitaire;
 	}
 	/**
 	 * @param pRIX_UNITAIRE the pRIX_UNITAIRE to set
 	 */
 	public void setPRIX_UNITAIRE(int pRIX_UNITAIRE) {
-		PRIX_UNITAIRE = pRIX_UNITAIRE;
+		prix_unitaire = pRIX_UNITAIRE;
 	}
 
 	/**
@@ -126,13 +129,13 @@ public class Produit implements java.io.Serializable {
 	 */
 	
 	public int getUNITES_STOCK() {
-		return UNITES_STOCK;
+		return unitees_stock;
 	}
 	/**
 	 * @param uNITES_STOCK the uNITES_STOCK to set
 	 */
 	public void setUNITES_STOCK(int uNITES_STOCK) {
-		UNITES_STOCK = uNITES_STOCK;
+		unitees_stock = uNITES_STOCK;
 	}
 
 	/**
@@ -140,13 +143,13 @@ public class Produit implements java.io.Serializable {
 	 */
 	@Column(name="UNITES_COMMANDEES")
 	public int getUNITES_COMMANDEES() {
-		return UNITES_COMMANDEES;
+		return unites_commande;
 	}
 	/**
 	 * @param uNITES_COMMANDEES the uNITES_COMMANDEES to set
 	 */
 	public void setUNITES_COMMANDEES(int uNITES_COMMANDEES) {
-		UNITES_COMMANDEES = uNITES_COMMANDEES;
+		unites_commande = uNITES_COMMANDEES;
 	}
 
 	/**
@@ -154,28 +157,28 @@ public class Produit implements java.io.Serializable {
 	 */
 	@Column(name="INDISPONIBLE")
 	public int getINDISPONIBLE() {
-		return INDISPONIBLE;
+		return indisponible;
 	}
 	/**
 	 * @param iNDISPONIBLE the iNDISPONIBLE to set
 	 */
 	public void setINDISPONIBLE(int iNDISPONIBLE) {
-		INDISPONIBLE = iNDISPONIBLE;
+		indisponible = iNDISPONIBLE;
 	}
 	
 	/**
 	 * @return the complete record
 	 */
 	public String toString(){
-		return "Produit n° " + REF_PRODUIT + System.getProperty("line.separator") +
-				"NOM_PRODUIT : " + NOM_PRODUIT + System.getProperty("line.separator") +
-				"NO_FOURNISSEUR : " + NO_FOURNISSEUR + System.getProperty("line.separator") +
-				"CODE_CATEGORIE : " + CODE_CATEGORIE + System.getProperty("line.separator") +
-				"QUANTITE : " + QUANTITE + System.getProperty("line.separator") +
-				"PRIX_UNITAIRE : " + PRIX_UNITAIRE + System.getProperty("line.separator") + 
-				"UNITES_STOCK : " + UNITES_STOCK + System.getProperty("line.separator") +
-				"UNITES_COMMANDEES : " + UNITES_COMMANDEES + System.getProperty("line.separator") +
-				"INDISPONIBLE : " + INDISPONIBLE + System.getProperty("line.separator");
+		return "Produit n° " + ref_produit + System.getProperty("line.separator") +
+				"NOM_PRODUIT : " + nom_produit + System.getProperty("line.separator") +
+				"NO_FOURNISSEUR : " + no_fournisseur + System.getProperty("line.separator") +
+				"CODE_CATEGORIE : " + code_categorie + System.getProperty("line.separator") +
+				"QUANTITE : " + quantite + System.getProperty("line.separator") +
+				"PRIX_UNITAIRE : " + prix_unitaire + System.getProperty("line.separator") + 
+				"UNITES_STOCK : " + unitees_stock + System.getProperty("line.separator") +
+				"UNITES_COMMANDEES : " + unites_commande + System.getProperty("line.separator") +
+				"INDISPONIBLE : " + indisponible + System.getProperty("line.separator");
 		
 	}
 

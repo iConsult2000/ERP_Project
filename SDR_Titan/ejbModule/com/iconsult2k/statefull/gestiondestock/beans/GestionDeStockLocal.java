@@ -4,8 +4,7 @@ import javax.ejb.Local;
 
 import org.jboss.ejb3.annotation.Management;
 
-@Local
-@Management
+@Local  
 public interface GestionDeStockLocal extends javax.ejb.EJBLocalHome {
 	
 	  void create() throws Exception;

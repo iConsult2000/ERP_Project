@@ -3,6 +3,9 @@ package com.iconsult2k.statefull.gestiondestock.beans;
 import java.io.Serializable;
 import java.util.List;
 
+import javax.annotation.security.PermitAll;
+import javax.annotation.security.RolesAllowed;
+import javax.annotation.security.RunAs;
 import javax.ejb.Remote;
 import javax.ejb.Remove;
 import javax.ejb.Stateful;
@@ -12,7 +15,7 @@ import javax.persistence.Query;
 
 import com.iconsult2k.components.Produit;
 
-@Stateful
+@Stateful(name="MarketEJB", description="My Market")
 @Remote(GestionDeStockRemote.class)
 public class GestionDeStockBean implements GestionDeStockRemote, Serializable {
 
@@ -27,6 +30,8 @@ public class GestionDeStockBean implements GestionDeStockRemote, Serializable {
 	// Retrieve an application managed entity manager
 	// Work with the EM
 
+	
+	@RolesAllowed("vendor-visitor")
 	public Produit rechercherProduit(int REF_PRODUIT) {	
 			System.out.println("GestionDeStockBean rechercherProduit en cours...");
 			Produit myproduit = em.find(Produit.class, REF_PRODUIT);
@@ -34,7 +39,7 @@ public class GestionDeStockBean implements GestionDeStockRemote, Serializable {
 			return myproduit;
 			
 		}
-
+	@RolesAllowed("vendor")
 	public void ajouterProduit(Produit myprod) {
 		System.out.println("Enregistrement en cours");
 		em.persist(myprod);
@@ -42,6 +47,7 @@ public class GestionDeStockBean implements GestionDeStockRemote, Serializable {
 	}
 
 	@SuppressWarnings("unchecked")
+	@PermitAll
 	public List<Produit> listerTousLesProduits() {
 		System.out.println("listerTousLesProduits in progress");
 
@@ -50,7 +56,7 @@ public class GestionDeStockBean implements GestionDeStockRemote, Serializable {
 
 		return results;
 	}
-	
+	@RolesAllowed("vendor")
 	public void effacerProduit(String nomProduit){
 		System.out.println("effacement du produit " + nomProduit + "en cours...");
 		Query q = em.createQuery("select p from Produit p where p.NOM_PRODUIT = :name");
@@ -63,6 +69,7 @@ public class GestionDeStockBean implements GestionDeStockRemote, Serializable {
 		
 	}
 	
+	@RolesAllowed("vendor")
 	public void modifierProduit(Produit newproduit) {
 		
 		//Mettre a jour

@@ -13,7 +13,7 @@ public class ClientGestionDeStockListerTousLesProduits {
 	/**
 	 * @param args
 	 */
-	public static void main(String[] args) {
+	public static void main(int args) {
 		try {
 			Context context = new InitialContext();
 			
@@ -21,7 +21,7 @@ public class ClientGestionDeStockListerTousLesProduits {
 			System.out.println("Recupération de la liste des produits");
 			
 			GestionDeStockRemote beanRemote = (GestionDeStockRemote) context
-					.lookup("GestionDeStockBean/remote");
+					.lookup("MarketEJB/remote");
 
 			
 			List<Produit> myList = beanRemote.listerTousLesProduits();
