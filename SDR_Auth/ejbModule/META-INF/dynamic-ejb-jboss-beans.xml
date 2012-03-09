@@ -7,16 +7,10 @@
          <module-option name="dsJndiName">java:/AuthDS</module-option>
          <module-option name="unauthenticatedIdentity">guest</module-option>
         <module-option name="principalsQuery">select Password from Principals where PrincipalID=?</module-option>
-        <module-option name="rolesQuery"> select Role, 'Roles' from Roles where PrincipalID=?</module-option>
+        <module-option name="rolesQuery"> select Role, RoleGroup from Roles where PrincipalID=?</module-option>
      </login-module>      
     </authentication>
-<!-- 
-    <authorization>
-      <policy-module
-      code="org.jboss.security.authorization.modules.JACCAuthorizationModule"
-      flag="required"/>
-    </authorization>
-     -->
+
   </application-policy>
 
 </deployment>

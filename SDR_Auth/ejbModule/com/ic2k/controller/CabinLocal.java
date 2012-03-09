@@ -5,8 +5,8 @@ import javax.ejb.CreateException;
 import javax.ejb.EJBHome;
 import javax.ejb.Local;
 
-
-public interface CabinLocal extends javax.ejb.EJBLocalHome {
+@Local
+public interface CabinLocal {
 	
 	public String echo(String arg) throws RemoteException;
 }

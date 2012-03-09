@@ -1,8 +1,16 @@
 package com.ic2k.client;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+
 import javax.naming.InitialContext;
+
+import org.jboss.security.auth.spi.Util;
 import org.jboss.security.client.SecurityClient;
 import org.jboss.security.client.SecurityClientFactory;
+import org.jboss.util.Base64;
 
 import com.ic2k.controller.CabinRemote;
 
@@ -23,39 +31,78 @@ public class SessionClient_v2 {
 		System.setProperty("java.security.auth.login.config", authFile);
 	}
 
+	// Reads user name
+	static private String readUsername() throws IOException {
+		String username;
+		System.out.println("Enter a username: ");
+		username = (new BufferedReader(new InputStreamReader(System.in)))
+				.readLine();
+		return username;
+	}
+
+	// Reads user password from given input stream.
+	static private String readPassword() throws IOException {
+		// insert code to read a user password from the input stream
+		System.out.println("Enter a valid password: ");
+		String password = (new BufferedReader(new InputStreamReader(System.in)))
+				.readLine();
+		String hashedPassword =Util.createPasswordHash("MD5", Util.BASE64_ENCODING, null, null, password);
+		return hashedPassword;
+
+	}
+
 	public static void main(String args[]) throws Exception {
 
-		String userName = "manuel";
-		char[] password = "javaman".toCharArray();
+		/**
+		 * Initialize credentials
+		 */
 
 		/**
 		 * Calling client login procedure
 		 */
-
-		SecurityClient securityClient = SecurityClientFactory
-				.getSecurityClient();
-
+		String username;
+		String password;
 		try {
+			username = readUsername();
+			password = readPassword();
 
-			securityClient = SecurityClientFactory.getSecurityClient();
-			securityClient.setSimple(userName, password);
+			if (username.isEmpty() || password.isEmpty()) {
+				System.out.println("Enter a username and a valid password");
+			} else {
 
-			System.out.println("Logging in...");
-			securityClient.login();
+				SecurityClient securityClient = SecurityClientFactory
+						.getSecurityClient();
 
-			// Effectuer les appels de services souhaités
-			InitialContext context = new InitialContext();
-			CabinRemote beanRemote = (CabinRemote) context
-					.lookup("CabinBeanEJB/remote");
+				try {
+					
+					securityClient = SecurityClientFactory.getSecurityClient();
+					securityClient.setSimple(username, password);
 
-			System.out.println(beanRemote.echo("Hello"));
+					System.out.println("Logging in with username: "+ username);
+					System.out.println("Logging in with password: "+ password);
+					securityClient.login();
 
-			System.out.println("Logging out...");
-			securityClient.logout();
-			
-		} catch (Exception e) {
-			System.out.println("Login failed...");
-			;
+					// Effectuer les appels de services souhaités					
+					
+					System.out.println("Entrer votre message :");
+					String msg = new BufferedReader(new InputStreamReader(System.in)).readLine();
+					
+					InitialContext context = new InitialContext();
+					CabinRemote beanRemote = (CabinRemote) context
+							.lookup("CabinBeanEJB/remote");
+
+					System.out.println(beanRemote.echo(msg));
+
+					System.out.println("Logging out...");
+					securityClient.logout();
+
+				} catch (Exception e) {
+					System.out.println("Login failed...");
+					;
+				}
+			}
+		} catch (IOException e) {
+			System.out.println("Reading your credentials failed, try again");
 		}
 	}
 }

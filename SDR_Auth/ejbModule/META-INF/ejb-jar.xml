@@ -4,48 +4,5 @@
 	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/ejb-jar_3_0.xsd">
 	<display-name>SDR_Auth</display-name>
 
-	<enterprise-beans>
-		<session>
-			<description>A trival stateless session echo bean</description>
-			<ejb-name>CabinBeanEJB</ejb-name>
-			<business-local>com.ic2k.controller.CabinLocal</business-local>
-			<business-remote>com.ic2k.controller.CabinRemote</business-remote>
-			<ejb-class>com.ic2k.controller.CabinBean</ejb-class>
-			<session-type>Stateless</session-type>
-
-			<security-role-ref>
-				<description>Caller authorized mapping</description>
-				<role-name>visitor</role-name>
-				<role-link>visitor</role-link>
-			</security-role-ref>
-			<security-role-ref>
-				<description>Caller authorized mapping</description>
-				<role-name>shopper</role-name>
-				<role-link>shopper</role-link>
-			</security-role-ref>
-		</session>
-
-	</enterprise-beans>
-
-	<assembly-descriptor>
-		<security-role>
-			<description>first logical role mapping</description>
-			<role-name>visitor</role-name>
-		</security-role>
-		<security-role>
-			<description>second logical role mapping</description>
-			<role-name>shopper</role-name>
-		</security-role>
-		<method-permission>
-			<description>logical role allowed to access method</description>
-			<role-name>visitor</role-name>
-			<role-name>shopper</role-name>
-			<method>
-				<ejb-name>CabinBeanEJB</ejb-name>
-				<method-name>*</method-name>
-			</method>
-		</method-permission>
-		
-	</assembly-descriptor>
 
 </ejb-jar>

@@ -1,18 +1,11 @@
 package com.ic2k.controller;
-import java.rmi.RemoteException;
-import java.security.Principal;
-
-
 import javax.annotation.security.RolesAllowed;
-import javax.ejb.EJBHome;
-import javax.ejb.EJBObject;
-import javax.ejb.Handle;
-import javax.ejb.RemoveException;
-import javax.ejb.SessionContext;
+import javax.ejb.Remote;
 import javax.ejb.Stateless;
 
-@Stateless
-public class CabinBean implements CabinRemote {
+@Stateless(name="CabinBeanEJB", description="My first EJB3 Stateless")
+@Remote(CabinRemote.class)
+public class CabinBean {
 
 	
 	public String echo(String arg)

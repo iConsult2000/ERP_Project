@@ -73,8 +73,8 @@ public class SessionClient {
 				.getSecurityClient();
 		
 		securityClient = SecurityClientFactory.getSecurityClient();
-//		securityClient.setJAAS("titan2K", myCbHandler);
-		securityClient.setSimple(userName, password);
+		securityClient.setJAAS("titan2K", myCbHandler);
+		
 		System.out.println("Logging in...");
 		
 			

@@ -36,17 +36,17 @@ public class TestAuthClient {
 	public static void main(String[] args) throws Exception {
 
 		SecurityClient securityClient = null;
-		String user_with_role = "steeve";
-		char[] user_with_role_password = "Dora24".toCharArray();
+		String user_with_role ;
+		char[] user_with_role_password ;
 
 		MyCallbackHandler loginCallbackHandler = new MyCallbackHandler(
-				"steeve", "Dora24");
+				user_with_role, user_with_role_password);
 
 		/**
 		 * Using LoginContext
 		 */
 		LoginContext lctx = new LoginContext("titan2K", loginCallbackHandler);
-
+		Properties prop = new Properties();
 		try {
 
 			System.out.println("Logging in...");
@@ -54,8 +54,11 @@ public class TestAuthClient {
 			
 			Subject subject = lctx.getSubject();
 			System.out.println(subject.getPrincipals().toString());
-			System.out.println(subject.getPublicCredentials().toString());
-
+			System.out.println(subject.getPrivateCredentials().toString());
+			
+			
+			prop.setProperty(Context.SECURITY_PRINCIPAL, subject.getPrincipals().toString());
+			prop.setProperty(Context.SECURITY_CREDENTIALS, subject.getPrivateCredentials().toString());
 
 		} catch (Exception e) {
 			System.out.println("authentication failed");
@@ -65,7 +68,7 @@ public class TestAuthClient {
 			 * Configure InitialContext properties
 			 */
 
-			InitialContext ctx = new InitialContext();
+			InitialContext ctx = new InitialContext(prop);
 			CabinRemote beanRemote = (CabinRemote) ctx
 					.lookup("CabinBeanEJB/remote");
 
