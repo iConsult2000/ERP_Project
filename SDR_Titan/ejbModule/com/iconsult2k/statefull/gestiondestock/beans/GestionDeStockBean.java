@@ -50,7 +50,6 @@ public class GestionDeStockBean implements GestionDeStockRemote, Serializable {
 	@PermitAll
 	public List<Produit> listerTousLesProduits() {
 		System.out.println("listerTousLesProduits in progress");
-
 		Query qSQL = em.createQuery("SELECT p FROM Produit p ");
 		List<Produit> results = qSQL.getResultList();
 
