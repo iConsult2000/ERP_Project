@@ -10,6 +10,7 @@ import java.net.URI;
 import java.net.URISyntaxException;
 import java.net.URL;
 import java.util.List;
+import java.util.Properties;
 import java.util.Random;
 
 import com.google.gdata.client.*;
@@ -50,9 +51,17 @@ public class CalandarController extends HttpServlet {
 	 * Default constructor.
 	 */
 	public CalandarController() {
-		// TODO Auto-generated constructor stub
-	}
-
+	
+        // TODO Auto-generated constructor stub
+    	Properties systemSettings = System.getProperties(); 
+    	System.getProperties().put( "proxySet", "true" ); 
+    	systemSettings.put("http.proxyHost", "proxy.etudiant.insia.org"); 
+    	systemSettings.put("http.proxyPort", "3128"); 
+    	systemSettings.put("https.proxyHost", "proxy.etudiant.insia.org"); 
+    	systemSettings.put("https.proxyPort", "3128"); 
+    	System.setProperties(systemSettings);
+    }
+	
 	public void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		
@@ -128,67 +137,13 @@ public class CalandarController extends HttpServlet {
 					+ (Integer) session.getAttribute("step"));
 
 			// Step 4
-
-			// C'est pour la suppression on s'en occupe pas pour le moment.
-			URI urlEvenement = null;
-			String etagEntryToDelete = null;
-
-			// L'url ou les données sont stocké.
-			URL feedUrl = new URL(
-					"https://www.google.com/calendar/feeds/"+email+"/private/full");
-
-			// on crée une requéte pour récupérer des données événement.
-			CalendarQuery myQuery = new CalendarQuery(feedUrl);
-
-			// Ici on indique qu'on veut uniquement les événements qui se sont
-			// passés le 1er février.
-			myQuery.setMinimumStartTime(DateTime
-					.parseDateTime("2011-11-01T00:00:00"));
-			myQuery.setMaximumStartTime(DateTime
-					.parseDateTime("2012-02-01T23:59:59"));
-
-			// on éxécute la requéte
-			CalendarEventFeed resultFeed;
-			try {
-				resultFeed = client.query(myQuery, CalendarEventFeed.class);
-				// on récupere les résultats.
-				List<CalendarEventEntry> lstEvent = resultFeed.getEntries();
-				// on affiche le nombre de résultat.
-				System.out.println("nombre de résultat : " + lstEvent.size());
-				// on parcours les résultats
-				for (int i = 0; i < lstEvent.size(); i++) {
-					CalendarEventEntry entry = (CalendarEventEntry) lstEvent
-							.get(i);
-					// on affiche le titre de l'évenement
-					System.out.println("titre événement né" + i + ":"
-							+ entry.getTitle().getPlainText());
-					// on affiche la description de l'événement.
-					System.out.println("description événement né" + i + ":"
-							+ entry.getPlainTextContent());
-					// si c'est le deuxieme on récupere son lien pour le
-					// supprimer plus tard
-					if (i == 1) {
-						// lien de l'évenement
-						urlEvenement = new URI(entry.getEditLink().getHref());
-						// et éa c'est l'etag c'est pour avoir l'autorisation de
-						// le supprimer mais j'avoue que je sais pas é trop
-						// pourquoi on doit le mettre.
-						etagEntryToDelete = entry.getEtag();
-					}
-				}
-			} catch (ServiceException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			} catch (URISyntaxException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-
+			response.sendRedirect("/SDR_Calandar-ERP/calandar.jsp");
+			
 		}
 
 		else if ((Integer) session.getAttribute("step") == 1) {
 
-			response.sendRedirect("https://www.google.com/calendar/render");
+			response.sendRedirect("/SDR_Calandar-ERP/calandar.jsp");
 
 		}
 	}
