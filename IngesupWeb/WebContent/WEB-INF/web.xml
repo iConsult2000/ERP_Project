@@ -5,6 +5,8 @@
     <welcome-file>index.jsp</welcome-file>
   </welcome-file-list>
   <servlet>
+    <description></description>
+    <display-name>AgendaServlet</display-name>
     <servlet-name>AgendaServlet</servlet-name>
     <servlet-class>com.ingesup.controllers.Menu</servlet-class>
     <init-param>
@@ -17,8 +19,10 @@
     <url-pattern>/Agenda</url-pattern>
   </servlet-mapping>
   <servlet>
+    <description></description>
+    <display-name>NoteServlet</display-name>
     <servlet-name>NoteServlet</servlet-name>
-    <servlet-class>com.ingesup.controllers.Menu<</servlet-class>
+    <servlet-class>com.ingesup.controllers.Menu</servlet-class>
     <init-param>
       <param-name>choix</param-name>
       <param-value>Note</param-value>
@@ -29,11 +33,23 @@
     <url-pattern>/Note</url-pattern>
   </servlet-mapping>
   <servlet>
+    <description></description>
+    <display-name>AuthServlet</display-name>
     <servlet-name>AuthServlet</servlet-name>
     <servlet-class>com.ingesup.controllers.Authentification</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>AuthServlet</servlet-name>
     <url-pattern>/Auth</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>AuthDownServlet</display-name>
+    <servlet-name>AuthDownServlet</servlet-name>
+    <servlet-class>com.ingesup.controllers.Deconnection</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AuthDownServlet</servlet-name>
+    <url-pattern>/AuthDown</url-pattern>
   </servlet-mapping>
 </web-app>
