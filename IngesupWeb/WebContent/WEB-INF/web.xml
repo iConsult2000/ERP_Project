@@ -17,15 +17,15 @@
     <url-pattern>/Agenda</url-pattern>
   </servlet-mapping>
     <servlet>
-    <servlet-name>Menu2Servlet</servlet-name>
+    <servlet-name>NoteServlet</servlet-name>
     <servlet-class>com.IngesupWeb.servlet.MenuServlet</servlet-class>
     <init-param>
     	<param-name>choix</param-name>
-    	<param-value>Menu2</param-value>
+    	<param-value>Note</param-value>
     </init-param>
   </servlet>
   <servlet-mapping>
-    <servlet-name>Menu2Servlet</servlet-name>
-    <url-pattern>/Menu2</url-pattern>
+    <servlet-name>NoteServlet</servlet-name>
+    <url-pattern>/Note</url-pattern>
   </servlet-mapping>
 </web-app>

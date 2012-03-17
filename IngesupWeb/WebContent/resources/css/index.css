@@ -77,6 +77,23 @@ body {background-color: #F5F5F5;}
 	padding-left: 10px;
 }
 
+#contener-body-menu ul a{
+	text-decoration: none;
+}
+
+#contener-body-menu ul a:VISITED{
+	color: inherit;
+}
+
+#contener-body-menu li a:HOVER, a:ACTIVE{
+	padding-left: 10px;
+}
+
+#contener-body-menu li{
+	border-bottom: solid 1px #000;
+	margin-bottom: 10px;
+}
+
 #contener-body-view{
 	width: 85%;
 	height: 100%;
@@ -86,4 +103,24 @@ body {background-color: #F5F5F5;}
 
 #contener-body-view iframe{
 	padding-left: 3%;
+}
+
+#contener-body-menu li._Red a{
+	color: #990000; 
+}
+
+#contener-body-menu li._Blue a{
+	color: #0e97a4; 
+}
+
+#contener-body-menu li._Yellow a{
+	color: #B79000; 
+}
+
+#contener-body-menu li._Black a{
+	color: #000; 
+}
+
+#contener-body-menu li._Green a{
+	color: #088A08; 
 }
