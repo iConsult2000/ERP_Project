@@ -17,7 +17,11 @@
 		</div>
 		<div id="contener-body">
 			<div id="contener-body-menu">
-				<%@ include file="utils/menu.html" %>
+				<% if(session.getAttribute("id") != null && session.getAttribute("mdp") != null){ %>
+					<% if(session.getAttribute("id").equals("etudiant") && session.getAttribute("mdp").equals("etudiant")){ %>
+						<%@ include file="utils/menu_Etudiant.html" %>
+					<% } %>
+				<% } %>
 			</div>
 			<div id="contener-body-view">
 				<% if(session.getAttribute("menu") != null){ %>

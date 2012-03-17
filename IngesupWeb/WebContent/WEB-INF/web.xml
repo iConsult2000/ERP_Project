@@ -6,26 +6,34 @@
   </welcome-file-list>
   <servlet>
     <servlet-name>AgendaServlet</servlet-name>
-    <servlet-class>com.IngesupWeb.servlet.MenuServlet</servlet-class>
+    <servlet-class>com.ingesup.controllers.Menu</servlet-class>
     <init-param>
-    	<param-name>choix</param-name>
-    	<param-value>Agenda</param-value>
+      <param-name>choix</param-name>
+      <param-value>Agenda</param-value>
     </init-param>
   </servlet>
   <servlet-mapping>
     <servlet-name>AgendaServlet</servlet-name>
     <url-pattern>/Agenda</url-pattern>
   </servlet-mapping>
-    <servlet>
+  <servlet>
     <servlet-name>NoteServlet</servlet-name>
-    <servlet-class>com.IngesupWeb.servlet.MenuServlet</servlet-class>
+    <servlet-class>com.ingesup.controllers.Menu<</servlet-class>
     <init-param>
-    	<param-name>choix</param-name>
-    	<param-value>Note</param-value>
+      <param-name>choix</param-name>
+      <param-value>Note</param-value>
     </init-param>
   </servlet>
   <servlet-mapping>
     <servlet-name>NoteServlet</servlet-name>
     <url-pattern>/Note</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>AuthServlet</servlet-name>
+    <servlet-class>com.ingesup.controllers.Authentification</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AuthServlet</servlet-name>
+    <url-pattern>/Auth</url-pattern>
   </servlet-mapping>
 </web-app>

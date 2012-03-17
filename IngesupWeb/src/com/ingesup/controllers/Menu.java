@@ -1,4 +1,4 @@
-package com.IngesupWeb.servlet;
+package com.ingesup.controllers;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -10,13 +10,13 @@ import javax.servlet.http.HttpSession;
 /**
  * Servlet implementation class Menu
  */
-public class MenuServlet extends HttpServlet {
+public class Menu extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public MenuServlet() {
+    public Menu() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -35,7 +35,7 @@ public class MenuServlet extends HttpServlet {
 		
 		
 		//redirection
-		request.getRequestDispatcher("/index.jsp").forward(request, response);
+		request.getRequestDispatcher("/").forward(request, response);
 	}
 
 	/**
