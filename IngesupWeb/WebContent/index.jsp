@@ -15,7 +15,18 @@
 				<%@ include file="formulaires/login.html" %>
 			</div>
 		</div>
-		<div id="contener-body"></div>
+		<div id="contener-body">
+			<div id="contener-body-menu">
+				<%@ include file="utils/menu.html" %>
+			</div>
+			<div id="contener-body-view">
+				<% if(session.getAttribute("menu") != null){ %>
+					<% if(session.getAttribute("menu").equals("Agenda")){ %>
+						<%@ include file="views/Agenda.html" %>
+					<% } %>
+				<% } %>
+			</div>
+		</div>
 		<div id="contener-footer">
 			<p align="center">INGESUP 27, rue de Fontarabie 75020 Paris - Tél : 01 56 98 21 30 - Fax : 01 43 38 40 87</p>
 		</div>

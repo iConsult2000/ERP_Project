@@ -4,4 +4,28 @@
   <welcome-file-list>
     <welcome-file>index.jsp</welcome-file>
   </welcome-file-list>
+  <servlet>
+    <servlet-name>AgendaServlet</servlet-name>
+    <servlet-class>com.IngesupWeb.servlet.MenuServlet</servlet-class>
+    <init-param>
+    	<param-name>choix</param-name>
+    	<param-value>Agenda</param-value>
+    </init-param>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AgendaServlet</servlet-name>
+    <url-pattern>/Agenda</url-pattern>
+  </servlet-mapping>
+    <servlet>
+    <servlet-name>Menu2Servlet</servlet-name>
+    <servlet-class>com.IngesupWeb.servlet.MenuServlet</servlet-class>
+    <init-param>
+    	<param-name>choix</param-name>
+    	<param-value>Menu2</param-value>
+    </init-param>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Menu2Servlet</servlet-name>
+    <url-pattern>/Menu2</url-pattern>
+  </servlet-mapping>
 </web-app>
