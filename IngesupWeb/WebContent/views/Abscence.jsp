@@ -5,27 +5,25 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<table class="abscence" cellpadding="0px" cellspacing="0px">
-		<th>Janvier</th>
-		<th>Frévrier</th>
-		<th>Mars</th>
-		<th>Avril</th>
-		<th>Mai</th>
-		<th>Juin</th>
-		<th>Juillet</th>
-		<th>Aout</th>
-		<th>Septembre</th>
-		<th>Octobre</th>
-		<th>Novembre</th>
-		<th>Decembre</th>
-		<% for(int i=0; i<12; i++){ %>
+<table class="abscence">
+	<thead>
 		<tr>
-			<% for(int j=0; j<12; j++){ %>
-				<td>a</td>
-			<% } %>
+			<th scope="col">Janvier</th>
+			<th scope="col">Frévrier</th>
+			<th scope="col">Mars</th>
+			<th scope="col">Avril</th>
+			<th scope="col">Mai</th>
+			<th scope="col">Juin</th>
+			<th scope="col">Juillet</th>
+			<th scope="col">Aout</th>
+			<th scope="col">Septembre</th>
+			<th scope="col">Octobre</th>
+			<th scope="col">Novembre</th>
+			<th scope="col">Decembre</th>
 		</tr>
-		<% } %>
-		<tr class="total">
+	</thead>
+	<tfoot>
+		<tr>
 			<td colspan="12">Total :</td>
 		</tr>
 		<tr>
@@ -33,6 +31,16 @@
 				<td>b</td>
 			<% } %>
 		</tr>
-	</table>
+	</tfoot>
+	<tbody>
+	<% for(int i=0; i<12; i++){ %>
+			<tr>
+				<% for(int j=0; j<12; j++){ %>
+					<td>06</td>
+				<% } %>
+			</tr>
+			<% } %>
+	</tbody>
+</table>
 </body>
 </html>
