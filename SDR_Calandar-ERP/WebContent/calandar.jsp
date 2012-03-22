@@ -8,7 +8,8 @@
 </head>
 <body>
 <div>
-<iframe src="https://www.google.com/calendar/embed?title=Calendar&amp;height=600&amp;wkst=1&amp;hl=fr&amp;bgcolor=%23FFFFFF&amp;src=lori.ferrand%40gmail.com&amp;color=%232952A3&amp;ctz=Europe%2FParis" style=" border-width:0 " width="800" height="600" frameborder="0" scrolling="no"></iframe>
+
+<iframe src="https://www.google.com/calendar/embed?src=erpingesuparis%40gmail.com&ctz=Europe/Paris" style="border: 0" width="800" height="600" frameborder="0" scrolling="no"></iframe>
 </div>
 </body>
 </html>
