@@ -4,6 +4,7 @@
   <welcome-file-list>
     <welcome-file>index.jsp</welcome-file>
   </welcome-file-list>
+  <!-- MENU -->
   <servlet>
     <description></description>
     <display-name>AgendaServlet</display-name>
@@ -32,6 +33,49 @@
     <servlet-name>NoteServlet</servlet-name>
     <url-pattern>/Note</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>AbscenceServlet</display-name>
+    <servlet-name>AbscenceServlet</servlet-name>
+    <servlet-class>com.ingesup.controllers.Menu</servlet-class>
+    <init-param>
+      <param-name>choix</param-name>
+      <param-value>Abscence</param-value>
+    </init-param>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AbscenceServlet</servlet-name>
+    <url-pattern>/Abscence</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>GroupeServlet</display-name>
+    <servlet-name>GroupeServlet</servlet-name>
+    <servlet-class>com.ingesup.controllers.Menu</servlet-class>
+    <init-param>
+      <param-name>choix</param-name>
+      <param-value>Groupe</param-value>
+    </init-param>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>GroupeServlet</servlet-name>
+    <url-pattern>/Groupe</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>DocumentServlet</display-name>
+    <servlet-name>DocumentServlet</servlet-name>
+    <servlet-class>com.ingesup.controllers.Menu</servlet-class>
+    <init-param>
+      <param-name>choix</param-name>
+      <param-value>Document</param-value>
+    </init-param>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>DocumentServlet</servlet-name>
+    <url-pattern>/Document</url-pattern>
+  </servlet-mapping>
+  <!-- FIN MENU -->
   <servlet>
     <description></description>
     <display-name>AuthServlet</display-name>

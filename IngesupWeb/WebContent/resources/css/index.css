@@ -1,6 +1,10 @@
 @CHARSET "UTF-8";
 
-body {background-color: #F5F5F5;}
+body {
+	background-color: #F5F5F5;
+	font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
+	font-size: 14px;
+}
 
 #contener {
 	background-color: #FFF;
@@ -15,7 +19,7 @@ body {background-color: #F5F5F5;}
 #contener p{
 	margin-top: 0px;
 	padding-top: 0px;
-	font-size: 0.7em;
+	
 }
 
 #contener-header {
@@ -102,7 +106,48 @@ body {background-color: #F5F5F5;}
 }
 
 #contener-body-view iframe{
-	padding-left: 3%;
+	margin-left: 3%;
+}
+
+#contener-body-view table.abscence{
+	font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
+	font-size: 12px;
+	text-align: left;
+	border-collapse: collapse;
+	margin: 0 auto;
+}
+	
+#contener-body-view table.abscence th{
+	font-weight: normal;
+	font-size: 14px;
+	color: #339;
+	padding: 10px;
+	
+	
+}
+
+#contener-body-view table.abscence td{
+	color: #669;
+	border-top: 1px solid #fff;
+	padding: 5px 5px;
+	text-align: center;
+	width: 50px;
+}
+
+#contener-body-view table.abscence tfoot td{
+	font-size:11px;
+	
+}
+
+#contener-body-view table.abscence tbody td{
+	background: url("../pictures/back.png");
+	
+}
+
+#contener-body-view table.abscence tbody tr:hover td{
+	color:#339;
+	background:none;
+	
 }
 
 #contener-body-menu li._Red a{
