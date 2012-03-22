@@ -5,8 +5,8 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<table>
-		<th><p>Janvier</p></th>
+	<table class="abscence" cellpadding="0px" cellspacing="0px">
+		<th>Janvier</th>
 		<th>Frévrier</th>
 		<th>Mars</th>
 		<th>Avril</th>
@@ -20,9 +20,19 @@
 		<th>Decembre</th>
 		<% for(int i=0; i<12; i++){ %>
 		<tr>
-			<td></td>
+			<% for(int j=0; j<12; j++){ %>
+				<td>a</td>
+			<% } %>
 		</tr>
 		<% } %>
+		<tr class="total">
+			<td colspan="12">Total :</td>
+		</tr>
+		<tr>
+			<% for(int j=0; j<12; j++){ %>
+				<td>b</td>
+			<% } %>
+		</tr>
 	</table>
 </body>
 </html>

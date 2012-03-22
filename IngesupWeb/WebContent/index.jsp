@@ -23,12 +23,12 @@
 			<% if(session.getAttribute("id") != null && session.getAttribute("mdp") != null){ %>
 				<% if(session.getAttribute("id").equals("etudiant") && session.getAttribute("mdp").equals("etudiant")){ %>
 					<div id="contener-body-menu">
-								<% String link = "utils/menu_"+session.getAttribute("type")+".html"; %>
+								<% String link = "utils/menu_"+session.getAttribute("type")+".jsp"; %>
 								<jsp:include page="<%=link %>"/>
 					</div>
 					<div id="contener-body-view">
 						<% if(session.getAttribute("menu") != null){ %>
-							<% String link_view = "views/"+session.getAttribute("menu")+".jsf"; %>
+							<% String link_view = "views/"+session.getAttribute("menu")+".jsp"; %>
 							<jsp:include page="<%=link_view %>"/>
 						<% } %>
 					</div>

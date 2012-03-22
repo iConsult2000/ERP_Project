@@ -102,7 +102,37 @@ body {background-color: #F5F5F5;}
 }
 
 #contener-body-view iframe{
-	padding-left: 3%;
+	margin-left: 3%;
+}
+
+#contener-body-view table.abscence{
+	margin: auto;
+	font-size: 0.7em;
+	margin-top: 20px;
+}
+
+#contener-body-view table.abscence tr.total{
+	font-weight: bold;
+	background-color: #990000;
+	color: #FFF;
+	height: 50px;
+}
+
+#contener-body-view table.abscence td{
+	text-align: center;
+	width: 70px;
+}
+
+#contener-body-view table.abscence tr{
+	height: 35px;
+}
+
+#contener-body-view table.abscence th{
+	color: #FFF;
+	height: 20px;
+	background-color: #0e97a4;
+	border-radius: 20px 20px 20px 20px;
+	
 }
 
 #contener-body-menu li._Red a{
