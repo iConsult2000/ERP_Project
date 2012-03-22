@@ -28,9 +28,8 @@
 					</div>
 					<div id="contener-body-view">
 						<% if(session.getAttribute("menu") != null){ %>
-							<% if(session.getAttribute("menu").equals("Agenda")){ %>
-								<%@ include file="views/Agenda.html" %>
-							<% } %>
+							<% String link_view = "views/"+session.getAttribute("menu")+".jsf"; %>
+							<jsp:include page="<%=link_view %>"/>
 						<% } %>
 					</div>
 				<% } %>
