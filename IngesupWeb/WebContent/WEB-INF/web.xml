@@ -52,4 +52,14 @@
     <servlet-name>AuthDownServlet</servlet-name>
     <url-pattern>/AuthDown</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>CalendarServlet</display-name>
+    <servlet-name>CalendarServlet</servlet-name>
+    <servlet-class>com.ingesup.controllers.CalendarController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>CalendarServlet</servlet-name>
+    <url-pattern>/Calendar</url-pattern>
+  </servlet-mapping>
 </web-app>

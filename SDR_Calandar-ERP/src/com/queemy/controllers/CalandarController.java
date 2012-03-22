@@ -87,7 +87,8 @@ public class CalandarController extends HttpServlet {
 		String email = (String) session.getAttribute("login");
 		String password = (String) session.getAttribute("passwd");
 
-		CalendarService client = new CalendarService("iConsult2000-ERP-v1");
+		CalendarService client = new CalendarService("API Project");
+		
 
 		if ((Integer) session.getAttribute("step") == 0) {
 
