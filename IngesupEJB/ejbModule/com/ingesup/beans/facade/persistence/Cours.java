@@ -152,4 +152,158 @@ public class Cours {
       }
    }
 
+/**
+ * @return the idCours
+ */
+public int getIdCours() {
+	return idCours;
+}
+
+/**
+ * @param idCours the idCours to set
+ */
+public void setIdCours(int idCours) {
+	this.idCours = idCours;
+}
+
+/**
+ * @return the idSalle
+ */
+public int getIdSalle() {
+	return idSalle;
+}
+
+/**
+ * @param idSalle the idSalle to set
+ */
+public void setIdSalle(int idSalle) {
+	this.idSalle = idSalle;
+}
+
+/**
+ * @return the eveIdPersonne
+ */
+public int getEveIdPersonne() {
+	return eveIdPersonne;
+}
+
+/**
+ * @param eveIdPersonne the eveIdPersonne to set
+ */
+public void setEveIdPersonne(int eveIdPersonne) {
+	this.eveIdPersonne = eveIdPersonne;
+}
+
+/**
+ * @return the dateEvent
+ */
+public java.util.Date getDateEvent() {
+	return dateEvent;
+}
+
+/**
+ * @param dateEvent the dateEvent to set
+ */
+public void setDateEvent(java.util.Date dateEvent) {
+	this.dateEvent = dateEvent;
+}
+
+/**
+ * @return the heureDeb
+ */
+public java.util.Date getHeureDeb() {
+	return heureDeb;
+}
+
+/**
+ * @param heureDeb the heureDeb to set
+ */
+public void setHeureDeb(java.util.Date heureDeb) {
+	this.heureDeb = heureDeb;
+}
+
+/**
+ * @return the heureFin
+ */
+public java.util.Date getHeureFin() {
+	return heureFin;
+}
+
+/**
+ * @param heureFin the heureFin to set
+ */
+public void setHeureFin(java.util.Date heureFin) {
+	this.heureFin = heureFin;
+}
+
+/**
+ * @return the dureeJours
+ */
+public int getDureeJours() {
+	return dureeJours;
+}
+
+/**
+ * @param dureeJours the dureeJours to set
+ */
+public void setDureeJours(int dureeJours) {
+	this.dureeJours = dureeJours;
+}
+
+/**
+ * @return the nomCours
+ */
+public String getNomCours() {
+	return nomCours;
+}
+
+/**
+ * @param nomCours the nomCours to set
+ */
+public void setNomCours(String nomCours) {
+	this.nomCours = nomCours;
+}
+
+/**
+ * @return the description
+ */
+public String getDescription() {
+	return description;
+}
+
+/**
+ * @param description the description to set
+ */
+public void setDescription(String description) {
+	this.description = description;
+}
+
+/**
+ * @return the information
+ */
+public String getInformation() {
+	return information;
+}
+
+/**
+ * @param information the information to set
+ */
+public void setInformation(String information) {
+	this.information = information;
+}
+
+/**
+ * @return the absence
+ */
+public java.util.Collection getAbsence() {
+	return absence;
+}
+
+/**
+ * @param absence the absence to set
+ */
+public void setAbsence(java.util.Collection absence) {
+	this.absence = absence;
+}
+
 }
