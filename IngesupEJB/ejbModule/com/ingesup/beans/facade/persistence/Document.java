@@ -1,6 +1,8 @@
 package com.ingesup.beans.facade.persistence;
 import java.util.*;
 
+import javax.persistence.ManyToOne;
+
 public class Document {
    private int idDoc;
    private String nomDoc;
@@ -8,6 +10,8 @@ public class Document {
    private String commentaire;
    
    public Cours cours;
+   
+   @ManyToOne
    public Professeur professeur;
    
    
