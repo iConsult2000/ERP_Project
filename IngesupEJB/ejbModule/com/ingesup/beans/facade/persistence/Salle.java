@@ -1,7 +1,12 @@
 package com.ingesup.beans.facade.persistence;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collection;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+@Entity
 public class Salle {
 	private int idSalle;
 	private String libSalle;
@@ -9,6 +14,7 @@ public class Salle {
 	/**
 	 * @return the idSalle
 	 */
+	@Id
 	public int getIdSalle() {
 		return idSalle;
 	}
@@ -34,6 +40,20 @@ public class Salle {
 	 */
 	public void setLibSalle(String libSalle) {
 		this.libSalle = libSalle;
+	}
+	
+	/**
+	 * OneToMany relationship with Evenement
+	 */
+	public Collection<Evenement> listEvenement = new ArrayList<Evenement>();
+	
+	@OneToMany(mappedBy = "idSalle")
+	public Collection<Evenement> getEvenement(){
+		return this.listEvenement;
+	}
+	
+	public void setEvenement(Collection<Evenement> newlistEvenement){
+		this.listEvenement = newlistEvenement;
 	}
 
 }

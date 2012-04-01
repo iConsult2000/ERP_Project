@@ -64,8 +64,7 @@ public class Professeur extends Personne implements Serializable {
 	 * OneToMany relationship between Cours and Professeur
 	 * 
 	 */
-	@OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER)
-	@JoinColumn(name="idPersonne", referencedColumnName = "idPersonne")
+	@OneToMany(mappedBy = "idPersonne")
 	public Collection<Cours> getCours() {
 		return cours;
 	}
@@ -79,8 +78,7 @@ public class Professeur extends Personne implements Serializable {
 	 * 
 	 */
 
-	@OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER)
-	@JoinColumn(name="idPersonne", referencedColumnName = "idPersonne")
+	@OneToMany(mappedBy = "idPersonne")
 	public Collection<Document> getDocument() {
 		return document;
 	}

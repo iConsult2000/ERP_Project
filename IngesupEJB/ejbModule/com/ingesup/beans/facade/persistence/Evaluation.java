@@ -1,101 +1,20 @@
 package com.ingesup.beans.facade.persistence;
 
-import java.util.*;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
-public class Evaluation {
-	private int idEval;
+@Entity
+public class Evaluation extends Evenement {
 	
-	private java.util.Date dateEvent;
-	private java.util.Date heureDeb;
-	private java.util.Date heureFin;
-	private int dureeJours;
 	private String libelleEval;
 	private String typeEval;
 	private int bareme;
 	private int coefficient;
 
-	
+	@ManyToOne
 	public Matiere matiere;
-	public Evenement evenement;
 
-	
-
-	/**
-	 * @return the idEval
-	 */
-	public int getIdEval() {
-		return idEval;
-	}
-
-	/**
-	 * @param idEval
-	 *            the idEval to set
-	 */
-	public void setIdEval(int idEval) {
-		this.idEval = idEval;
-	}
-
-	
-
-	/**
-	 * @return the dateEvent
-	 */
-	public java.util.Date getDateEvent() {
-		return dateEvent;
-	}
-
-	/**
-	 * @param dateEvent
-	 *            the dateEvent to set
-	 */
-	public void setDateEvent(java.util.Date dateEvent) {
-		this.dateEvent = dateEvent;
-	}
-
-	/**
-	 * @return the heureDeb
-	 */
-	public java.util.Date getHeureDeb() {
-		return heureDeb;
-	}
-
-	/**
-	 * @param heureDeb
-	 *            the heureDeb to set
-	 */
-	public void setHeureDeb(java.util.Date heureDeb) {
-		this.heureDeb = heureDeb;
-	}
-
-	/**
-	 * @return the heureFin
-	 */
-	public java.util.Date getHeureFin() {
-		return heureFin;
-	}
-
-	/**
-	 * @param heureFin
-	 *            the heureFin to set
-	 */
-	public void setHeureFin(java.util.Date heureFin) {
-		this.heureFin = heureFin;
-	}
-
-	/**
-	 * @return the dureeJours
-	 */
-	public int getDureeJours() {
-		return dureeJours;
-	}
-
-	/**
-	 * @param dureeJours
-	 *            the dureeJours to set
-	 */
-	public void setDureeJours(int dureeJours) {
-		this.dureeJours = dureeJours;
-	}
 
 	/**
 	 * @return the libelleEval

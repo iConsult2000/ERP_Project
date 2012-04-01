@@ -1,23 +1,25 @@
 package com.ingesup.beans.facade.persistence;
 
-import java.util.*;
+import java.util.Calendar;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
+import sun.util.calendar.CalendarUtils;
+
+@Entity
 public class Evenement {
 	protected int idEvent;
-	protected java.util.Date dateEvent;
-	protected java.util.Date heureDeb;
-	protected java.util.Date heureFin;
+	protected Calendar dateEvent = Calendar.getInstance();;
+	protected Calendar heureDeb = Calendar.getInstance();;
+	protected Calendar heureFin = Calendar.getInstance();;
 	protected int dureeJours;
-
-	public java.util.Collection cours;
-	public java.util.Collection evaluation;
-	public java.util.Collection assister;
-	public ServicePedagogique servicePedagogique;
-	public Salle salle;
+	
 
 	/**
 	 * @return the idEvent
 	 */
+	@Id
 	public int getIdEvent() {
 		return idEvent;
 	}
@@ -33,7 +35,7 @@ public class Evenement {
 	/**
 	 * @return the dateEvent
 	 */
-	public java.util.Date getDateEvent() {
+	public Calendar getDateEvent() {
 		return dateEvent;
 	}
 
@@ -41,14 +43,14 @@ public class Evenement {
 	 * @param dateEvent
 	 *            the dateEvent to set
 	 */
-	public void setDateEvent(java.util.Date dateEvent) {
+	public void setDateEvent(Calendar dateEvent) {
 		this.dateEvent = dateEvent;
 	}
 
 	/**
 	 * @return the heureDeb
 	 */
-	public java.util.Date getHeureDeb() {
+	public Calendar getHeureDeb() {
 		return heureDeb;
 	}
 
@@ -56,14 +58,14 @@ public class Evenement {
 	 * @param heureDeb
 	 *            the heureDeb to set
 	 */
-	public void setHeureDeb(java.util.Date heureDeb) {
+	public void setHeureDeb(Calendar heureDeb) {
 		this.heureDeb = heureDeb;
 	}
 
 	/**
 	 * @return the heureFin
 	 */
-	public java.util.Date getHeureFin() {
+	public Calendar getHeureFin() {
 		return heureFin;
 	}
 
@@ -71,7 +73,7 @@ public class Evenement {
 	 * @param heureFin
 	 *            the heureFin to set
 	 */
-	public void setHeureFin(java.util.Date heureFin) {
+	public void setHeureFin(Calendar heureFin) {
 		this.heureFin = heureFin;
 	}
 

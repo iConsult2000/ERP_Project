@@ -2,7 +2,11 @@ package com.ingesup.beans.facade.persistence;
 
 import java.io.Serializable;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
+import javax.persistence.PrimaryKeyJoinColumn;
 
 @Entity
 public class Etudiant extends Personne implements Serializable {
@@ -45,7 +49,23 @@ public class Etudiant extends Personne implements Serializable {
 		this.delegue = delegue;
 	}
 
+	
+	@ManyToOne
 	public Classe classe;
+	
+	/**
+	 * OneToOne relationship between etudiant and contrat
+	 * 
+	 */
 	public Contrat contrat;
+	
+	@OneToOne(cascade = CascadeType.ALL)
+	@PrimaryKeyJoinColumn
+	public Contrat getContrat(){
+		return contrat;
+	}
 
+	public void setContrat (Contrat newcontrat){
+		this.contrat = newcontrat;
+	}
 }

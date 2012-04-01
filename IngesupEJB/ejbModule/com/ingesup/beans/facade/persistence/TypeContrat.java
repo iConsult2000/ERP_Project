@@ -6,19 +6,24 @@ package com.ingesup.beans.facade.persistence;
  * Purpose: Defines the Class TypeContrat
  ***********************************************************************/
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collection;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+
+@Entity
 public class TypeContrat {
 
 	private int idTypContr;
 	private String libelleTypContr;
 	private String description;
 
-	public Collection contrat;
-
 	/**
 	 * @return the idTypContr
 	 */
+	@Id
 	public int getIdTypContr() {
 		return idTypContr;
 	}
@@ -59,6 +64,20 @@ public class TypeContrat {
 	 */
 	public void setDescription(String description) {
 		this.description = description;
+	}
+
+	/**
+	 * ManyToOne relationship with contrat
+	 */
+	public Collection<Contrat> listcontrat = new ArrayList<Contrat>();
+
+	@OneToMany(mappedBy = "idTypContr")
+	public Collection<Contrat> getContrat() {
+		return this.listcontrat;
+	}
+
+	public void setContrat(Collection<Contrat> newlistcontrat) {
+		this.listcontrat = newlistcontrat;
 	}
 
 }

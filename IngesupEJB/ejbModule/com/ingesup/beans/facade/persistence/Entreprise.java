@@ -1,7 +1,12 @@
 package com.ingesup.beans.facade.persistence;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collection;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+@Entity
 public class Entreprise {
 	private String siren;
 	private String nomEntrep;
@@ -11,13 +16,12 @@ public class Entreprise {
 	private String telEntre;
 	private String emailEntre;
 
-	public java.util.Collection listContrat;
-	public java.util.Collection listContact;
-	public Collection<ChargePlacement> listChargePlacement = new ArrayList<ChargePlacement>();
+	public Collection<ChargePlacement> listchargeplacement = new ArrayList<ChargePlacement>();
 
 	/**
 	 * @return the siren
 	 */
+	@Id
 	public String getSiren() {
 		return siren;
 	}
@@ -120,4 +124,32 @@ public class Entreprise {
 		this.emailEntre = emailEntre;
 	}
 
+	/**
+	 * OneToMany relationship with contrat
+	 * 
+	 */
+	public Collection<Contrat> listcontrat = new ArrayList<Contrat>();
+
+	@OneToMany(mappedBy = "siren")
+	public Collection<Contrat> getContrat() {
+		return this.listcontrat;
+	}
+
+	public void setContrat(Collection<Contrat> newlistcontrat) {
+		this.listcontrat = newlistcontrat;
+	}
+
+	/**
+	 * OneToMany relationship with contact
+	 */
+	public Collection<Contact> listcontact = new ArrayList<Contact>();
+
+	@OneToMany(mappedBy = "siren")
+	public Collection<Contact> getContact() {
+		return this.listcontact;
+	}
+
+	public void setContact(Collection<Contact> newlistcontact) {
+		this.listcontact = newlistcontact;
+	}
 }

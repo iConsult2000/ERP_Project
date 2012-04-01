@@ -3,11 +3,11 @@ package com.ingesup.beans.facade.persistence;
 import java.util.ArrayList;
 import java.util.Collection;
 
-import javax.persistence.CascadeType;
-import javax.persistence.FetchType;
-import javax.persistence.JoinColumn;
+import javax.persistence.Entity;
+import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
+@Entity
 public class Classe {
 	private int idClasse;
 	private String nomClasse;
@@ -15,9 +15,12 @@ public class Classe {
 	private String anneeCycle;
 	private int attribut5;
 
+	public Collection<Etudiant> listEtudiant = new ArrayList<Etudiant>();
+
 	/**
 	 * @return the idClasse
 	 */
+	@Id
 	public int getIdClasse() {
 		return idClasse;
 	}
@@ -90,41 +93,17 @@ public class Classe {
 		this.attribut5 = attribut5;
 	}
 
-
-
-	/**
-	 * @return the listEtudiant
-	 */
-	public Collection<Etudiant> getListEtudiant() {
-		return listEtudiant;
-	}
-
-	/**
-	 * @param listEtudiant
-	 *            the listEtudiant to set
-	 */
-	public void setListEtudiant(Collection<Etudiant> listEtudiant) {
-		this.listEtudiant = listEtudiant;
-	}
-
-	public Collection<Etudiant> listEtudiant = new ArrayList<Etudiant>();
-
 	/**
 	 * One to many relation ship between Classe and Etudiant
 	 */
-	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-	@JoinColumn(name = "id_classe", referencedColumnName = "id_classe")
+	@OneToMany(mappedBy = "id_classe")
 	public Collection<Etudiant> getEtudiant() {
-		System.out.println("execute Commande getDetailsCommande() method");
 		return this.listEtudiant;
 	}
 
-	public void setDetailsCommande(Collection<Etudiant> newlistEtudiant) {
-		System.out.println("execute Commande setDetailsCommande() method");
+	public void setEtudiant(Collection<Etudiant> newlistEtudiant) {
 		this.listEtudiant = newlistEtudiant;
 
 	}
-
-
 
 }
