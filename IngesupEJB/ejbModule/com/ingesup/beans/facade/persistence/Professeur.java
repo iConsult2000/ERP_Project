@@ -92,4 +92,88 @@ public class Professeur extends Personne implements Serializable {
 
 	
 
+/**
+ * @return the nomPers
+ */
+public String getNomPers() {
+	return nomPers;
+}
+
+/**
+ * @param nomPers the nomPers to set
+ */
+public void setNomPers(String nomPers) {
+	this.nomPers = nomPers;
+}
+
+/**
+ * @return the prenomPers
+ */
+public String getPrenomPers() {
+	return prenomPers;
+}
+
+/**
+ * @param prenomPers the prenomPers to set
+ */
+public void setPrenomPers(String prenomPers) {
+	this.prenomPers = prenomPers;
+}
+
+/**
+ * @return the emailPers
+ */
+public String getEmailPers() {
+	return emailPers;
+}
+
+/**
+ * @param emailPers the emailPers to set
+ */
+public void setEmailPers(String emailPers) {
+	this.emailPers = emailPers;
+}
+
+/**
+ * @return the statut
+ */
+public String getStatut() {
+	return statut;
+}
+
+/**
+ * @param statut the statut to set
+ */
+public void setStatut(String statut) {
+	this.statut = statut;
+}
+
+/**
+ * @return the competence
+ */
+public String getCompetence() {
+	return competence;
+}
+
+/**
+ * @param competence the competence to set
+ */
+public void setCompetence(String competence) {
+	this.competence = competence;
+}
+
+/**
+ * @return the typeProf
+ */
+public String getTypeProf() {
+	return typeProf;
+}
+
+/**
+ * @param typeProf the typeProf to set
+ */
+public void setTypeProf(String typeProf) {
+	this.typeProf = typeProf;
+}
+
 }
