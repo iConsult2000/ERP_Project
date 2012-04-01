@@ -3,122 +3,103 @@ package com.ingesup.beans.facade.persistence;
 import java.util.*;
 
 public class Contact {
-   private int idContact;
-   private String nomContact;
-   private String prenomContact;
-   private String telContact;
-   private String emailContact;
-   private String posteContact;
-   
-   public Entreprise entreprise;
-   
-   
-   /** @pdGenerated default parent getter */
-   public Entreprise getEntreprise() {
-      return entreprise;
-   }
-   
-   /** @pdGenerated default parent setter
-     * @param newEntreprise */
-   public void setEntreprise(Entreprise newEntreprise) {
-      if (this.entreprise == null || !this.entreprise.equals(newEntreprise))
-      {
-         if (this.entreprise != null)
-         {
-            Entreprise oldEntreprise = this.entreprise;
-            this.entreprise = null;
-            oldEntreprise.removeContact(this);
-         }
-         if (newEntreprise != null)
-         {
-            this.entreprise = newEntreprise;
-            this.entreprise.addContact(this);
-         }
-      }
-   }
+	private int idContact;
+	private String nomContact;
+	private String prenomContact;
+	private String telContact;
+	private String emailContact;
+	private String posteContact;
 
-/**
- * @return the idContact
- */
-public int getIdContact() {
-	return idContact;
-}
+	public Entreprise entreprise;
 
-/**
- * @param idContact the idContact to set
- */
-public void setIdContact(int idContact) {
-	this.idContact = idContact;
-}
+	/**
+	 * @return the idContact
+	 */
+	public int getIdContact() {
+		return idContact;
+	}
 
-/**
- * @return the nomContact
- */
-public String getNomContact() {
-	return nomContact;
-}
+	/**
+	 * @param idContact
+	 *            the idContact to set
+	 */
+	public void setIdContact(int idContact) {
+		this.idContact = idContact;
+	}
 
-/**
- * @param nomContact the nomContact to set
- */
-public void setNomContact(String nomContact) {
-	this.nomContact = nomContact;
-}
+	/**
+	 * @return the nomContact
+	 */
+	public String getNomContact() {
+		return nomContact;
+	}
 
-/**
- * @return the prenomContact
- */
-public String getPrenomContact() {
-	return prenomContact;
-}
+	/**
+	 * @param nomContact
+	 *            the nomContact to set
+	 */
+	public void setNomContact(String nomContact) {
+		this.nomContact = nomContact;
+	}
 
-/**
- * @param prenomContact the prenomContact to set
- */
-public void setPrenomContact(String prenomContact) {
-	this.prenomContact = prenomContact;
-}
+	/**
+	 * @return the prenomContact
+	 */
+	public String getPrenomContact() {
+		return prenomContact;
+	}
 
-/**
- * @return the telContact
- */
-public String getTelContact() {
-	return telContact;
-}
+	/**
+	 * @param prenomContact
+	 *            the prenomContact to set
+	 */
+	public void setPrenomContact(String prenomContact) {
+		this.prenomContact = prenomContact;
+	}
 
-/**
- * @param telContact the telContact to set
- */
-public void setTelContact(String telContact) {
-	this.telContact = telContact;
-}
+	/**
+	 * @return the telContact
+	 */
+	public String getTelContact() {
+		return telContact;
+	}
 
-/**
- * @return the emailContact
- */
-public String getEmailContact() {
-	return emailContact;
-}
+	/**
+	 * @param telContact
+	 *            the telContact to set
+	 */
+	public void setTelContact(String telContact) {
+		this.telContact = telContact;
+	}
 
-/**
- * @param emailContact the emailContact to set
- */
-public void setEmailContact(String emailContact) {
-	this.emailContact = emailContact;
-}
+	/**
+	 * @return the emailContact
+	 */
+	public String getEmailContact() {
+		return emailContact;
+	}
 
-/**
- * @return the posteContact
- */
-public String getPosteContact() {
-	return posteContact;
-}
+	/**
+	 * @param emailContact
+	 *            the emailContact to set
+	 */
+	public void setEmailContact(String emailContact) {
+		this.emailContact = emailContact;
+	}
 
-/**
- * @param posteContact the posteContact to set
- */
-public void setPosteContact(String posteContact) {
-	this.posteContact = posteContact;
-}
+	/**
+	 * @return the posteContact
+	 */
+	public String getPosteContact() {
+		return posteContact;
+	}
+
+	/**
+	 * @param posteContact
+	 *            the posteContact to set
+	 */
+	public void setPosteContact(String posteContact) {
+		this.posteContact = posteContact;
+	}
 
 }

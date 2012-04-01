@@ -1,4 +1,5 @@
 package com.ingesup.beans.facade.persistence;
+
 /***********************************************************************
  * Module:  TypeContrat.java
  * Author:  Popole
@@ -7,118 +8,57 @@ package com.ingesup.beans.facade.persistence;
 
 import java.util.*;
 
-
 public class TypeContrat {
-   
-   private int idTypContr;
-   private String libelleTypContr;
-   private String description;
-   
-   public Collection contrat;
-   
-   
-   public Collection getContrat() {
-      if (contrat == null)
-         contrat = new java.util.HashSet();
-      return contrat;
-   }
-   
-   /** @pdGenerated default iterator getter */
-   public java.util.Iterator getIteratorContrat() {
-      if (contrat == null)
-         contrat = new java.util.HashSet();
-      return contrat.iterator();
-   }
-   
-   /** @pdGenerated default setter
-     * @param newContrat */
-   public void setContrat(java.util.Collection newContrat) {
-      removeAllContrat();
-      for (java.util.Iterator iter = newContrat.iterator(); iter.hasNext();)
-         addContrat((Contrat)iter.next());
-   }
-   
-   /** @pdGenerated default add
-     * @param newContrat */
-   public void addContrat(Contrat newContrat) {
-      if (newContrat == null)
-         return;
-      if (this.contrat == null)
-         this.contrat = new java.util.HashSet();
-      if (!this.contrat.contains(newContrat))
-      {
-         this.contrat.add(newContrat);
-         newContrat.setTypeContrat(this);      
-      }
-   }
-   
-   /** @pdGenerated default remove
-     * @param oldContrat */
-   public void removeContrat(Contrat oldContrat) {
-      if (oldContrat == null)
-         return;
-      if (this.contrat != null)
-         if (this.contrat.contains(oldContrat))
-         {
-            this.contrat.remove(oldContrat);
-            oldContrat.setTypeContrat((TypeContrat)null);
-         }
-   }
-   
-   /** @pdGenerated default removeAll */
-   public void removeAllContrat() {
-      if (contrat != null)
-      {
-         Contrat oldContrat;
-         for (java.util.Iterator iter = getIteratorContrat(); iter.hasNext();)
-         {
-            oldContrat = (Contrat)iter.next();
-            iter.remove();
-            oldContrat.setTypeContrat((TypeContrat)null);
-         }
-      }
-   }
 
-/**
- * @return the idTypContr
- */
-public int getIdTypContr() {
-	return idTypContr;
-}
+	private int idTypContr;
+	private String libelleTypContr;
+	private String description;
 
-/**
- * @param idTypContr the idTypContr to set
- */
-public void setIdTypContr(int idTypContr) {
-	this.idTypContr = idTypContr;
-}
+	public Collection contrat;
 
-/**
- * @return the libelleTypContr
- */
-public String getLibelleTypContr() {
-	return libelleTypContr;
-}
+	/**
+	 * @return the idTypContr
+	 */
+	public int getIdTypContr() {
+		return idTypContr;
+	}
 
-/**
- * @param libelleTypContr the libelleTypContr to set
- */
-public void setLibelleTypContr(String libelleTypContr) {
-	this.libelleTypContr = libelleTypContr;
-}
+	/**
+	 * @param idTypContr
+	 *            the idTypContr to set
+	 */
+	public void setIdTypContr(int idTypContr) {
+		this.idTypContr = idTypContr;
+	}
 
-/**
- * @return the description
- */
-public String getDescription() {
-	return description;
-}
+	/**
+	 * @return the libelleTypContr
+	 */
+	public String getLibelleTypContr() {
+		return libelleTypContr;
+	}
 
-/**
- * @param description the description to set
- */
-public void setDescription(String description) {
-	this.description = description;
-}
+	/**
+	 * @param libelleTypContr
+	 *            the libelleTypContr to set
+	 */
+	public void setLibelleTypContr(String libelleTypContr) {
+		this.libelleTypContr = libelleTypContr;
+	}
+
+	/**
+	 * @return the description
+	 */
+	public String getDescription() {
+		return description;
+	}
+
+	/**
+	 * @param description
+	 *            the description to set
+	 */
+	public void setDescription(String description) {
+		this.description = description;
+	}
 
 }

@@ -1,121 +1,78 @@
 package com.ingesup.beans.facade.persistence;
+
 import java.util.*;
 
 import javax.persistence.ManyToOne;
 
 public class Document {
-   private int idDoc;
-   private String nomDoc;
-   private String typeDoc;
-   private String commentaire;
-   
-   public Cours cours;
-   
-   @ManyToOne
-   public Professeur professeur;
-   
-   
-   /** @pdGenerated default parent getter */
-   public Cours getCours() {
-      return cours;
-   }
-   
-   /** @pdGenerated default parent setter
-     * @param newCours */
-   public void setCours(Cours newCours) {
-      if (this.cours == null || !this.cours.equals(newCours))
-      {
-         if (this.cours != null)
-         {
-            Cours oldCours = this.cours;
-            this.cours = null;
-            oldCours.removeDocument(this);
-         }
-         if (newCours != null)
-         {
-            this.cours = newCours;
-            this.cours.addDocument(this);
-         }
-      }
-   }
-   /** @pdGenerated default parent getter */
-   public Professeur getProfesseur() {
-      return professeur;
-   }
-   
-   /** @pdGenerated default parent setter
-     * @param newProfesseur */
-   public void setProfesseur(Professeur newProfesseur) {
-      if (this.professeur == null || !this.professeur.equals(newProfesseur))
-      {
-         if (this.professeur != null)
-         {
-            Professeur oldProfesseur = this.professeur;
-            this.professeur = null;
-            oldProfesseur.removeDocument(this);
-         }
-         if (newProfesseur != null)
-         {
-            this.professeur = newProfesseur;
-            this.professeur.addDocument(this);
-         }
-      }
-   }
+	private int idDoc;
+	private String nomDoc;
+	private String typeDoc;
+	private String commentaire;
 
-/**
- * @return the idDoc
- */
-public int getIdDoc() {
-	return idDoc;
-}
+	public Cours cours;
 
-/**
- * @param idDoc the idDoc to set
- */
-public void setIdDoc(int idDoc) {
-	this.idDoc = idDoc;
-}
+	@ManyToOne
+	public Professeur professeur;
 
-/**
- * @return the nomDoc
- */
-public String getNomDoc() {
-	return nomDoc;
-}
+	/**
+	 * @return the idDoc
+	 */
+	public int getIdDoc() {
+		return idDoc;
+	}
 
-/**
- * @param nomDoc the nomDoc to set
- */
-public void setNomDoc(String nomDoc) {
-	this.nomDoc = nomDoc;
-}
+	/**
+	 * @param idDoc
+	 *            the idDoc to set
+	 */
+	public void setIdDoc(int idDoc) {
+		this.idDoc = idDoc;
+	}
 
-/**
- * @return the typeDoc
- */
-public String getTypeDoc() {
-	return typeDoc;
-}
+	/**
+	 * @return the nomDoc
+	 */
+	public String getNomDoc() {
+		return nomDoc;
+	}
 
-/**
- * @param typeDoc the typeDoc to set
- */
-public void setTypeDoc(String typeDoc) {
-	this.typeDoc = typeDoc;
-}
+	/**
+	 * @param nomDoc
+	 *            the nomDoc to set
+	 */
+	public void setNomDoc(String nomDoc) {
+		this.nomDoc = nomDoc;
+	}
 
-/**
- * @return the commentaire
- */
-public String getCommentaire() {
-	return commentaire;
-}
+	/**
+	 * @return the typeDoc
+	 */
+	public String getTypeDoc() {
+		return typeDoc;
+	}
 
-/**
- * @param commentaire the commentaire to set
- */
-public void setCommentaire(String commentaire) {
-	this.commentaire = commentaire;
-}
+	/**
+	 * @param typeDoc
+	 *            the typeDoc to set
+	 */
+	public void setTypeDoc(String typeDoc) {
+		this.typeDoc = typeDoc;
+	}
+
+	/**
+	 * @return the commentaire
+	 */
+	public String getCommentaire() {
+		return commentaire;
+	}
+
+	/**
+	 * @param commentaire
+	 *            the commentaire to set
+	 */
+	public void setCommentaire(String commentaire) {
+		this.commentaire = commentaire;
+	}
 
 }
