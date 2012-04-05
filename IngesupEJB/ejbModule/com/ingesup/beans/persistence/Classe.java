@@ -22,7 +22,7 @@ public class Classe implements Serializable{
 	private String nomClasse;
 	private String specialite;
 	private String anneeCycle;
-	private int attribut5;
+	private String no_agenda;
 
 	public Collection<Etudiant> listEtudiant = new ArrayList<Etudiant>();
 	
@@ -92,18 +92,18 @@ public class Classe implements Serializable{
 	}
 
 	/**
-	 * @return the attribut5
+	 * @return the agenda number
 	 */
-	public int getAttribut5() {
-		return attribut5;
+	public String getNo_agenda() {
+		return no_agenda;
 	}
 
 	/**
-	 * @param attribut5
-	 *            the attribut5 to set
+	 * @param no_agenda
+	 *            the no_agenda to set
 	 */
-	public void setAttribut5(int attribut5) {
-		this.attribut5 = attribut5;
+	public void setNo_agenda(String no_agenda) {
+		this.no_agenda = no_agenda;
 	}
 
 	/**
