@@ -21,8 +21,8 @@ public class Etudiant extends Personne implements Serializable {
 	private String membreBde;
 	private String delegue;
 	public Set<Evaluation> evaluations;
-	public Set<Cours> lescours;
-	public Set<Evenement> evenements;
+	public Set<Cours> cours;
+	 
 
 	public Etudiant(){
 		super();
@@ -91,13 +91,13 @@ public class Etudiant extends Personne implements Serializable {
 	/**
 	 * ManyToMany relationship with Cours
 	 */
-	@ManyToMany(cascade = { CascadeType.PERSIST, CascadeType.MERGE }, mappedBy = "etudiants")
+	@ManyToMany(cascade = { CascadeType.PERSIST, CascadeType.MERGE })
 	public Set<Cours> getCours() {
-		return lescours;
+		return cours;
 	}
 
-	public void setCours(Set<Cours> lescours) {
-		this.lescours = lescours;
+	public void setCours(Set<Cours> cours) {
+		this.cours = cours;
 	}
 
 	

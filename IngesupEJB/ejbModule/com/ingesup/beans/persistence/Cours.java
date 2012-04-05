@@ -121,7 +121,7 @@ public class Cours extends Evenement implements Serializable{
 	/**
 	 * ManyToMany relationship with Etudiant
 	 */
-	@ManyToMany(cascade = { CascadeType.PERSIST, CascadeType.MERGE })
+	@ManyToMany(cascade = { CascadeType.PERSIST, CascadeType.MERGE }, mappedBy = "cours")
 	public Set<Etudiant> getEtudiants() {
 		return etudiants;
 	}
