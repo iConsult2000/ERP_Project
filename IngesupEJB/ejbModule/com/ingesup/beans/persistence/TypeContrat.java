@@ -1,4 +1,4 @@
-package com.ingesup.beans.facade.persistence;
+package com.ingesup.beans.persistence;
 
 /***********************************************************************
  * Module:  TypeContrat.java
@@ -6,24 +6,34 @@ package com.ingesup.beans.facade.persistence;
  * Purpose: Defines the Class TypeContrat
  ***********************************************************************/
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collection;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 
 @Entity
-public class TypeContrat {
+public class TypeContrat implements Serializable{
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 4891609843170460584L;
 	private int idTypContr;
 	private String libelleTypContr;
 	private String description;
 
+	public TypeContrat(){}
 	/**
 	 * @return the idTypContr
 	 */
-	@Id
+	@Id @GeneratedValue
 	public int getIdTypContr() {
 		return idTypContr;
 	}
@@ -71,7 +81,8 @@ public class TypeContrat {
 	 */
 	public Collection<Contrat> listcontrat = new ArrayList<Contrat>();
 
-	@OneToMany(mappedBy = "idTypContr")
+	@OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER)
+	@JoinColumn(name="idTypContr", referencedColumnName = "idTypContr")
 	public Collection<Contrat> getContrat() {
 		return this.listcontrat;
 	}

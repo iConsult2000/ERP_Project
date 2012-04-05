@@ -1,4 +1,4 @@
-package com.ingesup.beans.facade.persistence;
+package com.ingesup.beans.persistence;
 
 /***********************************************************************
 
@@ -11,6 +11,7 @@ import java.io.Serializable;
 import java.util.Collection;
 
 import javax.persistence.Entity;
+import javax.persistence.OneToMany;
 
 @Entity
 public class ServicePedagogique extends Personne implements Serializable {
@@ -21,6 +22,9 @@ public class ServicePedagogique extends Personne implements Serializable {
 	
 	private String telService;
 
+	public ServicePedagogique(){
+		super();
+	}
 	
 	/**
 	 * @return the telService
@@ -38,22 +42,18 @@ public class ServicePedagogique extends Personne implements Serializable {
 	}
 
 	/**
-	 * @return the evenement
+	 * OneToMany relationship with Evenement
 	 */
-	public Collection<Evenement> getEvenement() {
-		return evenement;
+	public Collection<Evenement> evenements;
+	
+	@OneToMany(mappedBy = "idEvent")
+	public Collection<Evenement> getEvenements() {
+		return this.evenements;
 	}
-
-	/**
-	 * @param evenement
-	 *            the evenement to set
-	 */
-	public void setEvenement(Collection<Evenement> evenement) {
-		this.evenement = evenement;
+	
+	public void setEvenements(Collection<Evenement> evenements){
+		this.evenements = evenements;
 	}
-
-	public Collection<Evenement> evenement;
-
 
 
 }

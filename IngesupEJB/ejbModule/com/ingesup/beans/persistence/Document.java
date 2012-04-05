@@ -1,23 +1,26 @@
-package com.ingesup.beans.facade.persistence;
+package com.ingesup.beans.persistence;
 
-import java.util.*;
+import java.io.Serializable;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
-public class Document {
+@Entity
+public class Document implements Serializable{
 	private int idDoc;
 	private String nomDoc;
 	private String typeDoc;
 	private String commentaire;
 
-	public Cours cours;
 
-	@ManyToOne
-	public Professeur professeur;
-
+	public Document(){}
+	
 	/**
 	 * @return the idDoc
 	 */
+	@Id @GeneratedValue
 	public int getIdDoc() {
 		return idDoc;
 	}
@@ -74,5 +77,16 @@ public class Document {
 	public void setCommentaire(String commentaire) {
 		this.commentaire = commentaire;
 	}
+	
+	/**
+	 * MnayToOne relation with Professeur
+	 */
+	@ManyToOne
+	public Professeur professeur;
 
+	/**
+	 * ManyToOne relation with Cours
+	 */
+	@ManyToOne
+	public Cours cours;
 }

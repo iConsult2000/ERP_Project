@@ -1,30 +1,29 @@
-package com.ingesup.beans.facade.persistence;
+package com.ingesup.beans.persistence;
 
+import java.io.Serializable;
 import java.util.Date;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
 @Entity
-public class Contrat {
+public class Contrat implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 5469402452671684431L;
 	private int idContrat;
 	private String libelleContrat;
 	private Date dateDebutCont;
 	private Date dateFinCont;
 	private int dureeCont;
-	
-
-	/**
-	 * ManyToOne relationship with Entreprise
-	 */
-	@ManyToOne
-	public Entreprise entreprise;
 
 	/**
 	 * @return the idContrat
 	 */
-	@Id
+	@Id @GeneratedValue
 	public int getIdContrat() {
 		return idContrat;
 	}
@@ -96,7 +95,7 @@ public class Contrat {
 	public void setDureeCont(int dureeCont) {
 		this.dureeCont = dureeCont;
 	}
-	
+
 	/**
 	 * OneToMany relationship with type contrat
 	 * 
@@ -104,4 +103,11 @@ public class Contrat {
 
 	@ManyToOne
 	public TypeContrat typeContrat;
+
+	/**
+	 * ManyToOne relationship with Entreprise
+	 */
+	@ManyToOne
+	public Entreprise entreprise;
+
 }

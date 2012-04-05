@@ -1,8 +1,18 @@
-package com.ingesup.beans.facade.persistence;
+package com.ingesup.beans.persistence;
 
-import java.util.*;
+import java.io.Serializable;
 
-public class Contact {
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+
+@Entity
+public class Contact implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 5491285927058535502L;
 	private int idContact;
 	private String nomContact;
 	private String prenomContact;
@@ -10,11 +20,17 @@ public class Contact {
 	private String emailContact;
 	private String posteContact;
 
+	public Contact(){}
+	/**
+	 * ManyToOne relatin with Entreprise
+	 */
+	@ManyToOne
 	public Entreprise entreprise;
 
 	/**
 	 * @return the idContact
 	 */
+	@Id @GeneratedValue
 	public int getIdContact() {
 		return idContact;
 	}

@@ -1,25 +1,39 @@
-package com.ingesup.beans.facade.persistence;
+package com.ingesup.beans.persistence;
 
+import java.io.Serializable;
 import java.util.Calendar;
+import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-
-import sun.util.calendar.CalendarUtils;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 
 @Entity
-public class Evenement {
+public class Evenement implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 8817103780952979249L;
 	protected int idEvent;
 	protected Calendar dateEvent = Calendar.getInstance();;
 	protected Calendar heureDeb = Calendar.getInstance();;
 	protected Calendar heureFin = Calendar.getInstance();;
 	protected int dureeJours;
 	
-
+	Set<Classe> classes;
+	
+	
+	public Evenement() {
+		
+	}
 	/**
 	 * @return the idEvent
 	 */
-	@Id
+	@Id @GeneratedValue
 	public int getIdEvent() {
 		return idEvent;
 	}
@@ -92,4 +106,28 @@ public class Evenement {
 		this.dureeJours = dureeJours;
 	}
 
+	/**
+	 * ManyToMany relationship with Classe
+	 */
+	@ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE}, mappedBy = "evenements")
+	public Set<Classe> getClasses() {
+		return classes;
+	}
+	
+	public void setClasses(Set<Classe> classes){
+		this.classes = classes;
+	}
+	
+		
+	/**
+	 * OneToMany relation with Service Pedagogique
+	 */
+	@ManyToOne
+	public ServicePedagogique servicePedagogique;
+	
+	/**
+	 * ManyToOne relation with Salle
+	 */
+	@ManyToOne
+	public Salle salle;
 }

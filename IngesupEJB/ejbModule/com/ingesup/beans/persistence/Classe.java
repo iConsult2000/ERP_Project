@@ -1,14 +1,24 @@
-package com.ingesup.beans.facade.persistence;
+package com.ingesup.beans.persistence;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 
 @Entity
-public class Classe {
+public class Classe implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 4300395051128154176L;
 	private int idClasse;
 	private String nomClasse;
 	private String specialite;
@@ -16,11 +26,14 @@ public class Classe {
 	private int attribut5;
 
 	public Collection<Etudiant> listEtudiant = new ArrayList<Etudiant>();
+	
+	public Set<Evenement> evenements;
 
+	public Classe(){}
 	/**
 	 * @return the idClasse
 	 */
-	@Id
+	@Id @GeneratedValue
 	public int getIdClasse() {
 		return idClasse;
 	}
@@ -96,14 +109,24 @@ public class Classe {
 	/**
 	 * One to many relation ship between Classe and Etudiant
 	 */
-	@OneToMany(mappedBy = "id_classe")
+	@OneToMany(mappedBy = "idPersonne")
 	public Collection<Etudiant> getEtudiant() {
 		return this.listEtudiant;
 	}
 
 	public void setEtudiant(Collection<Etudiant> newlistEtudiant) {
 		this.listEtudiant = newlistEtudiant;
-
 	}
 
+	/**
+	 * ManyToMany relationship with Evenement
+	 */
+	@ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+	public Set<Evenement> getEvenements(){
+		return evenements;
+	}
+	
+	public void setEvenements(Set<Evenement> evenements){
+		this.evenements = evenements;
+	}
 }

@@ -1,23 +1,39 @@
-package com.ingesup.beans.facade.persistence;
+package com.ingesup.beans.persistence;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 @Entity
-public class Cours {
+public class Cours extends Evenement implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 634445662516273170L;
 	
 	private String nomCours;
 	private String description;
 	private String information;
 
 	public Collection<Document> document = new ArrayList<Document>();
-	public Collection<Absence> absence = new ArrayList<Absence>();
+	
 	public Matiere matiere;
 
+	public Set<Etudiant> etudiants;
 	
+	public Cours() {
+		super();
+	}
+
 	
 
 	/**
@@ -65,22 +81,7 @@ public class Cours {
 		this.information = information;
 	}
 
-	/**
-	 * @return the document
-	 */
-	public Collection<Document> getDocument() {
-		return document;
-	}
-
-	/**
-	 * @param document
-	 *            the document to set
-	 */
-	public void setDocument(Collection<Document> document) {
-		this.document = document;
-	}
-
-	
+		
 	/**
 	 * @return the matiere
 	 * 
@@ -113,7 +114,35 @@ public class Cours {
 	}
 
 	
-
+	/**
+	 * ManyToOne relationship with Professeur
+	 */
 	@ManyToOne
 	public Professeur professeur;
+	
+	/**
+	 * ManyToMany relationship with Etudiant
+	 */
+	@ManyToMany(cascade = { CascadeType.PERSIST, CascadeType.MERGE })
+	public Set<Etudiant> getEtudiants() {
+		return etudiants;
+	}
+	
+	public void setEtudiants(Set<Etudiant> etudiants) {
+		this.etudiants = etudiants;
+	}
+	
+	/**
+	 * OneToMany relationship with Cours
+	 */
+	public Collection<Document> documents;
+	
+	@OneToMany(mappedBy = "idDoc")
+	public Collection<Document> getDocuments() {
+		return this.documents;
+	}
+	
+	public void setDocuments(Collection<Document> documents){
+		this.documents = documents;
+	}
 }

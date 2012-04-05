@@ -1,4 +1,4 @@
-package com.ingesup.beans.facade.persistence;
+package com.ingesup.beans.persistence;
 
 
 import java.util.*;

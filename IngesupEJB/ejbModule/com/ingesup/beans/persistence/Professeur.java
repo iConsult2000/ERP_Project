@@ -1,9 +1,8 @@
-package com.ingesup.beans.facade.persistence;
+package com.ingesup.beans.persistence;
 
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.HashSet;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -64,7 +63,7 @@ public class Professeur extends Personne implements Serializable {
 	 * OneToMany relationship between Cours and Professeur
 	 * 
 	 */
-	@OneToMany(mappedBy = "idPersonne")
+	@OneToMany(mappedBy = "idEvent")
 	public Collection<Cours> getCours() {
 		return cours;
 	}
@@ -78,7 +77,7 @@ public class Professeur extends Personne implements Serializable {
 	 * 
 	 */
 
-	@OneToMany(mappedBy = "idPersonne")
+	@OneToMany(mappedBy = "idDoc")
 	public Collection<Document> getDocument() {
 		return document;
 	}

@@ -1,20 +1,27 @@
-package com.ingesup.beans.facade.persistence;
+package com.ingesup.beans.persistence;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collection;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 @Entity
-public class Salle {
+public class Salle implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 6812674475703744772L;
 	private int idSalle;
 	private String libSalle;
 
+	public Salle(){}
 	/**
 	 * @return the idSalle
 	 */
-	@Id
+	@Id @GeneratedValue
 	public int getIdSalle() {
 		return idSalle;
 	}
@@ -47,7 +54,7 @@ public class Salle {
 	 */
 	public Collection<Evenement> listEvenement = new ArrayList<Evenement>();
 	
-	@OneToMany(mappedBy = "idSalle")
+	@OneToMany(mappedBy = "idEvent")
 	public Collection<Evenement> getEvenement(){
 		return this.listEvenement;
 	}
@@ -55,5 +62,7 @@ public class Salle {
 	public void setEvenement(Collection<Evenement> newlistEvenement){
 		this.listEvenement = newlistEvenement;
 	}
+	
+	
 
 }

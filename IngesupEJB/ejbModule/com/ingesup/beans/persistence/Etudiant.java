@@ -1,9 +1,12 @@
-package com.ingesup.beans.facade.persistence;
+package com.ingesup.beans.persistence;
 
 import java.io.Serializable;
+import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.PrimaryKeyJoinColumn;
@@ -18,7 +21,13 @@ public class Etudiant extends Personne implements Serializable {
 
 	private String membreBde;
 	private String delegue;
+	public Set<Evaluation> evaluations;
+	public Set<Cours> lescours;
+	public Set<Evenement> evenements;
 
+	public Etudiant(){
+		super();
+	}
 	/**
 	 * @return the membreBde
 	 */
@@ -49,23 +58,48 @@ public class Etudiant extends Personne implements Serializable {
 		this.delegue = delegue;
 	}
 
-	
 	@ManyToOne
 	public Classe classe;
-	
+
 	/**
 	 * OneToOne relationship between etudiant and contrat
 	 * 
 	 */
 	public Contrat contrat;
-	
+
 	@OneToOne(cascade = CascadeType.ALL)
 	@PrimaryKeyJoinColumn
-	public Contrat getContrat(){
+	public Contrat getContrat() {
 		return contrat;
 	}
 
-	public void setContrat (Contrat newcontrat){
+	public void setContrat(Contrat newcontrat) {
 		this.contrat = newcontrat;
 	}
+
+	/**
+	 * ManyToMany relationship with Evaluation
+	 */
+	@ManyToMany(cascade = { CascadeType.PERSIST, CascadeType.MERGE })
+	public Set<Evaluation> getEvaluations() {
+		return evaluations;
+	}
+
+	public void setEvaluations(Set<Evaluation> evaluations) {
+		this.evaluations = evaluations;
+	}
+
+	/**
+	 * ManyToMany relationship with Cours
+	 */
+	@ManyToMany(cascade = { CascadeType.PERSIST, CascadeType.MERGE }, mappedBy = "etudiants")
+	public Set<Cours> getCours() {
+		return lescours;
+	}
+
+	public void setCours(Set<Cours> lescours) {
+		this.lescours = lescours;
+	}
+
+	
 }

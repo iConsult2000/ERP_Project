@@ -1,25 +1,27 @@
-package com.ingesup.beans.facade.persistence;
+package com.ingesup.beans.persistence;
 
 import java.util.ArrayList;
 import java.util.Collection;
 
-import javax.persistence.CascadeType;
-import javax.persistence.FetchType;
-import javax.persistence.JoinColumn;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
-import org.omg.Security.Public;
-
-
+@Entity
 public class Matiere {
 	private int idMatiere;
 	private String libelleMatiere;
 
 	
+	public Matiere() {
+		
+	}
 	
 	/**
 	 * @return the idMatiere
 	 */
+	@Id @GeneratedValue
 	public int getIdMatiere() {
 		return idMatiere;
 	}
@@ -53,7 +55,7 @@ public class Matiere {
 	 */
 	public Collection<Cours> listCours = new ArrayList<Cours>();
 	
-	@OneToMany(mappedBy = "idMatiere")
+	@OneToMany(mappedBy = "idEvent")
 	public Collection<Cours> getCours() {
 		return this.listCours;
 	}
@@ -66,7 +68,7 @@ public class Matiere {
 	 * OneToMany relationship with evaluation
 	 */
 	public Collection<Evaluation> listevaluation;
-	@OneToMany(mappedBy ="idMatiere")
+	@OneToMany(mappedBy ="idEvent")
 	public Collection<Evaluation> getEvaluation() {
 		return this.listevaluation;
 	}

@@ -1,20 +1,37 @@
-package com.ingesup.beans.facade.persistence;
+package com.ingesup.beans.persistence;
 
+import java.io.Serializable;
+import java.util.Set;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.FetchType;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 
 @Entity
-public class Evaluation extends Evenement {
-	
+public class Evaluation extends Evenement implements Serializable {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 5864039231382063586L;
 	private String libelleEval;
 	private String typeEval;
 	private int bareme;
 	private int coefficient;
 
+	public Set<Etudiant> etudiants;
+	
+	public Evaluation() {
+		super();
+	}
+
+	/**
+	 * ManyToOne relationship with Matiere
+	 */
 	@ManyToOne
 	public Matiere matiere;
-
 
 	/**
 	 * @return the libelleEval
@@ -76,6 +93,16 @@ public class Evaluation extends Evenement {
 		this.coefficient = coefficient;
 	}
 
-	
+	/**
+	 * ManyToMany relationship with Etudiant
+	 */
+	@ManyToMany(cascade = { CascadeType.MERGE, CascadeType.PERSIST }, mappedBy = "evaluations")
+	public Set<Etudiant> getEtudiants() {
+		return etudiants;
+	}
+
+	public void setEtudiants(Set<Etudiant> etudiants) {
+		this.etudiants = etudiants;
+	}
 
 }
