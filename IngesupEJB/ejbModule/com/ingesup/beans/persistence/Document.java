@@ -9,6 +9,10 @@ import javax.persistence.ManyToOne;
 
 @Entity
 public class Document implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 2076788817259020416L;
 	private int idDoc;
 	private String nomDoc;
 	private String typeDoc;

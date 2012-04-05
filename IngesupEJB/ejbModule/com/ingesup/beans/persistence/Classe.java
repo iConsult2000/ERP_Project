@@ -7,7 +7,6 @@ import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
@@ -28,6 +27,7 @@ public class Classe implements Serializable{
 	public Collection<Etudiant> listEtudiant = new ArrayList<Etudiant>();
 	
 	public Set<Evenement> evenements;
+	public Set<Matiere> matieres;
 
 	public Classe(){}
 	/**
@@ -128,5 +128,17 @@ public class Classe implements Serializable{
 	
 	public void setEvenements(Set<Evenement> evenements){
 		this.evenements = evenements;
+	}
+	
+	/**
+	 * ManyToMany relationship with Classe
+	 */
+	@ManyToMany(cascade ={ CascadeType.MERGE, CascadeType.PERSIST})
+	public Set<Matiere> getMatieres(){
+		return this.matieres;
+	}
+	
+	public void setMatieres(Set<Matiere> matieres){
+		this.matieres = matieres;
 	}
 }

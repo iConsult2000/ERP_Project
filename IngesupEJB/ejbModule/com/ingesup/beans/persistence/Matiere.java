@@ -2,10 +2,13 @@ package com.ingesup.beans.persistence;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 
 @Entity
@@ -13,6 +16,7 @@ public class Matiere {
 	private int idMatiere;
 	private String libelleMatiere;
 
+	public Set<Classe> classes;
 	
 	public Matiere() {
 		
@@ -75,5 +79,17 @@ public class Matiere {
 	
 	public void setEvaluation(Collection<Evaluation> newlistevaluation){
 		this.listevaluation = newlistevaluation;
+	}
+	
+	/**
+	 * ManyToMany relationship with Classe
+	 */
+	@ManyToMany(cascade = { CascadeType.MERGE, CascadeType.PERSIST }, mappedBy="matieres")
+	public Set<Classe> getClasses() {
+		return classes;
+	}
+	
+	public void setClasses(Set<Classe> classes){
+		this.classes = classes;
 	}
 }

@@ -1,6 +1,5 @@
 package com.ingesup.beans.persistence;
 
-import java.util.*;
 
 public class Groupe {
 	private int idGroup;
