@@ -5,9 +5,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Set;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
@@ -24,9 +22,8 @@ public class Cours extends Evenement implements Serializable{
 
 	public Collection<Document> document = new ArrayList<Document>();
 	
-	public Matiere matiere;
-
-	public Set<Etudiant> etudiants;
+		
+	public Set<Absence> absences;
 	
 	public Cours() {
 		super();
@@ -87,30 +84,6 @@ public class Cours extends Evenement implements Serializable{
 	@ManyToOne
 	public Matiere Matiere;
 
-	/**
-	 * @param matiere
-	 *            the matiere to set
-	 */
-	public void setMatiere(Matiere matiere) {
-		this.matiere = matiere;
-	}
-
-
-	/**
-	 * @return the professeur
-	 */
-	public Professeur getProfesseur() {
-		return professeur;
-	}
-
-	/**
-	 * @param professeur
-	 *            the professeur to set
-	 */
-	public void setProfesseur(Professeur professeur) {
-		this.professeur = professeur;
-	}
-
 	
 	/**
 	 * ManyToOne relationship with Professeur
@@ -119,19 +92,19 @@ public class Cours extends Evenement implements Serializable{
 	public Professeur professeur;
 	
 	/**
-	 * ManyToMany relationship with Etudiant
+	 * OneToMany relationship with Absence
 	 */
-	@ManyToMany(cascade = { CascadeType.PERSIST, CascadeType.MERGE }, mappedBy = "cours")
-	public Set<Etudiant> getEtudiants() {
-		return etudiants;
+	@OneToMany(mappedBy = "idAbsence")
+	public Set<Absence> getAbsences() {
+		return absences;
 	}
 	
-	public void setEtudiants(Set<Etudiant> etudiants) {
-		this.etudiants = etudiants;
+	public void setAbsences(Set<Absence> absences) {
+		this.absences = absences;
 	}
 	
 	/**
-	 * OneToMany relationship with Cours
+	 * OneToMany relationship with Document
 	 */
 	public Collection<Document> documents;
 	

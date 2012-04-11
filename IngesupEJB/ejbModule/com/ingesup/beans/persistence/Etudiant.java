@@ -5,8 +5,8 @@ import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.PrimaryKeyJoinColumn;
 
@@ -20,8 +20,9 @@ public class Etudiant extends Personne implements Serializable {
 
 	private String membreBde;
 	private String delegue;
-	public Set<Evaluation> evaluations;
+	public Set<Note> notes;
 	public Set<Cours> cours;
+	public Set<Absence> absences;
 	 
 
 	public Etudiant(){
@@ -77,27 +78,30 @@ public class Etudiant extends Personne implements Serializable {
 	}
 
 	/**
-	 * ManyToMany relationship with Evaluation
+	 * ManyToMany relationship with Note
 	 */
-	@ManyToMany(cascade = { CascadeType.PERSIST, CascadeType.MERGE })
-	public Set<Evaluation> getEvaluations() {
-		return evaluations;
+	@OneToMany(mappedBy = "idPersonne")
+	public Set<Note> getNotes() {
+		return this.notes;
 	}
 
-	public void setEvaluations(Set<Evaluation> evaluations) {
-		this.evaluations = evaluations;
+	public void setNotes(Set<Note> notes) {
+		this.notes = notes;
 	}
 
 	/**
-	 * ManyToMany relationship with Cours
+	 * OneToMany relationship with Cours
 	 */
-	@ManyToMany(cascade = { CascadeType.PERSIST, CascadeType.MERGE })
-	public Set<Cours> getCours() {
-		return cours;
+	/**
+	 * ManyToMany relationship with Note
+	 */
+	@OneToMany(mappedBy = "idAbsence")
+	public Set<Absence> getAbsences() {
+		return this.absences;
 	}
 
-	public void setCours(Set<Cours> cours) {
-		this.cours = cours;
+	public void setAbsences(Set<Absence> absences) {
+		this.absences = absences;
 	}
 
 	

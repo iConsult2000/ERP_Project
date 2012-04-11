@@ -5,8 +5,11 @@ import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Evaluation extends Evenement implements Serializable {
@@ -21,6 +24,7 @@ public class Evaluation extends Evenement implements Serializable {
 	private int coefficient;
 
 	public Set<Etudiant> etudiants;
+	public Set<Note> notes;
 	
 	public Evaluation() {
 		super();
@@ -93,15 +97,16 @@ public class Evaluation extends Evenement implements Serializable {
 	}
 
 	/**
-	 * ManyToMany relationship with Etudiant
+	 * ManyToMany relationship with Note
 	 */
-	@ManyToMany(cascade = { CascadeType.MERGE, CascadeType.PERSIST }, mappedBy = "evaluations")
-	public Set<Etudiant> getEtudiants() {
-		return etudiants;
+	
+	@OneToMany(mappedBy = "idNote")
+	public Set<Note> getNotes() {
+		return this.notes;
 	}
 
-	public void setEtudiants(Set<Etudiant> etudiants) {
-		this.etudiants = etudiants;
+	public void setNotes(Set<Note> notes) {
+		this.notes = notes;
 	}
 
 }
