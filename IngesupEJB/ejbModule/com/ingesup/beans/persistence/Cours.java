@@ -19,6 +19,8 @@ public class Cours extends Evenement implements Serializable{
 	private String nomCours;
 	private String description;
 	private String information;
+	private int idPersonne;
+	private int idMatiere;
 
 	public Collection<Document> document = new ArrayList<Document>();
 	
@@ -78,6 +80,40 @@ public class Cours extends Evenement implements Serializable{
 
 		
 	/**
+	 * @return the idPersonne
+	 */
+	public int getIdPersonne() {
+		return idPersonne;
+	}
+
+
+
+	/**
+	 * @param idPersonne the idPersonne to set
+	 */
+	public void setIdPersonne(int idPersonne) {
+		this.idPersonne = idPersonne;
+	}
+
+
+	/**
+	 * @return the idMatiere
+	 */
+	public int getIdMatiere() {
+		return idMatiere;
+	}
+
+
+
+	/**
+	 * @param idMatiere the idMatiere to set
+	 */
+	public void setIdMatiere(int idMatiere) {
+		this.idMatiere = idMatiere;
+	}
+
+
+	/**
 	 * @return the matiere
 	 * 
 	 */
@@ -94,7 +130,7 @@ public class Cours extends Evenement implements Serializable{
 	/**
 	 * OneToMany relationship with Absence
 	 */
-	@OneToMany(mappedBy = "idAbsence")
+	@OneToMany(mappedBy = "idEvent")
 	public Set<Absence> getAbsences() {
 		return absences;
 	}
@@ -108,7 +144,7 @@ public class Cours extends Evenement implements Serializable{
 	 */
 	public Collection<Document> documents;
 	
-	@OneToMany(mappedBy = "idDoc")
+	@OneToMany(mappedBy = "idEvent")
 	public Collection<Document> getDocuments() {
 		return this.documents;
 	}

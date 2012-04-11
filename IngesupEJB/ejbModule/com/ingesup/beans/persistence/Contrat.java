@@ -15,6 +15,7 @@ public class Contrat implements Serializable{
 	 */
 	private static final long serialVersionUID = 5469402452671684431L;
 	private int idContrat;
+	private String siren;
 	private String libelleContrat;
 	private Date dateDebutCont;
 	private Date dateFinCont;
@@ -34,6 +35,20 @@ public class Contrat implements Serializable{
 	 */
 	public void setIdContrat(int idContrat) {
 		this.idContrat = idContrat;
+	}
+
+	/**
+	 * @return the siren
+	 */
+	public String getSiren() {
+		return siren;
+	}
+
+	/**
+	 * @param siren the siren to set
+	 */
+	public void setSiren(String siren) {
+		this.siren = siren;
 	}
 
 	/**

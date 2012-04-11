@@ -8,6 +8,9 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+
+import org.hibernate.annotations.Cache;
+import org.hibernate.annotations.CacheConcurrencyStrategy;
 @Entity
 public class Salle implements Serializable{
 	/**
@@ -54,7 +57,8 @@ public class Salle implements Serializable{
 	 */
 	public Collection<Evenement> listEvenement = new ArrayList<Evenement>();
 	
-	@OneToMany(mappedBy = "idEvent")
+	@OneToMany(mappedBy = "idSalle")
+	@Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
 	public Collection<Evenement> getEvenement(){
 		return this.listEvenement;
 	}

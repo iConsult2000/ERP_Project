@@ -7,6 +7,9 @@ import java.util.Collection;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
 
+import org.hibernate.annotations.Cache;
+import org.hibernate.annotations.CacheConcurrencyStrategy;
+
 @Entity
 public class Professeur extends Personne implements Serializable {
 
@@ -19,6 +22,7 @@ public class Professeur extends Personne implements Serializable {
 	
 	private String statut;
 	private String competence;
+	
 
 	public Collection<Cours> cours = new ArrayList<Cours>();
 	public Collection<Document> document = new ArrayList<Document>();
@@ -60,7 +64,8 @@ public class Professeur extends Personne implements Serializable {
 	 * OneToMany relationship between Cours and Professeur
 	 * 
 	 */
-	@OneToMany(mappedBy = "idEvent")
+	@OneToMany(mappedBy = "idPersonne")
+	@Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
 	public Collection<Cours> getCours() {
 		return cours;
 	}
@@ -74,7 +79,8 @@ public class Professeur extends Personne implements Serializable {
 	 * 
 	 */
 
-	@OneToMany(mappedBy = "idDoc")
+	@OneToMany(mappedBy = "idPersonne")
+	@Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
 	public Collection<Document> getDocument() {
 		return document;
 	}

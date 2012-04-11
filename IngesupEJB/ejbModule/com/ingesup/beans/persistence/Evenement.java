@@ -18,6 +18,7 @@ public class Evenement implements Serializable{
 	 */
 	private static final long serialVersionUID = 8817103780952979249L;
 	protected int idEvent;
+	private int idSalle;
 	protected Calendar dateEvent = Calendar.getInstance();;
 	protected Calendar heureDeb = Calendar.getInstance();;
 	protected Calendar heureFin = Calendar.getInstance();;
@@ -45,6 +46,18 @@ public class Evenement implements Serializable{
 		this.idEvent = idEvent;
 	}
 
+	/**
+	 * @return the idSalle
+	 */
+	public int getIdSalle() {
+		return idSalle;
+	}
+	/**
+	 * @param idSalle the idSalle to set
+	 */
+	public void setIdSalle(int idSalle) {
+		this.idSalle = idSalle;
+	}
 	/**
 	 * @return the dateEvent
 	 */

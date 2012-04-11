@@ -14,6 +14,7 @@ public class Contact implements Serializable{
 	 */
 	private static final long serialVersionUID = 5491285927058535502L;
 	private int idContact;
+	private String siren;
 	private String nomContact;
 	private String prenomContact;
 	private String telContact;
@@ -41,6 +42,20 @@ public class Contact implements Serializable{
 	 */
 	public void setIdContact(int idContact) {
 		this.idContact = idContact;
+	}
+
+	/**
+	 * @return the siren
+	 */
+	public String getSiren() {
+		return siren;
+	}
+
+	/**
+	 * @param siren the siren to set
+	 */
+	public void setSiren(String siren) {
+		this.siren = siren;
 	}
 
 	/**

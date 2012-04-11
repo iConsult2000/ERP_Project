@@ -17,6 +17,8 @@ public class Document implements Serializable{
 	private String nomDoc;
 	private String typeDoc;
 	private String commentaire;
+	private int idPersonne;
+	private int idEvent;
 
 
 	public Document(){}
@@ -82,6 +84,34 @@ public class Document implements Serializable{
 		this.commentaire = commentaire;
 	}
 	
+	/**
+	 * @return the idPersonne
+	 */
+	public int getIdPersonne() {
+		return idPersonne;
+	}
+
+	/**
+	 * @param idPersonne the idPersonne to set
+	 */
+	public void setIdPersonne(int idPersonne) {
+		this.idPersonne = idPersonne;
+	}
+
+	/**
+	 * @return the idEvent
+	 */
+	public int getIdEvent() {
+		return idEvent;
+	}
+
+	/**
+	 * @param idEvent the idEvent to set
+	 */
+	public void setIdEvent(int idEvent) {
+		this.idEvent = idEvent;
+	}
+
 	/**
 	 * MnayToOne relation with Professeur
 	 */

@@ -59,7 +59,7 @@ public class Matiere {
 	 */
 	public Collection<Cours> listCours = new ArrayList<Cours>();
 	
-	@OneToMany(mappedBy = "idEvent")
+	@OneToMany(mappedBy = "idMatiere")
 	public Collection<Cours> getCours() {
 		return this.listCours;
 	}

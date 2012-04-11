@@ -14,6 +14,36 @@ public class Absence implements Serializable {
 	 */
 	private static final long serialVersionUID = 9149736332077268953L;
 	private int idAbsence;
+	/**
+	 * @return the idPersonne
+	 */
+	public int getIdPersonne() {
+		return idPersonne;
+	}
+
+	/**
+	 * @param idPersonne the idPersonne to set
+	 */
+	public void setIdPersonne(int idPersonne) {
+		this.idPersonne = idPersonne;
+	}
+
+	/**
+	 * @return the idEvent
+	 */
+	public int getIdEvent() {
+		return idEvent;
+	}
+
+	/**
+	 * @param idEvent the idEvent to set
+	 */
+	public void setIdEvent(int idEvent) {
+		this.idEvent = idEvent;
+	}
+
+	private int idPersonne;
+	private int idEvent;
 	private Boolean justifier;
 
 	public Absence() {

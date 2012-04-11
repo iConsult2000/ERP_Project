@@ -109,7 +109,7 @@ public class Classe implements Serializable{
 	/**
 	 * One to many relation ship between Classe and Etudiant
 	 */
-	@OneToMany(mappedBy = "idPersonne")
+	@OneToMany(mappedBy = "idClasse")
 	public Collection<Etudiant> getEtudiant() {
 		return this.listEtudiant;
 	}

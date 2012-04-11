@@ -20,6 +20,7 @@ public class Etudiant extends Personne implements Serializable {
 
 	private String membreBde;
 	private String delegue;
+	private int idClasse;
 	public Set<Note> notes;
 	public Set<Cours> cours;
 	public Set<Absence> absences;
@@ -56,6 +57,19 @@ public class Etudiant extends Personne implements Serializable {
 	 */
 	public void setDelegue(String delegue) {
 		this.delegue = delegue;
+	}
+
+	/**
+	 * @return the idClasse
+	 */
+	public int getIdClasse() {
+		return idClasse;
+	}
+	/**
+	 * @param idClasse the idClasse to set
+	 */
+	public void setIdClasse(int idClasse) {
+		this.idClasse = idClasse;
 	}
 
 	@ManyToOne
@@ -95,7 +109,7 @@ public class Etudiant extends Personne implements Serializable {
 	/**
 	 * ManyToMany relationship with Note
 	 */
-	@OneToMany(mappedBy = "idAbsence")
+	@OneToMany(mappedBy = "idPersonne")
 	public Set<Absence> getAbsences() {
 		return this.absences;
 	}
