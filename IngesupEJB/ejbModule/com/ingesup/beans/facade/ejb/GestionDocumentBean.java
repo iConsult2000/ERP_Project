@@ -26,12 +26,13 @@ public class GestionDocumentBean implements GestionDocumentRemote {
 	
 	
 	private void initialize(){		
-		collectionDoc.add(new Document("EJB_part1.pdf", "pdf", "Rappel EJB", 1, 1));
-		collectionDoc.add(new Document("EJB_part2.pdf", "pdf", "Cours n°1 EJB", 1, 2));
-		collectionDoc.add(new Document("EJB_part3.pdf", "pdf", "Cours n°1 EJB", 1, 3));
-		doc = new DocumentDITO("EJB_part1.pdf");
+		doc = new DocumentDITO("EJB_part1.pdf", "pdf", "Rappel EJB", 1, 1);
 		doc.setFile(new File("embedded/EJB_part1.pdf"));
+		collectionDoc.add(doc);
+		collectionDoc.add(new DocumentDITO("EJB_part2.pdf", "pdf", "Cours n°1 EJB", 1, 2));
+		collectionDoc.add(new DocumentDITO("EJB_part3.pdf", "pdf", "Cours n°1 EJB", 1, 3));
 	}
+	
 	/**
 	 * Liste de nom des Documents
 	 * 

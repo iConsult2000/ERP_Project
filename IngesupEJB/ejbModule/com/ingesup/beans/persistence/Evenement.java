@@ -12,17 +12,17 @@ import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 
 @Entity
-public class Evenement implements Serializable{
+public abstract class Evenement implements Serializable{
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 8817103780952979249L;
-	protected int idEvent;
+	private int idEvent;
 	private int idSalle;
-	protected Calendar dateEvent = Calendar.getInstance();;
-	protected Calendar heureDeb = Calendar.getInstance();;
-	protected Calendar heureFin = Calendar.getInstance();;
-	protected int dureeJours;
+	private Calendar dateEvent = Calendar.getInstance();;
+	private Calendar heureDeb = Calendar.getInstance();;
+	private Calendar heureFin = Calendar.getInstance();;
+	private int dureeJours;
 	
 	Set<Classe> classes;
 	

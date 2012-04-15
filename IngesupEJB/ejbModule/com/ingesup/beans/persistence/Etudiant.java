@@ -29,6 +29,12 @@ public class Etudiant extends Personne implements Serializable {
 	public Etudiant(){
 		super();
 	}
+	
+	public Etudiant(String nomPers, String prenomPers, String emailPers, int typePers, int idClasse){
+		super (nomPers, prenomPers, emailPers, typePers);
+		this.idClasse = idClasse;
+	}
+	
 	/**
 	 * @return the membreBde
 	 */

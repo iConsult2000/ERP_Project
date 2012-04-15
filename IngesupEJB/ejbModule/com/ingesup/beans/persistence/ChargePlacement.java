@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.ManyToMany;
 
@@ -22,9 +23,15 @@ public class ChargePlacement extends Personne implements Serializable{
 	public ChargePlacement(){
 		super();
 	}
+	
+	public ChargePlacement(String nomPers, String prenomPers, String emailPers, int typePers, String telCharge){
+		super (nomPers, prenomPers, emailPers, typePers);
+		this.telCharge = telCharge;
+	}
 	/**
 	 * @return the telCharge
 	 */
+	@Column(length=12)
 	public String getTelCharge() {
 		return telCharge;
 	}

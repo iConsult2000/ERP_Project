@@ -2,14 +2,14 @@ package com.ingesup.beans.persistence;
 
 import java.io.Serializable;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.Inheritance;
-import javax.persistence.InheritanceType;
+import javax.persistence.MappedSuperclass;
 
 @Entity
-@Inheritance(strategy = InheritanceType.JOINED)
+@MappedSuperclass
 public abstract class Personne implements Serializable {
 
 	/**
@@ -28,6 +28,12 @@ public abstract class Personne implements Serializable {
 
 	}
 
+	public Personne(String nomPers, String prenomPers, String emailPers, int typePers){
+		this.nomPers = nomPers;
+		this.prenomPers = prenomPers;
+		this.emailPers = emailPers;
+		this.typePers = typePers;
+	}
 
 	/**
 	 * @return the idPersonne
@@ -49,6 +55,7 @@ public abstract class Personne implements Serializable {
 	/**
 	 * @return the nomPers
 	 */
+	@Column(length = 15)
 	public String getNomPers() {
 		return nomPers;
 	}
@@ -65,6 +72,7 @@ public abstract class Personne implements Serializable {
 	/**
 	 * @return the prenomPers
 	 */
+	@Column(length = 15)
 	public String getPrenomPers() {
 		return prenomPers;
 	}
@@ -81,6 +89,7 @@ public abstract class Personne implements Serializable {
 	/**
 	 * @return the emailPers
 	 */
+	@Column(length = 15)
 	public String getEmailPers() {
 		return emailPers;
 	}
@@ -89,6 +98,7 @@ public abstract class Personne implements Serializable {
 	/**
 	 * @param emailPers the emailPers to set
 	 */
+	@Column(length = 15)
 	public void setEmailPers(String emailPers) {
 		this.emailPers = emailPers;
 	}

@@ -6,6 +6,7 @@ import java.util.Collection;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -49,6 +50,7 @@ public class Classe implements Serializable{
 	/**
 	 * @return the nomClasse
 	 */
+	@Column(length=12)
 	public String getNomClasse() {
 		return nomClasse;
 	}
@@ -64,6 +66,7 @@ public class Classe implements Serializable{
 	/**
 	 * @return the specialite
 	 */
+	@Column(length=64)
 	public String getSpecialite() {
 		return specialite;
 	}
