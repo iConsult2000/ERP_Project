@@ -7,6 +7,7 @@ import java.util.Random;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
@@ -65,6 +66,7 @@ public class Entreprise implements Serializable{
 	/**
 	 * @return the adresse
 	 */
+	@Column(length=75)
 	public String getAdresse() {
 		return adresse;
 	}
@@ -80,6 +82,7 @@ public class Entreprise implements Serializable{
 	/**
 	 * @return the cp
 	 */
+	@Column(length=5)
 	public String getCp() {
 		return cp;
 	}

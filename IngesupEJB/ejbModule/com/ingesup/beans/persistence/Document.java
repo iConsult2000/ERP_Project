@@ -6,34 +6,28 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.MappedSuperclass;
 
 @Entity
-public class Document implements Serializable{
+@MappedSuperclass
+public abstract class Document implements Serializable{
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 2076788817259020416L;
 	private int idDoc;
-	private String nomDoc;
-	private String typeDoc;
-	private String commentaire;
 	private int idPersonne;
 	private int idEvent;
 
 
 	public Document(){}
 	
-	public Document(String nomDoc) {
-		this.nomDoc = nomDoc;
-	}
-	
-	public Document(String nomDoc, String typeDoc, String comments, int idPersonne, int idEvent){
-		this.nomDoc = nomDoc;
-		this.typeDoc = typeDoc;
-		this.commentaire = comments;
+	public Document(int idPersonne, int idEvent){
 		this.idPersonne = idPersonne;
 		this.idEvent = idEvent;
 	}
+	
+
 	
 	/**
 	 * @return the idDoc
@@ -51,51 +45,8 @@ public class Document implements Serializable{
 		this.idDoc = idDoc;
 	}
 
-	/**
-	 * @return the nomDoc
-	 */
-	public String getNomDoc() {
-		return nomDoc;
-	}
-
-	/**
-	 * @param nomDoc
-	 *            the nomDoc to set
-	 */
-	public void setNomDoc(String nomDoc) {
-		this.nomDoc = nomDoc;
-	}
-
 	
-	/**
-	 * @return the typeDoc
-	 */
-	public String getTypeDoc() {
-		return typeDoc;
-	}
 
-	/**
-	 * @param typeDoc
-	 *            the typeDoc to set
-	 */
-	public void setTypeDoc(String typeDoc) {
-		this.typeDoc = typeDoc;
-	}
-
-	/**
-	 * @return the commentaire
-	 */
-	public String getCommentaire() {
-		return commentaire;
-	}
-
-	/**
-	 * @param commentaire
-	 *            the commentaire to set
-	 */
-	public void setCommentaire(String commentaire) {
-		this.commentaire = commentaire;
-	}
 	
 	/**
 	 * @return the idPersonne

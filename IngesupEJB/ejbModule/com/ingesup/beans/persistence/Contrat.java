@@ -1,8 +1,10 @@
 package com.ingesup.beans.persistence;
 
 import java.io.Serializable;
+import java.util.Calendar;
 import java.util.Date;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -17,8 +19,8 @@ public class Contrat implements Serializable{
 	private int idContrat;
 	private String siren;
 	private String libelleContrat;
-	private Date dateDebutCont;
-	private Date dateFinCont;
+	private Calendar dateDebutCont;
+	private Calendar dateFinCont;
 	private int dureeCont;
 
 	/**
@@ -40,6 +42,7 @@ public class Contrat implements Serializable{
 	/**
 	 * @return the siren
 	 */
+	@Column(length=15)
 	public String getSiren() {
 		return siren;
 	}
@@ -54,6 +57,7 @@ public class Contrat implements Serializable{
 	/**
 	 * @return the libelleContrat
 	 */
+	@Column(length=15)
 	public String getLibelleContrat() {
 		return libelleContrat;
 	}
@@ -69,7 +73,7 @@ public class Contrat implements Serializable{
 	/**
 	 * @return the dateDebutCont
 	 */
-	public Date getDateDebutCont() {
+	public Calendar getDateDebutCont() {
 		return dateDebutCont;
 	}
 
@@ -77,14 +81,14 @@ public class Contrat implements Serializable{
 	 * @param dateDebutCont
 	 *            the dateDebutCont to set
 	 */
-	public void setDateDebutCont(Date dateDebutCont) {
+	public void setDateDebutCont(Calendar dateDebutCont) {
 		this.dateDebutCont = dateDebutCont;
 	}
 
 	/**
 	 * @return the dateFinCont
 	 */
-	public Date getDateFinCont() {
+	public Calendar getDateFinCont() {
 		return dateFinCont;
 	}
 
@@ -92,7 +96,7 @@ public class Contrat implements Serializable{
 	 * @param dateFinCont
 	 *            the dateFinCont to set
 	 */
-	public void setDateFinCont(Date dateFinCont) {
+	public void setDateFinCont(Calendar dateFinCont) {
 		this.dateFinCont = dateFinCont;
 	}
 

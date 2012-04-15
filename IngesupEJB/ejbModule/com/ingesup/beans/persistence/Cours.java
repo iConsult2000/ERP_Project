@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Set;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
@@ -51,6 +52,7 @@ public class Cours extends Evenement implements Serializable{
 	/**
 	 * @return the description
 	 */
+	@Column(length=30)
 	public String getDescription() {
 		return description;
 	}
@@ -66,6 +68,7 @@ public class Cours extends Evenement implements Serializable{
 	/**
 	 * @return the information
 	 */
+	@Column(length=30)
 	public String getInformation() {
 		return information;
 	}

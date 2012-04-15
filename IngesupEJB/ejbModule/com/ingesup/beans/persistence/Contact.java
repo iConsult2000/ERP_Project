@@ -2,6 +2,7 @@ package com.ingesup.beans.persistence;
 
 import java.io.Serializable;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -47,6 +48,7 @@ public class Contact implements Serializable{
 	/**
 	 * @return the siren
 	 */
+	@Column(length=15)
 	public String getSiren() {
 		return siren;
 	}
@@ -61,6 +63,7 @@ public class Contact implements Serializable{
 	/**
 	 * @return the nomContact
 	 */
+	@Column(length=15)
 	public String getNomContact() {
 		return nomContact;
 	}
@@ -76,6 +79,7 @@ public class Contact implements Serializable{
 	/**
 	 * @return the prenomContact
 	 */
+	@Column(length=15)
 	public String getPrenomContact() {
 		return prenomContact;
 	}
@@ -106,6 +110,7 @@ public class Contact implements Serializable{
 	/**
 	 * @return the emailContact
 	 */
+	@Column(length=15)
 	public String getEmailContact() {
 		return emailContact;
 	}
@@ -121,6 +126,7 @@ public class Contact implements Serializable{
 	/**
 	 * @return the posteContact
 	 */
+	@Column(length=15)
 	public String getPosteContact() {
 		return posteContact;
 	}
