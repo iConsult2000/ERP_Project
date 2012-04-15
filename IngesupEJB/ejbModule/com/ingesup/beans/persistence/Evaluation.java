@@ -18,7 +18,7 @@ public class Evaluation extends Evenement implements Serializable {
 	private String typeEval;
 	private int bareme;
 	private int coefficient;
-
+	
 	public Set<Etudiant> etudiants;
 	public Set<Note> notes;
 	
@@ -96,7 +96,7 @@ public class Evaluation extends Evenement implements Serializable {
 	 * ManyToMany relationship with Note
 	 */
 	
-	@OneToMany(mappedBy = "idNote")
+	@OneToMany(mappedBy = "idEvent")
 	public Set<Note> getNotes() {
 		return this.notes;
 	}

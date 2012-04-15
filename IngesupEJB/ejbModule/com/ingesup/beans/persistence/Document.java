@@ -23,6 +23,18 @@ public class Document implements Serializable{
 
 	public Document(){}
 	
+	public Document(String nomDoc) {
+		this.nomDoc = nomDoc;
+	}
+	
+	public Document(String nomDoc, String typeDoc, String comments, int idPersonne, int idEvent){
+		this.nomDoc = nomDoc;
+		this.typeDoc = typeDoc;
+		this.commentaire = comments;
+		this.idPersonne = idPersonne;
+		this.idEvent = idEvent;
+	}
+	
 	/**
 	 * @return the idDoc
 	 */
@@ -54,6 +66,7 @@ public class Document implements Serializable{
 		this.nomDoc = nomDoc;
 	}
 
+	
 	/**
 	 * @return the typeDoc
 	 */

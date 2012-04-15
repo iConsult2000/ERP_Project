@@ -21,7 +21,7 @@ import com.iconsult2k.components.Produit;
  */
 @Remote
 public interface GestionDeStockRemote {
-	@RolesAllowed("vendor-visitor")
+	@RolesAllowed({"vendor","visitor"})
 	Produit rechercherProduit(int refproduit);
 	
 	@PermitAll

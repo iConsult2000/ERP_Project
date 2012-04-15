@@ -18,8 +18,10 @@ public class Matiere {
 
 	public Set<Classe> classes;
 	
-	public Matiere() {
-		
+	public Matiere(){}
+	
+	public Matiere(String libelleMatiere) {
+		this.libelleMatiere = libelleMatiere;
 	}
 	
 	/**
