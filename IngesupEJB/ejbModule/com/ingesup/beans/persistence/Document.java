@@ -9,7 +9,6 @@ import javax.persistence.ManyToOne;
 import javax.persistence.MappedSuperclass;
 
 @Entity
-@MappedSuperclass
 public abstract class Document implements Serializable{
 	/**
 	 * 
