@@ -18,8 +18,8 @@ public class Etudiant extends Personne implements Serializable {
 	 */
 	private static final long serialVersionUID = 3303464630625649541L;
 
-	private String membreBde;
-	private String delegue;
+	private boolean membreBde;
+	private boolean delegue;
 	private int idClasse;
 	public Set<Note> notes;
 	public Set<Cours> cours;
@@ -38,7 +38,7 @@ public class Etudiant extends Personne implements Serializable {
 	/**
 	 * @return the membreBde
 	 */
-	public String getMembreBde() {
+	public boolean getMembreBde() {
 		return membreBde;
 	}
 
@@ -46,14 +46,14 @@ public class Etudiant extends Personne implements Serializable {
 	 * @param membreBde
 	 *            the membreBde to set
 	 */
-	public void setMembreBde(String membreBde) {
+	public void setMembreBde(boolean membreBde) {
 		this.membreBde = membreBde;
 	}
 
 	/**
 	 * @return the delegue
 	 */
-	public String getDelegue() {
+	public boolean getDelegue() {
 		return delegue;
 	}
 
@@ -61,7 +61,7 @@ public class Etudiant extends Personne implements Serializable {
 	 * @param delegue
 	 *            the delegue to set
 	 */
-	public void setDelegue(String delegue) {
+	public void setDelegue(boolean delegue) {
 		this.delegue = delegue;
 	}
 
