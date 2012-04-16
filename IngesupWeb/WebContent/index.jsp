@@ -15,9 +15,9 @@
 			<img alt="ingesup-logo" src="resources/pictures/ingesup_logo.jpg">
 			<div id="contener-header-form">
 				<% if(session.getAttribute("id") != null && session.getAttribute("mdp") != null){ %>
-					<%@ include file="formulaires/logout.html" %>
+					<%@ include file="formulaires/logout.jsp" %>
 				<% }else{ %>
-					<%@ include file="formulaires/login.html" %>
+					<%@ include file="formulaires/login.jsp" %>
 				<% } %>
 			</div>
 		</div>

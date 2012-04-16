@@ -98,6 +98,11 @@ body {
 	margin-bottom: 10px;
 }
 
+#contener-body-view p{
+	font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
+	font-size: 14px;
+}
+
 #contener-body-view{
 	width: 85%;
 	height: 100%;
@@ -170,10 +175,10 @@ body {
 	color: #088A08; 
 }
 
-/*Cours*/
+/*Gestion*/
 
 #layer1 {
-	background-color: #0e97a4;
+	background-color: #088A08;
 	opacity: 0.5;
 	height: 144%;
 	width: 100%;
@@ -183,10 +188,12 @@ body {
 	position: absolute;
 }
 
-#contener-body-view div#formulaire_evenement {
-	background-color: #fff;
+#contener-body-view div#formulaire_evenement,div#formulaire_etudiant, div#formulaire_professeur,
+					div#formulaire_classe {
+	background-color: #F5F5F5;
 	border: 1px solid #000;
 	border-radius: 10px;
+	right: 10%;
 	padding: 10px;
 	position: absolute;
 	visibility: hidden;
@@ -206,4 +213,12 @@ body {
 #contener-body-view table.even input.lieu, select.cour, textarea.desc{
 	width: 300px;
 }
-/*Fin Cours*/
+#contener-body-view div.gestion{
+	padding-left: 10px;
+}
+#contener-body-view div.gestion p{
+	font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
+	font-size: 14px;
+	color: #088A08;
+}
+/*Fin Gestion*/
