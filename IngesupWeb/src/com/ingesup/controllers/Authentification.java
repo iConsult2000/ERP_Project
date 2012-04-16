@@ -40,7 +40,7 @@ public class Authentification extends HttpServlet {
 		session.setAttribute("mdp", request.getParameter("mdp"));
 		
 		//type
-		session.setAttribute("type", "Etudiant");
+		session.setAttribute("type", "service_pedagogique");
 		
 		//redirection
 		request.getRequestDispatcher("/").forward(request, response);

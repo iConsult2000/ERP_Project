@@ -169,3 +169,41 @@ body {
 #contener-body-menu li._Green a{
 	color: #088A08; 
 }
+
+/*Cours*/
+
+#layer1 {
+	background-color: #0e97a4;
+	opacity: 0.5;
+	height: 144%;
+	width: 100%;
+	left: 0px;
+	top: 0px;
+	visibility: hidden;
+	position: absolute;
+}
+
+#contener-body-view div#formulaire_evenement {
+	background-color: #fff;
+	border: 1px solid #000;
+	border-radius: 10px;
+	padding: 10px;
+	position: absolute;
+	visibility: hidden;
+}
+#contener-body-view table.formulaire_evenement form.close{
+	right: 0px;
+}
+#contener-body-view table.formulaire_evenement td.titre , td.date , td.detail, td.couleur{
+	text-align: right;
+}
+#contener-body-view table.even td.lieu , td.cour , td.desc{
+	text-align: right;
+}
+#contener-body-view table.formulaire_evenement input.titre{
+	width: 428px;
+}
+#contener-body-view table.even input.lieu, select.cour, textarea.desc{
+	width: 300px;
+}
+/*Fin Cours*/
