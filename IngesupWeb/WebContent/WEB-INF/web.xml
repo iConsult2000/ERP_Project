@@ -93,17 +93,17 @@
   <!-- MENU SERVICE PEDAGOGIQUE -->
   <servlet>
     <description></description>
-    <display-name>CoursServlet</display-name>
-    <servlet-name>CoursServlet</servlet-name>
+    <display-name>GestionServlet</display-name>
+    <servlet-name>GestionServlet</servlet-name>
     <servlet-class>com.ingesup.controllers.Menu</servlet-class>
     <init-param>
       <param-name>choix</param-name>
-      <param-value>Cours</param-value>
+      <param-value>Gestion</param-value>
     </init-param>
   </servlet>
   <servlet-mapping>
-    <servlet-name>CoursServlet</servlet-name>
-    <url-pattern>/Cours</url-pattern>
+    <servlet-name>GestionServlet</servlet-name>
+    <url-pattern>/Gestion</url-pattern>
   </servlet-mapping>
   <!-- FIN MENU SERVICE PEDAGOGIQUE -->
   <servlet>
