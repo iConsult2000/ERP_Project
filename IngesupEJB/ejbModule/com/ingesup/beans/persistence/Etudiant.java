@@ -12,7 +12,6 @@ import javax.persistence.PrimaryKeyJoinColumn;
 
 @Entity
 public class Etudiant extends Personne implements Serializable {
-
 	/**
 	 * 
 	 */
