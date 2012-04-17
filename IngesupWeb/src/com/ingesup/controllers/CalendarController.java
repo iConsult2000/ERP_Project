@@ -43,13 +43,13 @@ public class CalendarController extends HttpServlet {
     public CalendarController() {
         super();
         
-        Properties systemSettings = System.getProperties(); 
+        /*Properties systemSettings = System.getProperties(); 
     	System.getProperties().put( "proxySet", "true" ); 
     	systemSettings.put("http.proxyHost", "proxy.etudiant.insia.org"); 
     	systemSettings.put("http.proxyPort", "3128"); 
     	systemSettings.put("https.proxyHost", "proxy.etudiant.insia.org"); 
     	systemSettings.put("https.proxyPort", "3128"); 
-    	System.setProperties(systemSettings);
+    	System.setProperties(systemSettings);*/
         // TODO Auto-generated constructor stub
     }
 
@@ -67,9 +67,9 @@ public class CalendarController extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		
-		//SIGL1 = 88j5baht9lgvgrhpgv4olu6a88%40group.calendar.google.com
-		//SIGL2 = 86taa44vlr4d8u5enlgbc0p210%40group.calendar.google.com
-		//SIGL3 = el1h231sa5834mfdk6pmsa9l4g%40group.calendar.google.com
+		String SIGL1 = "88j5baht9lgvgrhpgv4olu6a88%40group.calendar.google.com";
+		String SIGL2 = "86taa44vlr4d8u5enlgbc0p210%40group.calendar.google.com";
+		String SIGL3 = "el1h231sa5834mfdk6pmsa9l4g%40group.calendar.google.com";
 		
 		HttpTransport httpTransport = new NetHttpTransport();
 	    JacksonFactory jsonFactory = new JacksonFactory();
@@ -95,7 +95,7 @@ public class CalendarController extends HttpServlet {
 		
 		
 		//L'url ou les donn�es sont stock�.
-		URL feedUrl = new URL("https://www.google.com/calendar/feeds/86taa44vlr4d8u5enlgbc0p210%40group.calendar.google.com/private/full");
+		URL feedUrl = new URL("https://www.google.com/calendar/feeds/"+SIGL2+"/private/full");
 		//on cr�e une requ�te pour r�cup�rer des donn�es �v�nement.
 		CalendarQuery myQuery = new CalendarQuery(feedUrl);
 		
