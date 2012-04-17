@@ -32,7 +32,6 @@
 		document.getElementById("layer1").style.visibility="hidden";
 	}
 </script>
-<p id="layer1"></p>
 <br>
 <%@ include file="add_event.jsp" %>
 <%@ include file="add_etu.jsp" %>

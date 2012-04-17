@@ -14,22 +14,20 @@
 	</tr>
 	<tr>
 		<td class="date"><p>De</p></td>
-		<td><input type="text" name="date1" onclick="ds_sh(this);" style="width:100px;" />
-			<input type="text" name="heure1" style="width:100px;" value="00:00" 
+		<td><input type="text" name="date1" onclick="ds_sh(this);" class="date" />
+			<input type="text" name="heure1" value="00:00" 
 			onfocus="if(this.value == '00:00') { this.value = ''; }"
-			onblur="if(this.value == '') { this.value = '00:00'; }"
-
-			/></td>
+			onblur="if(this.value == '') { this.value = '00:00'; }" class="heure" /></td>
 		<td><p>A </p></td>
 		<td>
-			<input type="text" name="date2" onclick="ds_sh(this);" style="width:100px;" />
-			<input type="text" name="heure2" style="width:100px;" value="00:00" 
+			<input type="text" name="date2" onclick="ds_sh(this);" class="date" />
+			<input type="text" name="heure2" value="00:00" 
 			onfocus="if(this.value == '00:00') { this.value = ''; }"
-			onblur="if(this.value == '') { this.value = '00:00'; }" /></td>
+			onblur="if(this.value == '') { this.value = '00:00'; }" class="heure" /></td>
 	</tr>
 	<tr>
 		<td class="detail"><p>Détail</p></td>
-		<td colspan="3"><table class="even">		
+		<td colspan="3" align="right"><table class="even">		
 				<tr>
 					<td class="lieu"><p>Lieu </p></td>
 					<td><input type="text" class="lieu" name="lieu" /></td>
