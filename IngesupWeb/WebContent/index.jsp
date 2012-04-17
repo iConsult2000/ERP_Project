@@ -2,9 +2,12 @@
     pageEncoding="UTF-8"%>
 <!DOCTYPE>
 <html>
+<p id="layer1"></p>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<link rel="stylesheet" href="resources/css/index.css">
+<link rel="stylesheet" href="resources/css/index.css" />
+<script type="text/javascript" src="resources/js/calendrier.js"></script>
+<link rel="stylesheet" media="screen" type="text/css" title="Design" href="resources/css/design.css" />
 <title></title>
 </head>
 <body>
@@ -13,26 +16,26 @@
 			<img alt="ingesup-logo" src="resources/pictures/ingesup_logo.jpg">
 			<div id="contener-header-form">
 				<% if(session.getAttribute("id") != null && session.getAttribute("mdp") != null){ %>
-					<%@ include file="formulaires/logout.html" %>
+					<%@ include file="formulaires/logout.jsp" %>
 				<% }else{ %>
-					<%@ include file="formulaires/login.html" %>
+					<%@ include file="formulaires/login.jsp" %>
 				<% } %>
 			</div>
 		</div>
 		<div id="contener-body">
 			<% if(session.getAttribute("id") != null && session.getAttribute("mdp") != null){ %>
-				<% if(session.getAttribute("id").equals("etudiant") && session.getAttribute("mdp").equals("etudiant")){ %>
+				<% //if(session.getAttribute("id").equals("sp") && session.getAttribute("mdp").equals("sp")){ %>
 					<div id="contener-body-menu">
 								<% String link = "utils/menu_"+session.getAttribute("type")+".jsp"; %>
 								<jsp:include page="<%=link %>"/>
 					</div>
 					<div id="contener-body-view">
 						<% if(session.getAttribute("menu") != null){ %>
-							<% String link_view = "views/"+session.getAttribute("menu")+".jsp"; %>
+							<% String link_view = "views/"+session.getAttribute("type")+"/"+session.getAttribute("menu")+".jsp"; %>
 							<jsp:include page="<%=link_view %>"/>
 						<% } %>
 					</div>
-				<% } %>
+				<% //} %>
 			<% } %>
 		</div>
 		<div id="contener-footer">

@@ -9,8 +9,7 @@ body {
 #contener {
 	background-color: #FFF;
 	width: 1000px;
-	/*height: 500px;*/
-	margin: 5% auto;
+	margin: 3% auto;
 	border-radius: 20px;
 	border: solid 1px #000;
 	box-shadow: 8px 8px 12px #aaa;
@@ -51,7 +50,6 @@ body {
 #contener-body {
 	background-color: #FFF;
 	width: 100%;
-	/*height: 373px;*/
 	height: 600px;
 	border-bottom: solid 1px #000;
 	border-top: solid 1px #000; 
@@ -96,6 +94,11 @@ body {
 #contener-body-menu li{
 	border-bottom: solid 1px #000;
 	margin-bottom: 10px;
+}
+
+#contener-body-view p{
+	font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
+	font-size: 14px;
 }
 
 #contener-body-view{
@@ -169,3 +172,60 @@ body {
 #contener-body-menu li._Green a{
 	color: #088A08; 
 }
+
+/*Gestion*/
+
+#layer1 {
+	background-color: #088A08;
+	opacity: 0.5;
+	height: 100%;
+	width: 100%;
+	left: 0px;
+	top: 0px;
+	visibility: hidden;
+	position: absolute;
+}
+
+#contener-body-view div#formulaire_evenement,div#formulaire_etudiant, div#formulaire_professeur,
+					div#formulaire_classe {
+	background-color: #F5F5F5;
+	border: 1px solid #000;
+	border-radius: 10px;
+	left: 50%;
+	padding: 10px;
+	position: absolute;
+	visibility: hidden;
+}
+#contener-body-view table.formulaire_evenement form.close{
+	right: 0px;
+}
+#contener-body-view table{
+	border-collapse: collapse;
+}
+#contener-body-view table.formulaire_evenement td.titre , td.date , td.detail, td.couleur{
+	text-align: right;	
+}
+#contener-body-view table.even td.lieu , td.cour , td.desc{
+	text-align: right;
+}
+#contener-body-view table.formulaire_evenement input.titre{
+	width: 395px;
+}
+#contener-body-view table.formulaire_evenement input.date{
+	width: 96px;
+}
+#contener-body-view table.formulaire_evenement input.heure{
+	width: 90px;
+}
+#contener-body-view table.even input.lieu, select.cour, textarea.desc{
+	width: 300px;
+}
+#contener-body-view div.gestion{
+	padding-left: 10px;
+}
+#contener-body-view div.gestion p{
+	font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
+	font-size: 14px;
+	color: #088A08;
+}
+/*Fin Gestion*/

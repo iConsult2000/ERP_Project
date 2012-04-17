@@ -4,7 +4,7 @@
   <welcome-file-list>
     <welcome-file>index.jsp</welcome-file>
   </welcome-file-list>
-  <!-- MENU -->
+  <!-- MENU ETUDIANT -->
   <servlet>
     <description></description>
     <display-name>AgendaServlet</display-name>
@@ -61,6 +61,20 @@
     <servlet-name>GroupeServlet</servlet-name>
     <url-pattern>/Groupe</url-pattern>
   </servlet-mapping>
+    <servlet>
+    <description></description>
+    <display-name>QCMServlet</display-name>
+    <servlet-name>QCMServlet</servlet-name>
+    <servlet-class>com.ingesup.controllers.Menu</servlet-class>
+    <init-param>
+      <param-name>choix</param-name>
+      <param-value>QCM</param-value>
+    </init-param>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>QCMServlet</servlet-name>
+    <url-pattern>/QCM</url-pattern>
+  </servlet-mapping>
   <servlet>
     <description></description>
     <display-name>DocumentServlet</display-name>
@@ -75,7 +89,23 @@
     <servlet-name>DocumentServlet</servlet-name>
     <url-pattern>/Document</url-pattern>
   </servlet-mapping>
-  <!-- FIN MENU -->
+  <!-- FIN MENU ETUDIANT -->
+  <!-- MENU SERVICE PEDAGOGIQUE -->
+  <servlet>
+    <description></description>
+    <display-name>GestionServlet</display-name>
+    <servlet-name>GestionServlet</servlet-name>
+    <servlet-class>com.ingesup.controllers.Menu</servlet-class>
+    <init-param>
+      <param-name>choix</param-name>
+      <param-value>Gestion</param-value>
+    </init-param>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>GestionServlet</servlet-name>
+    <url-pattern>/Gestion</url-pattern>
+  </servlet-mapping>
+  <!-- FIN MENU SERVICE PEDAGOGIQUE -->
   <servlet>
     <description></description>
     <display-name>AuthServlet</display-name>

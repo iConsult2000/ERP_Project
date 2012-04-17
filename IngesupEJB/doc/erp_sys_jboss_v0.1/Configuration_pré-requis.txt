@@ -1,0 +1,123 @@
+Se connecter en root
+
+create database PRODIC2K;
+create database AUTHIC2K;
+
+grant all on PRODIC2K.* to cdsappl@'localhost';
+grant all on AUTHIC2K.* to cdsjboss@'localhost';
+
+SET PASSWORD FOR cdsappl@'localhost' = PASSWORD('iConsult2000');
+SET PASSWORD FOR cdsjboss@'localhost' = PASSWORD('iConsult2000');
+
+use AUTHIC2K;
+CREATE TABLE Principals (
+        NO int primary key auto_increment,
+        PrincipalID varchar(30),
+        Password varchar(30)
+) ENGINE InnoDB;
+
+CREATE TABLE Roles (
+        NA int primary key auto_increment,
+        PrincipalID VARCHAR(30) ,
+        Role VARCHAR(30),
+        RoleGroup VARCHAR(30)
+) ENGINE InnoDB;
+
+INSERT INTO Principals VALUES ('', 'steeve', '9lAuA7l3IQj3CZJYkYidiw==');
+INSERT INTO Principals VALUES ('', 'manuel', 'mztYihJJkbNWK+MG5z7ZmA==');
+INSERT INTO Principals VALUES ('', 'yohann', 'EMC4Ib4kShMQI3skbQDbxQ==');
+INSERT INTO Principals VALUES ('', 'julien', 'IwWxwnzmzsKWb2A1KaTAIQ==');
+INSERT INTO Principals VALUES ('', 'lori', 'uIS39WkGLU9ylXcgwidfDg==');
+
+INSERT INTO Roles VALUES ('', 'steeve', 'visitor', 'Roles');
+INSERT INTO Roles VALUES ('', 'manuel', 'shopper', 'Roles');
+INSERT INTO Roles VALUES ('', 'yohann', 'visitor', 'Roles');
+INSERT INTO Roles VALUES ('', 'julien', 'visitor', 'Roles');
+INSERT INTO Roles VALUES ('', 'lori', 'visitor', 'Roles');
+
+
+********************authic2k-ds.xml to JBOSS server**********************
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE datasources
+    PUBLIC "-//JBoss//DTD JBOSS JCA Config 1.5//EN"
+    "http://www.jboss.org/j2ee/dtd/jboss-ds_1_5.dtd">
+<datasources>
+   <local-tx-datasource>
+      <jndi-name>AuthDS</jndi-name>
+      <use-java-context>true</use-java-context>
+      <connection-url>jdbc:mysql://localhost:3306/AUTHIC2K</connection-url>
+      <driver-class>com.mysql.jdbc.Driver</driver-class>
+      <user-name>cdsjboss</user-name>
+      <password>iConsult2000</password>
+       <security-domain>domainIC2K</security-domain>
+      <transaction-isolation>TRANSACTION_SERIALIZABLE</transaction-isolation>
+      <application-managed-security></application-managed-security>
+      <metadata>
+          <type-mapping>mySQL</type-mapping>
+      </metadata>
+   </local-tx-datasource>
+</datasources>
+
+********************prodic2k-ds.xml to IngesupEJB project**********************
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE datasources
+    PUBLIC "-//JBoss//DTD JBOSS JCA Config 1.5//EN"
+    "http://www.jboss.org/j2ee/dtd/jboss-ds_1_5.dtd">
+<datasources>
+   <local-tx-datasource>
+      <jndi-name>ProdDS</jndi-name>
+      <use-java-context>true</use-java-context>
+      <connection-url>jdbc:mysql://localhost:3306/PRODIC2K</connection-url>
+      <driver-class>com.mysql.jdbc.Driver</driver-class>
+      <user-name>cdsappl</user-name>
+      <password>iConsult2000</password>
+       <security-domain>domainIC2K</security-domain>
+      <transaction-isolation>TRANSACTION_SERIALIZABLE</transaction-isolation>
+      <application-managed-security></application-managed-security>
+      <metadata>
+          <type-mapping>mySQL</type-mapping>
+      </metadata>
+   </local-tx-datasource>
+</datasources>
+
+*********************************************login-config to be added JBOSS login-config.xml **********************
+<application-policy name="domainIC2K">
+    <authentication>
+      <login-module code="org.jboss.resource.security.ConfiguredIdentityLoginModule"
+        flag="sufficient">
+        <module-option name="principal">guest</module-option>
+        <module-option name="userName">cdsjboss</module-option>
+        <module-option name="password">iConsult2000</module-option>
+        <module-option name="managedConnectionFactoryName">jboss.jca:service=LocalTxCM,name=AuthDS</module-option>
+      </login-module>
+    <login-module code="org.jboss.security.auth.spi.DatabaseServerLoginModule" flag="required">
+         <module-option name="dsJndiName">java:/AuthDS</module-option>
+         <module-option name="unauthenticatedIdentity">guest</module-option>
+        <module-option name="principalsQuery">select Password from Principals where PrincipalID=?</module-option>
+        <module-option name="rolesQuery"> select Role, RoleGroup from Roles where PrincipalID=?</module-option>
+       </login-module>
+    </authentication>
+</application-policy>
+*****************************************************
+Mot de passe des utilisateurs
+steeve 09m*!
+manuel 10n*!
+yohann 11p*!
+julien 12q*!
+lori \<13r*
+
+Methode unix pour encrypter avant de stocker en BDD
+>echo -n [PASSWORD] | openssl dgst -md5 -binary | openssl base64
+
+methode java
+// Reads user password from given input stream.
+static private String readPassword() throws IOException {
+// insert code to read a user password from the input stream
+System.out.println("Enter a valid password: ");
+String password = (new BufferedReader(new InputStreamReader(System.in)))
+.readLine();
+String hashedPassword =Util.createPasswordHash("MD5", Util.BASE64_ENCODING, null, null, password);
+return hashedPassword;
+
+}
+********************************************************************************************************
