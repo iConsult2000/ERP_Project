@@ -31,12 +31,13 @@ public class Professeur extends Personne implements Serializable {
 	public Professeur() {
 		super();
 	}
-
-	public Professeur(String nomPers, String prenomPers, String emailPers, int typePers, String statut, String competence){
-		super (nomPers, prenomPers, emailPers, typePers);
+	
+	public Professeur(String nomPers, String prenomPers, String emailPers,Adresse adressePers, int telephone, int typePers,String statut, String competence) {
+		super(nomPers, prenomPers, emailPers, adressePers, telephone, typePers);
 		this.statut = statut;
 		this.competence = competence;
 	}
+
 	/**
 	 * @return the statut
 	 */
