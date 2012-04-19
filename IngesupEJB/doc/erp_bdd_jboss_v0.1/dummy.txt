@@ -1,1 +1,582 @@
-Le dump bdd
+-- phpMyAdmin SQL Dump
+-- version 3.3.9
+-- http://www.phpmyadmin.net
+--
+-- Serveur: 127.0.0.1
+-- Généré le : Lun 16 Avril 2012 à 23:45
+-- Version du serveur: 5.1.54
+-- Version de PHP: 5.3.5
+
+SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8 */;
+
+--
+-- Base de données: `PRODIC2K`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `absence`
+--
+
+DROP TABLE IF EXISTS `absence`;
+CREATE TABLE IF NOT EXISTS `absence` (
+  `idAbsence` int(11) NOT NULL,
+  `idEvent` int(11) NOT NULL,
+  `idPersonne` int(11) NOT NULL,
+  `justifier` bit(1) DEFAULT NULL,
+  PRIMARY KEY (`idAbsence`),
+  KEY `FK1C341A1D5F75869F` (`idEvent`),
+  KEY `FK1C341A1D8EEE00CD` (`idPersonne`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Contenu de la table `absence`
+--
+
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `chargeplacement`
+--
+
+DROP TABLE IF EXISTS `chargeplacement`;
+CREATE TABLE IF NOT EXISTS `chargeplacement` (
+  `idPersonne` int(11) NOT NULL AUTO_INCREMENT,
+  `emailPers` varchar(64) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `nomPers` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `prenomPers` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `typePers` int(11) NOT NULL,
+  `telCharge` varchar(10) COLLATE utf8_unicode_ci DEFAULT NULL,
+  PRIMARY KEY (`idPersonne`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
+
+--
+-- Contenu de la table `chargeplacement`
+--
+
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `chargeplacement_entreprise`
+--
+
+DROP TABLE IF EXISTS `chargeplacement_entreprise`;
+CREATE TABLE IF NOT EXISTS `chargeplacement_entreprise` (
+  `chargePlacements_idPersonne` int(11) NOT NULL,
+  `entreprises_siren` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  PRIMARY KEY (`chargePlacements_idPersonne`,`entreprises_siren`),
+  KEY `FK195E944914C27A63` (`entreprises_siren`),
+  KEY `FK195E9449ACD082B` (`chargePlacements_idPersonne`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Contenu de la table `chargeplacement_entreprise`
+--
+
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `classe`
+--
+
+DROP TABLE IF EXISTS `classe`;
+CREATE TABLE IF NOT EXISTS `classe` (
+  `idClasse` int(11) NOT NULL AUTO_INCREMENT,
+  `anneeCycle` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `no_agenda` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `nomClasse` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `specialite` varchar(64) COLLATE utf8_unicode_ci DEFAULT NULL,
+  PRIMARY KEY (`idClasse`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=3 ;
+
+--
+-- Contenu de la table `classe`
+--
+
+INSERT INTO `classe` (`idClasse`, `anneeCycle`, `no_agenda`, `nomClasse`, `specialite`) VALUES
+(1, '2', NULL, 'SIQL2', 'SIGL'),
+(2, '1', NULL, 'SIGL1', 'SIGL');
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `classe_evenement`
+--
+
+DROP TABLE IF EXISTS `classe_evenement`;
+CREATE TABLE IF NOT EXISTS `classe_evenement` (
+  `classes_idClasse` int(11) NOT NULL,
+  `evenements_idEvent` int(11) NOT NULL,
+  PRIMARY KEY (`classes_idClasse`,`evenements_idEvent`),
+  KEY `FKFE756A975E595CB8` (`classes_idClasse`),
+  KEY `FKFE756A976F781469` (`evenements_idEvent`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Contenu de la table `classe_evenement`
+--
+
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `classe_matiere`
+--
+
+DROP TABLE IF EXISTS `classe_matiere`;
+CREATE TABLE IF NOT EXISTS `classe_matiere` (
+  `classes_idClasse` int(11) NOT NULL,
+  `matieres_idMatiere` int(11) NOT NULL,
+  PRIMARY KEY (`classes_idClasse`,`matieres_idMatiere`),
+  KEY `FKE7458D5DEE1FD3E` (`matieres_idMatiere`),
+  KEY `FKE7458D5D5E595CB8` (`classes_idClasse`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Contenu de la table `classe_matiere`
+--
+
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `contact`
+--
+
+DROP TABLE IF EXISTS `contact`;
+CREATE TABLE IF NOT EXISTS `contact` (
+  `idContact` int(11) NOT NULL AUTO_INCREMENT,
+  `emailContact` varchar(64) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `nomContact` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `posteContact` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `prenomContact` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `siren` varchar(15) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `telContact` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  PRIMARY KEY (`idContact`),
+  KEY `FK9BEFBC001562232A` (`siren`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
+
+--
+-- Contenu de la table `contact`
+--
+
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `contrat`
+--
+
+DROP TABLE IF EXISTS `contrat`;
+CREATE TABLE IF NOT EXISTS `contrat` (
+  `idContrat` int(11) NOT NULL AUTO_INCREMENT,
+  `dateDebutCont` datetime DEFAULT NULL,
+  `dateFinCont` datetime DEFAULT NULL,
+  `dureeCont` int(11) NOT NULL,
+  `libelleContrat` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `siren` varchar(15) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `idTypContr` int(11) DEFAULT NULL,
+  PRIMARY KEY (`idContrat`),
+  KEY `FK9BEFFB931562232A` (`siren`),
+  KEY `FK9BEFFB9359B4433F` (`idTypContr`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
+
+--
+-- Contenu de la table `contrat`
+--
+
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `document`
+--
+
+DROP TABLE IF EXISTS `document`;
+CREATE TABLE IF NOT EXISTS `document` (
+  `idDoc` int(11) NOT NULL AUTO_INCREMENT,
+  `idEvent` int(11) NOT NULL,
+  `idPersonne` int(11) NOT NULL,
+  PRIMARY KEY (`idDoc`),
+  KEY `FK3737353B5F75869F` (`idEvent`),
+  KEY `FK3737353B9454A7A7` (`idPersonne`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
+
+--
+-- Contenu de la table `document`
+--
+
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `documentdito`
+--
+
+DROP TABLE IF EXISTS `documentdito`;
+CREATE TABLE IF NOT EXISTS `documentdito` (
+  `idDoc` int(11) NOT NULL AUTO_INCREMENT,
+  `idEvent` int(11) NOT NULL,
+  `idPersonne` int(11) NOT NULL,
+  `commentaire` varchar(64) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `file` tinyblob,
+  `nomDoc` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `size` int(11) DEFAULT NULL,
+  `typeDoc` varchar(3) COLLATE utf8_unicode_ci DEFAULT NULL,
+  PRIMARY KEY (`idDoc`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
+
+--
+-- Contenu de la table `documentdito`
+--
+
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `entreprise`
+--
+
+DROP TABLE IF EXISTS `entreprise`;
+CREATE TABLE IF NOT EXISTS `entreprise` (
+  `siren` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `adresse` varchar(75) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `cp` varchar(5) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `emailEntre` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `nomEntrep` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `telEntre` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `ville` double NOT NULL,
+  PRIMARY KEY (`siren`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Contenu de la table `entreprise`
+--
+
+INSERT INTO `entreprise` (`siren`, `adresse`, `cp`, `emailEntre`, `nomEntrep`, `telEntre`, `ville`) VALUES
+('548978946', '25 rue La folie', '75001', NULL, 'Capgemini', NULL, 0);
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `etudiant`
+--
+
+DROP TABLE IF EXISTS `etudiant`;
+CREATE TABLE IF NOT EXISTS `etudiant` (
+  `idPersonne` int(11) NOT NULL AUTO_INCREMENT,
+  `emailPers` varchar(64) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `nomPers` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `prenomPers` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `typePers` int(11) NOT NULL,
+  `delegue` bit(1) NOT NULL,
+  `idClasse` int(11) NOT NULL,
+  `membreBde` bit(1) NOT NULL,
+  PRIMARY KEY (`idPersonne`),
+  KEY `FKC55D557C8B0F98BF` (`idClasse`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=3 ;
+
+--
+-- Contenu de la table `etudiant`
+--
+
+INSERT INTO `etudiant` (`idPersonne`, `emailPers`, `nomPers`, `prenomPers`, `typePers`, `delegue`, `idClasse`, `membreBde`) VALUES
+(1, 'm.phejar@ingesup.com', 'Phejar', 'Manuel', 0, '0', 1, '0'),
+(2, 'l.ferrand@ingesup.com', 'Ferrand', 'Lorri', 0, '0', 1, '0');
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `evenement`
+--
+
+DROP TABLE IF EXISTS `evenement`;
+CREATE TABLE IF NOT EXISTS `evenement` (
+  `DTYPE` varchar(31) COLLATE utf8_unicode_ci NOT NULL,
+  `idEvent` int(11) NOT NULL AUTO_INCREMENT,
+  `dateEvent` datetime DEFAULT NULL,
+  `dureeJours` int(11) NOT NULL,
+  `heureDeb` datetime DEFAULT NULL,
+  `heureFin` datetime DEFAULT NULL,
+  `idSalle` int(11) NOT NULL,
+  `description` varchar(30) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `idMatiere` int(11) DEFAULT NULL,
+  `idPersonne` int(11) DEFAULT NULL,
+  `information` varchar(30) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `nomCours` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `bareme` int(11) DEFAULT NULL,
+  `coefficient` int(11) DEFAULT NULL,
+  `libelleEval` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `typeEval` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  PRIMARY KEY (`idEvent`),
+  KEY `FK78896A49A2149944` (`idEvent`),
+  KEY `FK78896A4976638AB9` (`idEvent`),
+  KEY `FK78896A499454A7A7` (`idPersonne`),
+  KEY `FK78896A49D5638319` (`idMatiere`),
+  KEY `FK78896A49610C5629` (`idSalle`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=2 ;
+
+--
+-- Contenu de la table `evenement`
+--
+
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `matiere`
+--
+
+DROP TABLE IF EXISTS `matiere`;
+CREATE TABLE IF NOT EXISTS `matiere` (
+  `idMatiere` int(11) NOT NULL AUTO_INCREMENT,
+  `libelleMatiere` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  PRIMARY KEY (`idMatiere`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=11 ;
+
+--
+-- Contenu de la table `matiere`
+--
+
+INSERT INTO `matiere` (`idMatiere`, `libelleMatiere`) VALUES
+(1, 'EJB'),
+(2, 'admin MySQL'),
+(3, 'Java'),
+(4, 'Ruby on rails'),
+(5, 'Gestion de projet'),
+(6, 'ASP.net'),
+(7, 'C++'),
+(8, 'Flex'),
+(9, 'JSP servlet'),
+(10, 'C #');
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `note`
+--
+
+DROP TABLE IF EXISTS `note`;
+CREATE TABLE IF NOT EXISTS `note` (
+  `idNote` int(11) NOT NULL AUTO_INCREMENT,
+  `idEvent` int(11) NOT NULL,
+  `idPersonne` int(11) NOT NULL,
+  `note` double DEFAULT NULL,
+  PRIMARY KEY (`idNote`),
+  KEY `FK2524123B3850A5` (`idEvent`),
+  KEY `FK2524128EEE00CD` (`idPersonne`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
+
+--
+-- Contenu de la table `note`
+--
+
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `personne`
+--
+
+DROP TABLE IF EXISTS `personne`;
+CREATE TABLE IF NOT EXISTS `personne` (
+  `idPersonne` int(11) NOT NULL AUTO_INCREMENT,
+  `emailPers` varchar(64) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `nomPers` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `prenomPers` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `typePers` int(11) NOT NULL,
+  PRIMARY KEY (`idPersonne`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=8 ;
+
+--
+-- Contenu de la table `personne`
+--
+
+INSERT INTO `personne` (`idPersonne`, `emailPers`, `nomPers`, `prenomPers`, `typePers`) VALUES
+(1, 'm.phejar@ingesup.com', 'Phejar', 'Manuel', 0),
+(2, 'l.ferrand@ingesup.com', 'Ferrand', 'Lorri', 0),
+(3, 'endrojeck@ingesup.com', 'Ondrejeck', 'Nicolas', 0),
+(4, 'y.bray@ingesup.com', 'Bray', 'Yohann', 0),
+(5, 's.dacalor@ingesup.com', 'Dacalor', 'Steeve', 0),
+(6, 'j.pitou@ingesup.com', 'Pitou', 'Julien', 0),
+(7, 'm.mouhallibi@ingesup.com', 'Mouhallib', 'Mohamed', 0);
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `professeur`
+--
+
+DROP TABLE IF EXISTS `professeur`;
+CREATE TABLE IF NOT EXISTS `professeur` (
+  `idPersonne` int(11) NOT NULL AUTO_INCREMENT,
+  `emailPers` varchar(64) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `nomPers` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `prenomPers` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `typePers` int(11) NOT NULL,
+  `competence` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `statut` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  PRIMARY KEY (`idPersonne`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=3 ;
+
+--
+-- Contenu de la table `professeur`
+--
+
+INSERT INTO `professeur` (`idPersonne`, `emailPers`, `nomPers`, `prenomPers`, `typePers`, `competence`, `statut`) VALUES
+(1, 'b.liaudet@ingesup.com', 'Liaudet', 'Bertrand', 0, 'ingénie SI', 'Complet'),
+(2, 'p.olifirenkoff@ingesup.com', 'olifirenkoff', 'Pierre Jean', 0, 'mangement de projet', 'partiel');
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `salle`
+--
+
+DROP TABLE IF EXISTS `salle`;
+CREATE TABLE IF NOT EXISTS `salle` (
+  `idSalle` int(11) NOT NULL AUTO_INCREMENT,
+  `libSalle` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  PRIMARY KEY (`idSalle`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=5 ;
+
+--
+-- Contenu de la table `salle`
+--
+
+INSERT INTO `salle` (`idSalle`, `libSalle`) VALUES
+(1, '1.3'),
+(2, '1.6'),
+(3, '1.4'),
+(4, '1.2');
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `servicepedagogique`
+--
+
+DROP TABLE IF EXISTS `servicepedagogique`;
+CREATE TABLE IF NOT EXISTS `servicepedagogique` (
+  `idPersonne` int(11) NOT NULL AUTO_INCREMENT,
+  `emailPers` varchar(64) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `nomPers` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `prenomPers` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `typePers` int(11) NOT NULL,
+  `telService` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  PRIMARY KEY (`idPersonne`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=4 ;
+
+--
+-- Contenu de la table `servicepedagogique`
+--
+
+INSERT INTO `servicepedagogique` (`idPersonne`, `emailPers`, `nomPers`, `prenomPers`, `typePers`, `telService`) VALUES
+(3, 'ondrejeck@ingesup.com', 'Ondrejeck', 'Nicolas', 0, '0168799864');
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `typecontrat`
+--
+
+DROP TABLE IF EXISTS `typecontrat`;
+CREATE TABLE IF NOT EXISTS `typecontrat` (
+  `idTypContr` int(11) NOT NULL AUTO_INCREMENT,
+  `description` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `libelleTypContr` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  PRIMARY KEY (`idTypContr`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=3 ;
+
+--
+-- Contenu de la table `typecontrat`
+--
+
+INSERT INTO `typecontrat` (`idTypContr`, `description`, `libelleTypContr`) VALUES
+(1, 'satut salarié', 'Contrat de professionalisation'),
+(2, 'statut étudiant', 'Convention de stage');
+
+--
+-- Contraintes pour les tables exportées
+--
+
+--
+-- Contraintes pour la table `absence`
+--
+ALTER TABLE `absence`
+  ADD CONSTRAINT `FK1C341A1D8EEE00CD` FOREIGN KEY (`idPersonne`) REFERENCES `etudiant` (`idPersonne`),
+  ADD CONSTRAINT `FK1C341A1D5F75869F` FOREIGN KEY (`idEvent`) REFERENCES `evenement` (`idEvent`);
+
+--
+-- Contraintes pour la table `chargeplacement_entreprise`
+--
+ALTER TABLE `chargeplacement_entreprise`
+  ADD CONSTRAINT `FK195E9449ACD082B` FOREIGN KEY (`chargePlacements_idPersonne`) REFERENCES `chargeplacement` (`idPersonne`),
+  ADD CONSTRAINT `FK195E944914C27A63` FOREIGN KEY (`entreprises_siren`) REFERENCES `entreprise` (`siren`);
+
+--
+-- Contraintes pour la table `classe_evenement`
+--
+ALTER TABLE `classe_evenement`
+  ADD CONSTRAINT `FKFE756A976F781469` FOREIGN KEY (`evenements_idEvent`) REFERENCES `evenement` (`idEvent`),
+  ADD CONSTRAINT `FKFE756A975E595CB8` FOREIGN KEY (`classes_idClasse`) REFERENCES `classe` (`idClasse`);
+
+--
+-- Contraintes pour la table `classe_matiere`
+--
+ALTER TABLE `classe_matiere`
+  ADD CONSTRAINT `FKE7458D5D5E595CB8` FOREIGN KEY (`classes_idClasse`) REFERENCES `classe` (`idClasse`),
+  ADD CONSTRAINT `FKE7458D5DEE1FD3E` FOREIGN KEY (`matieres_idMatiere`) REFERENCES `matiere` (`idMatiere`);
+
+--
+-- Contraintes pour la table `contact`
+--
+ALTER TABLE `contact`
+  ADD CONSTRAINT `FK9BEFBC001562232A` FOREIGN KEY (`siren`) REFERENCES `entreprise` (`siren`);
+
+--
+-- Contraintes pour la table `contrat`
+--
+ALTER TABLE `contrat`
+  ADD CONSTRAINT `FK9BEFFB9359B4433F` FOREIGN KEY (`idTypContr`) REFERENCES `typecontrat` (`idTypContr`),
+  ADD CONSTRAINT `FK9BEFFB931562232A` FOREIGN KEY (`siren`) REFERENCES `entreprise` (`siren`);
+
+--
+-- Contraintes pour la table `document`
+--
+ALTER TABLE `document`
+  ADD CONSTRAINT `FK3737353B9454A7A7` FOREIGN KEY (`idPersonne`) REFERENCES `professeur` (`idPersonne`),
+  ADD CONSTRAINT `FK3737353B5F75869F` FOREIGN KEY (`idEvent`) REFERENCES `evenement` (`idEvent`);
+
+--
+-- Contraintes pour la table `etudiant`
+--
+ALTER TABLE `etudiant`
+  ADD CONSTRAINT `FKC55D557C8B0F98BF` FOREIGN KEY (`idClasse`) REFERENCES `classe` (`idClasse`);
+
+--
+-- Contraintes pour la table `evenement`
+--
+ALTER TABLE `evenement`
+  ADD CONSTRAINT `FK78896A49610C5629` FOREIGN KEY (`idSalle`) REFERENCES `salle` (`idSalle`),
+  ADD CONSTRAINT `FK78896A4976638AB9` FOREIGN KEY (`idEvent`) REFERENCES `servicepedagogique` (`idPersonne`),
+  ADD CONSTRAINT `FK78896A499454A7A7` FOREIGN KEY (`idPersonne`) REFERENCES `professeur` (`idPersonne`),
+  ADD CONSTRAINT `FK78896A49A2149944` FOREIGN KEY (`idEvent`) REFERENCES `matiere` (`idMatiere`),
+  ADD CONSTRAINT `FK78896A49D5638319` FOREIGN KEY (`idMatiere`) REFERENCES `matiere` (`idMatiere`);
+
+--
+-- Contraintes pour la table `note`
+--
+ALTER TABLE `note`
+  ADD CONSTRAINT `FK2524128EEE00CD` FOREIGN KEY (`idPersonne`) REFERENCES `etudiant` (`idPersonne`),
+  ADD CONSTRAINT `FK2524123B3850A5` FOREIGN KEY (`idEvent`) REFERENCES `evenement` (`idEvent`);
