@@ -4,7 +4,6 @@
   <welcome-file-list>
     <welcome-file>index.jsp</welcome-file>
   </welcome-file-list>
-  <!-- MENU ETUDIANT -->
   <servlet>
     <description></description>
     <display-name>AgendaServlet</display-name>
@@ -61,7 +60,7 @@
     <servlet-name>GroupeServlet</servlet-name>
     <url-pattern>/Groupe</url-pattern>
   </servlet-mapping>
-    <servlet>
+  <servlet>
     <description></description>
     <display-name>QCMServlet</display-name>
     <servlet-name>QCMServlet</servlet-name>
@@ -89,8 +88,6 @@
     <servlet-name>DocumentServlet</servlet-name>
     <url-pattern>/Document</url-pattern>
   </servlet-mapping>
-  <!-- FIN MENU ETUDIANT -->
-  <!-- MENU SERVICE PEDAGOGIQUE -->
   <servlet>
     <description></description>
     <display-name>GestionServlet</display-name>
@@ -105,7 +102,6 @@
     <servlet-name>GestionServlet</servlet-name>
     <url-pattern>/Gestion</url-pattern>
   </servlet-mapping>
-  <!-- FIN MENU SERVICE PEDAGOGIQUE -->
   <servlet>
     <description></description>
     <display-name>AuthServlet</display-name>
@@ -126,7 +122,6 @@
     <servlet-name>AuthDownServlet</servlet-name>
     <url-pattern>/AuthDown</url-pattern>
   </servlet-mapping>
-  
   <servlet>
     <description></description>
     <display-name>CalendarServlet</display-name>
@@ -141,5 +136,14 @@
     <servlet-name>CalendarServlet</servlet-name>
     <url-pattern>/ajouter</url-pattern>
   </servlet-mapping>
-  
+  <servlet>
+    <description></description>
+    <display-name>GestionPersonne</display-name>
+    <servlet-name>GestionPersonne</servlet-name>
+    <servlet-class>com.ingesup.controllers.GestionPersonne</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>GestionPersonne</servlet-name>
+    <url-pattern>/AjoutPersonne</url-pattern>
+  </servlet-mapping>
 </web-app>
