@@ -50,11 +50,11 @@ CREATE TABLE IF NOT EXISTS `absence` (
 DROP TABLE IF EXISTS `chargeplacement`;
 CREATE TABLE IF NOT EXISTS `chargeplacement` (
   `idPersonne` int(11) NOT NULL AUTO_INCREMENT,
-  `emailPers` varchar(15) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `nomPers` varchar(15) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `prenomPers` varchar(15) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `emailPers` varchar(64) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `nomPers` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `prenomPers` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
   `typePers` int(11) NOT NULL,
-  `telCharge` varchar(12) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `telCharge` varchar(10) COLLATE utf8_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`idPersonne`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
 
@@ -94,7 +94,7 @@ CREATE TABLE IF NOT EXISTS `classe` (
   `idClasse` int(11) NOT NULL AUTO_INCREMENT,
   `anneeCycle` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `no_agenda` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `nomClasse` varchar(12) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `nomClasse` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
   `specialite` varchar(64) COLLATE utf8_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`idClasse`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=3 ;
@@ -156,10 +156,10 @@ CREATE TABLE IF NOT EXISTS `classe_matiere` (
 DROP TABLE IF EXISTS `contact`;
 CREATE TABLE IF NOT EXISTS `contact` (
   `idContact` int(11) NOT NULL AUTO_INCREMENT,
-  `emailContact` varchar(15) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `nomContact` varchar(15) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `posteContact` varchar(15) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `prenomContact` varchar(15) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `emailContact` varchar(64) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `nomContact` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `posteContact` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `prenomContact` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
   `siren` varchar(15) COLLATE utf8_unicode_ci DEFAULT NULL,
   `telContact` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`idContact`),
@@ -183,7 +183,7 @@ CREATE TABLE IF NOT EXISTS `contrat` (
   `dateDebutCont` datetime DEFAULT NULL,
   `dateFinCont` datetime DEFAULT NULL,
   `dureeCont` int(11) NOT NULL,
-  `libelleContrat` varchar(15) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `libelleContrat` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
   `siren` varchar(15) COLLATE utf8_unicode_ci DEFAULT NULL,
   `idTypContr` int(11) DEFAULT NULL,
   PRIMARY KEY (`idContrat`),
@@ -230,7 +230,7 @@ CREATE TABLE IF NOT EXISTS `documentdito` (
   `idPersonne` int(11) NOT NULL,
   `commentaire` varchar(64) COLLATE utf8_unicode_ci DEFAULT NULL,
   `file` tinyblob,
-  `nomDoc` varchar(15) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `nomDoc` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
   `size` int(11) DEFAULT NULL,
   `typeDoc` varchar(3) COLLATE utf8_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`idDoc`)
@@ -275,9 +275,9 @@ INSERT INTO `entreprise` (`siren`, `adresse`, `cp`, `emailEntre`, `nomEntrep`, `
 DROP TABLE IF EXISTS `etudiant`;
 CREATE TABLE IF NOT EXISTS `etudiant` (
   `idPersonne` int(11) NOT NULL AUTO_INCREMENT,
-  `emailPers` varchar(15) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `nomPers` varchar(15) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `prenomPers` varchar(15) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `emailPers` varchar(64) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `nomPers` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `prenomPers` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
   `typePers` int(11) NOT NULL,
   `delegue` bit(1) NOT NULL,
   `idClasse` int(11) NOT NULL,
@@ -291,8 +291,8 @@ CREATE TABLE IF NOT EXISTS `etudiant` (
 --
 
 INSERT INTO `etudiant` (`idPersonne`, `emailPers`, `nomPers`, `prenomPers`, `typePers`, `delegue`, `idClasse`, `membreBde`) VALUES
-(1, 'm.phejar@ingesu', 'Phejar', 'Manuel', 0, '0', 1, '0'),
-(2, 'l.ferrand@inges', 'Ferrand', 'Lorri', 0, '0', 1, '0');
+(1, 'm.phejar@ingesup.com', 'Phejar', 'Manuel', 0, '0', 1, '0'),
+(2, 'l.ferrand@ingesup.com', 'Ferrand', 'Lorri', 0, '0', 1, '0');
 
 -- --------------------------------------------------------
 
@@ -391,9 +391,9 @@ CREATE TABLE IF NOT EXISTS `note` (
 DROP TABLE IF EXISTS `personne`;
 CREATE TABLE IF NOT EXISTS `personne` (
   `idPersonne` int(11) NOT NULL AUTO_INCREMENT,
-  `emailPers` varchar(15) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `nomPers` varchar(15) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `prenomPers` varchar(15) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `emailPers` varchar(64) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `nomPers` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `prenomPers` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
   `typePers` int(11) NOT NULL,
   PRIMARY KEY (`idPersonne`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=8 ;
@@ -403,13 +403,13 @@ CREATE TABLE IF NOT EXISTS `personne` (
 --
 
 INSERT INTO `personne` (`idPersonne`, `emailPers`, `nomPers`, `prenomPers`, `typePers`) VALUES
-(1, 'm.phejar@ingesu', 'Phejar', 'Manuel', 0),
-(2, 'l.ferrand@inges', 'Ferrand', 'Lorri', 0),
-(3, 'endrojeck@inges', 'Ondrejeck', 'Nicolas', 0),
-(4, 'y.bray@ingesup.', 'Bray', 'Yohann', 0),
-(5, 's.dacalor@inges', 'Dacalor', 'Steeve', 0),
-(6, 'j.pitou@ingesup', 'Pitou', 'Julien', 0),
-(7, 'm.mouhallibi@in', 'Mouhallib', 'Mohamed', 0);
+(1, 'm.phejar@ingesup.com', 'Phejar', 'Manuel', 0),
+(2, 'l.ferrand@ingesup.com', 'Ferrand', 'Lorri', 0),
+(3, 'endrojeck@ingesup.com', 'Ondrejeck', 'Nicolas', 0),
+(4, 'y.bray@ingesup.com', 'Bray', 'Yohann', 0),
+(5, 's.dacalor@ingesup.com', 'Dacalor', 'Steeve', 0),
+(6, 'j.pitou@ingesup.com', 'Pitou', 'Julien', 0),
+(7, 'm.mouhallibi@ingesup.com', 'Mouhallib', 'Mohamed', 0);
 
 -- --------------------------------------------------------
 
@@ -420,9 +420,9 @@ INSERT INTO `personne` (`idPersonne`, `emailPers`, `nomPers`, `prenomPers`, `typ
 DROP TABLE IF EXISTS `professeur`;
 CREATE TABLE IF NOT EXISTS `professeur` (
   `idPersonne` int(11) NOT NULL AUTO_INCREMENT,
-  `emailPers` varchar(15) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `nomPers` varchar(15) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `prenomPers` varchar(15) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `emailPers` varchar(64) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `nomPers` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `prenomPers` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
   `typePers` int(11) NOT NULL,
   `competence` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `statut` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
@@ -434,8 +434,8 @@ CREATE TABLE IF NOT EXISTS `professeur` (
 --
 
 INSERT INTO `professeur` (`idPersonne`, `emailPers`, `nomPers`, `prenomPers`, `typePers`, `competence`, `statut`) VALUES
-(1, 'b.liaudet@inges', 'Liaudet', 'Bertrand', 0, 'ingénie SI', 'Complet'),
-(2, 'p.olifirenkoff@', 'olifirenkoff', 'Pierre Jean', 0, 'mangement de projet', 'partiel');
+(1, 'b.liaudet@ingesup.com', 'Liaudet', 'Bertrand', 0, 'ingénie SI', 'Complet'),
+(2, 'p.olifirenkoff@ingesup.com', 'olifirenkoff', 'Pierre Jean', 0, 'mangement de projet', 'partiel');
 
 -- --------------------------------------------------------
 
@@ -469,9 +469,9 @@ INSERT INTO `salle` (`idSalle`, `libSalle`) VALUES
 DROP TABLE IF EXISTS `servicepedagogique`;
 CREATE TABLE IF NOT EXISTS `servicepedagogique` (
   `idPersonne` int(11) NOT NULL AUTO_INCREMENT,
-  `emailPers` varchar(15) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `nomPers` varchar(15) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `prenomPers` varchar(15) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `emailPers` varchar(64) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `nomPers` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `prenomPers` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
   `typePers` int(11) NOT NULL,
   `telService` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`idPersonne`)
@@ -482,7 +482,7 @@ CREATE TABLE IF NOT EXISTS `servicepedagogique` (
 --
 
 INSERT INTO `servicepedagogique` (`idPersonne`, `emailPers`, `nomPers`, `prenomPers`, `typePers`, `telService`) VALUES
-(3, 'ondrejeck@inges', 'Ondrejeck', 'Nicolas', 0, '0168799864');
+(3, 'ondrejeck@ingesup.com', 'Ondrejeck', 'Nicolas', 0, '0168799864');
 
 -- --------------------------------------------------------
 
