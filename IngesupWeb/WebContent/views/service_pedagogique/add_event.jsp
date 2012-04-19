@@ -51,5 +51,5 @@
 	</tr>
 	</table>
 	</form>
-	<form class="close"><input type="button" value="fermer" onClick="hide_even()" /></form>
+	<form class="close"><input type="button" value="fermer" onClick="hide_even();ds_hi()" /></form>
 </div>
