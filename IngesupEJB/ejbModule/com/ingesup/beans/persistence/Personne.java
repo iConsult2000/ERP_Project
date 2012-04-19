@@ -3,7 +3,7 @@ package com.ingesup.beans.persistence;
 import java.io.Serializable;
 
 import javax.persistence.Column;
-import javax.persistence.Entity;
+import javax.persistence.Embedded;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.MappedSuperclass;
@@ -21,17 +21,24 @@ public abstract class Personne implements Serializable {
 	private String nomPers;
 	private String prenomPers;
 	private String emailPers;
+	private Adresse adressePers;
+	private int telephone;
 	private int typePers;
+	
 
 	
 	public Personne() {
 
 	}
 
-	public Personne(String nomPers, String prenomPers, String emailPers, int typePers){
+	public Personne(String nomPers, String prenomPers,
+			String emailPers, Adresse adressePers, int telephone, int typePers) {
+		super();
 		this.nomPers = nomPers;
 		this.prenomPers = prenomPers;
 		this.emailPers = emailPers;
+		this.adressePers = adressePers;
+		this.telephone = telephone;
 		this.typePers = typePers;
 	}
 
@@ -102,7 +109,23 @@ public abstract class Personne implements Serializable {
 	public void setEmailPers(String emailPers) {
 		this.emailPers = emailPers;
 	}
+	
+	@Embedded
+	public Adresse getAdressePers() {
+		return adressePers;
+	}
 
+	public void setAdressePers(Adresse adressePers) {
+		this.adressePers = adressePers;
+	}
+	@Column(length=12)
+	public int getTelephone() {
+		return telephone;
+	}
+
+	public void setTelephone(int telephone) {
+		this.telephone = telephone;
+	}
 
 	/**
 	 * @return the typePers

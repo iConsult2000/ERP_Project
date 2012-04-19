@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 <!DOCTYPE>
 <html>
+<p id="layer1"></p>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link rel="stylesheet" href="resources/css/index.css" />
@@ -23,7 +24,7 @@
 		</div>
 		<div id="contener-body">
 			<% if(session.getAttribute("id") != null && session.getAttribute("mdp") != null){ %>
-				<% if(session.getAttribute("id").equals("sp") && session.getAttribute("mdp").equals("sp")){ %>
+				<% //if(session.getAttribute("id").equals("sp") && session.getAttribute("mdp").equals("sp")){ %>
 					<div id="contener-body-menu">
 								<% String link = "utils/menu_"+session.getAttribute("type")+".jsp"; %>
 								<jsp:include page="<%=link %>"/>
@@ -34,7 +35,7 @@
 							<jsp:include page="<%=link_view %>"/>
 						<% } %>
 					</div>
-				<% } %>
+				<% //} %>
 			<% } %>
 		</div>
 		<div id="contener-footer">
