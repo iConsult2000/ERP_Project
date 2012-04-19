@@ -11,22 +11,6 @@ import com.ingesup.beans.persistence.Personne;
 public interface GestionSvePdeRemote {
 	
 	
-	/**
-	 * Ajout d'un éléve
-	 */
-	@PermitAll
-	public void addEtudiant(Etudiant etudiant);
 	
-	/**
-	 * Recherche d'un eleve
-	 */
-	@PermitAll
-	public Personne searchEtudiant(int idPers);
-	
-	/**
-	 * Recuperer toutes les etudiants
-	 */
-	@PermitAll
-	public Collection<Personne> getAllEtudiants();
 		
 }
