@@ -30,7 +30,7 @@ public class Etudiant extends Personne implements Serializable {
 	}
 	
 	
-	public Etudiant(String nomPers, String prenomPers, String emailPers, Adresse adressePers, int telephone, int typePers, int idClasse) {
+	public Etudiant(String nomPers, String prenomPers, String emailPers, Adresse adressePers, String telephone, int typePers, int idClasse) {
 		super(nomPers, prenomPers, emailPers, adressePers, telephone, typePers);
 		this.idClasse = idClasse;
 	}

@@ -12,6 +12,7 @@ public interface GestionSvePdeLocal {
 	 * Ajout d'un éléve
 	 */
 	@PermitAll
+	
 	public void addEtudiant(Etudiant etudiant);
 	
 	/**

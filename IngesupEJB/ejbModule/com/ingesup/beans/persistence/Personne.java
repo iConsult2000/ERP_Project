@@ -22,7 +22,7 @@ public abstract class Personne implements Serializable {
 	private String prenomPers;
 	private String emailPers;
 	private Adresse adressePers;
-	private int telephone;
+	private String telephone;
 	private int typePers;
 	
 
@@ -32,7 +32,7 @@ public abstract class Personne implements Serializable {
 	}
 
 	public Personne(String nomPers, String prenomPers,
-			String emailPers, Adresse adressePers, int telephone, int typePers) {
+			String emailPers, Adresse adressePers, String telephone, int typePers) {
 		super();
 		this.nomPers = nomPers;
 		this.prenomPers = prenomPers;
@@ -119,11 +119,11 @@ public abstract class Personne implements Serializable {
 		this.adressePers = adressePers;
 	}
 	@Column(length=12)
-	public int getTelephone() {
+	public String getTelephone() {
 		return telephone;
 	}
 
-	public void setTelephone(int telephone) {
+	public void setTelephone(String telephone) {
 		this.telephone = telephone;
 	}
 
