@@ -21,7 +21,7 @@ public interface GestionSvePdeLocal {
 	public Personne searchEtudiant(int idPers);
 	
 	/**
-	 * Recuperer toutes les etudiants
+	 * Recuperer toutes les etudiants 
 	 */
 	@PermitAll
 	public Collection<Personne> getAllEtudiants();
