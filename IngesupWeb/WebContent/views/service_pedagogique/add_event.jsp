@@ -6,7 +6,7 @@
 </table>
 
 <div id="formulaire_evenement">
-	<form method="post" action="">
+	<form method="post" action="ajouter">
 	<table class="formulaire_evenement">
 	<tr>
 		<td class="titre"><p>titre</p></td>
@@ -38,7 +38,7 @@
 				</tr>
 				<tr>
 					<td class="desc"><p>Description </p></td>
-					<td><textarea class="desc" rows="3" ></textarea></td>
+					<td><textarea class="desc" rows="3" name="desc"></textarea></td>
 				</tr>
 			</table></td>
 	</tr>
