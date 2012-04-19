@@ -1,6 +1,7 @@
 package com.ingesup.controllers;
 
 import java.io.IOException;
+import java.net.MalformedURLException;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.net.URL;
@@ -36,6 +37,10 @@ import com.google.gdata.util.ServiceException;
  */
 public class CalendarController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	private String SIGL1 = "88j5baht9lgvgrhpgv4olu6a88%40group.calendar.google.com";
+	private String SIGL2 = "86taa44vlr4d8u5enlgbc0p210%40group.calendar.google.com";
+	private String SIGL3 = "el1h231sa5834mfdk6pmsa9l4g%40group.calendar.google.com";
+	CalendarService client;
        
     /**
      * @see HttpServlet#HttpServlet()
@@ -43,13 +48,13 @@ public class CalendarController extends HttpServlet {
     public CalendarController() {
         super();
         
-        /*Properties systemSettings = System.getProperties(); 
+        Properties systemSettings = System.getProperties(); 
     	System.getProperties().put( "proxySet", "true" ); 
     	systemSettings.put("http.proxyHost", "proxy.etudiant.insia.org"); 
     	systemSettings.put("http.proxyPort", "3128"); 
     	systemSettings.put("https.proxyHost", "proxy.etudiant.insia.org"); 
     	systemSettings.put("https.proxyPort", "3128"); 
-    	System.setProperties(systemSettings);*/
+    	System.setProperties(systemSettings);
         // TODO Auto-generated constructor stub
     }
 
@@ -67,15 +72,8 @@ public class CalendarController extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		
-		String SIGL1 = "88j5baht9lgvgrhpgv4olu6a88%40group.calendar.google.com";
-		String SIGL2 = "86taa44vlr4d8u5enlgbc0p210%40group.calendar.google.com";
-		String SIGL3 = "el1h231sa5834mfdk6pmsa9l4g%40group.calendar.google.com";
 		
-		HttpTransport httpTransport = new NetHttpTransport();
-	    JacksonFactory jsonFactory = new JacksonFactory();
-
-		
-		CalendarService client = new CalendarService("API Project");
+		client = new CalendarService("API Project");
 		try {
 			client.setUserCredentials("erpingesuparis@gmail.com", "iConsult2000");
 		} catch (AuthenticationException e) {
@@ -83,46 +81,58 @@ public class CalendarController extends HttpServlet {
 			e.printStackTrace();
 		}
 		
+		if (getInitParameter("operation").equals("ajouter")) addEvt(request,response);
+		if (getInitParameter("operation").equals("modifier")) updateEvt(request,response);
+		if (getInitParameter("operation").equals("supprimer")) deletEvt(request,response);
+		
+		
+		request.getRequestDispatcher("/").forward(request, response);
+		
+		
+	}
 	
-		/*Calendar service = new Calendar(httpTransport, jsonFactory);
-		com.google.api.services.calendar.model.CalendarList calendarList = service.calendarList().list().execute();
+	private void addEvt(HttpServletRequest request, HttpServletResponse response) throws IOException
+	{
 		
-	     for (CalendarListEntry calendarListEntry : calendarList.getItems()) {
-			    System.out.println(calendarListEntry.getSummary());
-			  }*/
+		//L'url ou les données sont stockées.
+		URL feedUrl = null;
+		try 
+		{
+		  feedUrl = new URL("https://www.google.com/calendar/feeds/"+SIGL2+"/private/full");
+		} 
+		catch (MalformedURLException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
 		
+		String titre = request.getParameter("titre");
 		
+		String  datedebut = request.getParameter("date1");
+		String  datefin = request.getParameter("date2");
 		
+		String heuredebut = request.getParameter("heure1");
+		String heurefin =  request.getParameter("heure2");
 		
-		//L'url ou les donn�es sont stock�.
-		URL feedUrl = new URL("https://www.google.com/calendar/feeds/"+SIGL2+"/private/full");
-		//on cr�e une requ�te pour r�cup�rer des donn�es �v�nement.
-		CalendarQuery myQuery = new CalendarQuery(feedUrl);
+		String description = request.getParameter("desc");
 		
-		//Ici on indique qu'on veut uniquement les �v�nements qui se sont pass�s le 1er f�vrier.
-		myQuery.setMinimumStartTime(DateTime.parseDateTime("2012-03-22T00:00:00"));
-		myQuery.setMaximumStartTime(DateTime.parseDateTime("2012-03-25T23:59:59"));
+		String[] rawDate = datedebut.split("/");
+		datedebut = rawDate[2]+"-"+rawDate[1]+"-"+rawDate[0]+"T"+heuredebut+":00";
 		
-		//on �x�cute la requ�te
+		rawDate = datefin.split("/");
+		datefin = rawDate[2]+"-"+rawDate[1]+"-"+rawDate[0]+"T"+heurefin+":00";
 		
-		try {
-			URI urlEvenement = null;
-			String etagEntryToDelete = null;
-			CalendarEventFeed resultFeed;
-			resultFeed = client.query(myQuery, CalendarEventFeed.class);
-			//on r�cupere les r�sultats.
-			List<CalendarEventEntry> lstEvent = resultFeed.getEntries();
-			//on affiche le nombre de r�sultat.
-			System.out.println("nombre de r�sultat : "+lstEvent.size());
-			
-			
+		System.out.println("date de début :"+datedebut+"    date de fin :"+datefin);
+		
+		//ajout evt
+		
+		try {					
 			
 			
 			CalendarEventEntry newEntry =  new CalendarEventEntry();
-			newEntry.setTitle(new PlainTextConstruct("codage api"));
-			newEntry.setContent(new PlainTextConstruct("la description"));
-			DateTime startTime = DateTime.parseDateTime("2012-03-22T12:04:00");
-			DateTime endTime = DateTime.parseDateTime("2012-03-22T17:30:00");
+			newEntry.setTitle(new PlainTextConstruct(titre));
+			newEntry.setContent(new PlainTextConstruct(description));
+			DateTime startTime = DateTime.parseDateTime(datedebut);
+			DateTime endTime = DateTime.parseDateTime(datefin);
 			When eventTimes = new When();
 			eventTimes.setStartTime(startTime);
 			eventTimes.setEndTime(endTime);
@@ -134,9 +144,15 @@ public class CalendarController extends HttpServlet {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+	}
+	
+	private void updateEvt(HttpServletRequest request, HttpServletResponse response)
+	{
 		
-		request.getRequestDispatcher("/").forward(request, response);
-		
+	}
+	
+	private void deletEvt(HttpServletRequest request, HttpServletResponse response)
+	{
 		
 	}
 
