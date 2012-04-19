@@ -21,7 +21,7 @@ public class ChargePlacement extends Personne implements Serializable{
 		super();
 	}
 	
-	public ChargePlacement(String nomPers, String prenomPers, String emailPers,Adresse adressePers, int telephone, int typePers) {
+	public ChargePlacement(String nomPers, String prenomPers, String emailPers,Adresse adressePers, String telephone, int typePers) {
 		super(nomPers, prenomPers, emailPers, adressePers, telephone, typePers);
 	}
 
