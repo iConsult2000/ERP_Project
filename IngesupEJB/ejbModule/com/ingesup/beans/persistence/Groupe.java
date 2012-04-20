@@ -1,9 +1,11 @@
 package com.ingesup.beans.persistence;
 
-import java.io.Serializable;
+import javax.persistence.Column;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 
 
-public class Groupe implements Serializable{
+public class Groupe {
 	private int idGroup;
 	private String nomGroup;
 	private int numeroGroup;
@@ -13,6 +15,8 @@ public class Groupe implements Serializable{
 	/**
 	 * @return the idGroup
 	 */
+	@Id
+	@GeneratedValue
 	public int getIdGroup() {
 		return idGroup;
 	}
@@ -28,6 +32,7 @@ public class Groupe implements Serializable{
 	/**
 	 * @return the nomGroup
 	 */
+	@Column(length = 65	)
 	public String getNomGroup() {
 		return nomGroup;
 	}

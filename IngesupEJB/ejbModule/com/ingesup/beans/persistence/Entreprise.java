@@ -8,6 +8,8 @@ import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
+import javax.persistence.Embeddable;
+import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
@@ -21,9 +23,7 @@ public class Entreprise implements Serializable{
 	private static final long serialVersionUID = 5533633724507541784L;
 	private String siren;
 	private String nomEntrep;
-	private String adresse;
-	private String cp;
-	private double ville;
+	private Adresse adresseEntrep;
 	private String telEntre;
 	private String emailEntre;
 	public Set<ChargePlacement> chargePlacements;
@@ -36,6 +36,7 @@ public class Entreprise implements Serializable{
 	 * @return the siren
 	 */
 	@Id 
+	@Column (length = 14)      
 	public String getSiren() {
 		return siren;
 	}
@@ -51,6 +52,7 @@ public class Entreprise implements Serializable{
 	/**
 	 * @return the nomEntrep
 	 */
+	@Column (length = 75)
 	public String getNomEntrep() {
 		return nomEntrep;
 	}
@@ -66,53 +68,24 @@ public class Entreprise implements Serializable{
 	/**
 	 * @return the adresse
 	 */
-	@Column(length=75)
-	public String getAdresse() {
-		return adresse;
+	@Embedded
+	public Adresse getAdresse() {
+		return adresseEntrep;
 	}
 
 	/**
 	 * @param adresse
 	 *            the adresse to set
 	 */
-	public void setAdresse(String adresse) {
-		this.adresse = adresse;
+	public void setAdresse(Adresse adresse) {
+		this.adresseEntrep = adresse;
 	}
 
-	/**
-	 * @return the cp
-	 */
-	@Column(length=5)
-	public String getCp() {
-		return cp;
-	}
-
-	/**
-	 * @param cp
-	 *            the cp to set
-	 */
-	public void setCp(String cp) {
-		this.cp = cp;
-	}
-
-	/**
-	 * @return the ville
-	 */
-	public double getVille() {
-		return ville;
-	}
-
-	/**
-	 * @param ville
-	 *            the ville to set
-	 */
-	public void setVille(double ville) {
-		this.ville = ville;
-	}
 
 	/**
 	 * @return the telEntre
 	 */
+	@Column(length = 10	)
 	public String getTelEntre() {
 		return telEntre;
 	}
@@ -128,6 +101,7 @@ public class Entreprise implements Serializable{
 	/**
 	 * @return the emailEntre
 	 */
+	@Column(length = 64	)
 	public String getEmailEntre() {
 		return emailEntre;
 	}

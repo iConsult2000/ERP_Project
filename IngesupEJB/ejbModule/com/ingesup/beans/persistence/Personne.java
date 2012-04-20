@@ -22,7 +22,7 @@ public abstract class Personne implements Serializable {
 	private String prenomPers;
 	private String emailPers;
 	private Adresse adressePers;
-	private String telephone;
+	private int telephone;
 	private int typePers;
 	
 
@@ -32,7 +32,7 @@ public abstract class Personne implements Serializable {
 	}
 
 	public Personne(String nomPers, String prenomPers,
-			String emailPers, Adresse adressePers, String telephone, int typePers) {
+			String emailPers, Adresse adressePers, int telephone, int typePers) {
 		super();
 		this.nomPers = nomPers;
 		this.prenomPers = prenomPers;
@@ -62,7 +62,8 @@ public abstract class Personne implements Serializable {
 	/**
 	 * @return the nomPers
 	 */
-	@Column(length = 15)
+	@Column(
+		length = 55)
 	public String getNomPers() {
 		return nomPers;
 	}
@@ -79,7 +80,7 @@ public abstract class Personne implements Serializable {
 	/**
 	 * @return the prenomPers
 	 */
-	@Column(length = 15)
+	@Column(length = 55)
 	public String getPrenomPers() {
 		return prenomPers;
 	}
@@ -96,7 +97,7 @@ public abstract class Personne implements Serializable {
 	/**
 	 * @return the emailPers
 	 */
-	@Column(length = 15)
+	@Column(length = 64)
 	public String getEmailPers() {
 		return emailPers;
 	}
@@ -105,7 +106,6 @@ public abstract class Personne implements Serializable {
 	/**
 	 * @param emailPers the emailPers to set
 	 */
-	@Column(length = 15)
 	public void setEmailPers(String emailPers) {
 		this.emailPers = emailPers;
 	}
@@ -118,12 +118,12 @@ public abstract class Personne implements Serializable {
 	public void setAdressePers(Adresse adressePers) {
 		this.adressePers = adressePers;
 	}
-	@Column(length=12)
-	public String getTelephone() {
+	@Column(length=10)
+	public int getTelephone() {
 		return telephone;
 	}
 
-	public void setTelephone(String telephone) {
+	public void setTelephone(int telephone) {
 		this.telephone = telephone;
 	}
 

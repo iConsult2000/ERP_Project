@@ -1,11 +1,11 @@
 package com.ingesup.beans.persistence;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -13,7 +13,7 @@ import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 
 @Entity
-public class Matiere implements Serializable{
+public class Matiere {
 	private int idMatiere;
 	private String libelleMatiere;
 
@@ -28,7 +28,8 @@ public class Matiere implements Serializable{
 	/**
 	 * @return the idMatiere
 	 */
-	@Id @GeneratedValue
+	@Id 
+	@GeneratedValue
 	public int getIdMatiere() {
 		return idMatiere;
 	}
@@ -44,6 +45,7 @@ public class Matiere implements Serializable{
 	/**
 	 * @return the libelleMatiere
 	 */
+	@Column(length = 75)
 	public String getLibelleMatiere() {
 		return libelleMatiere;
 	}

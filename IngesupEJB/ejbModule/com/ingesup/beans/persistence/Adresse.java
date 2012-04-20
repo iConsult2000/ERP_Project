@@ -1,9 +1,7 @@
 package com.ingesup.beans.persistence;
 
-import java.io.Serializable;
 
-
-public class Adresse implements Serializable{
+public class Adresse {
 	
 	private String rue;
 	private String ville;
