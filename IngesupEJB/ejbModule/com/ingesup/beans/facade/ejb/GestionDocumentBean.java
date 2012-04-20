@@ -1,6 +1,7 @@
 package com.ingesup.beans.facade.ejb;
 
 import java.io.File;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collection;
 
@@ -15,7 +16,7 @@ import com.ingesup.beans.persistence.DocumentDITO;
 
 @Stateless
 @Remote(GestionDocumentRemote.class)
-public class GestionDocumentBean implements GestionDocumentRemote {
+public class GestionDocumentBean implements GestionDocumentRemote, Serializable {
 
 	@PersistenceContext
 	EntityManager em;

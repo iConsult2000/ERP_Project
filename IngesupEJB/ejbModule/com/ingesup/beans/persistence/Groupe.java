@@ -1,7 +1,9 @@
 package com.ingesup.beans.persistence;
 
+import java.io.Serializable;
 
-public class Groupe {
+
+public class Groupe implements Serializable{
 	private int idGroup;
 	private String nomGroup;
 	private int numeroGroup;

@@ -1,5 +1,6 @@
 package com.ingesup.beans.persistence;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Set;
@@ -12,7 +13,7 @@ import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 
 @Entity
-public class Matiere {
+public class Matiere implements Serializable{
 	private int idMatiere;
 	private String libelleMatiere;
 

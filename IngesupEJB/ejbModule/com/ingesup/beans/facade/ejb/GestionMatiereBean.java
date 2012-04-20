@@ -1,8 +1,10 @@
 package com.ingesup.beans.facade.ejb;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collection;
 
+import javax.ejb.Remote;
 import javax.ejb.Stateless;
 
 import com.ingesup.beans.facade.ejb.Remote.GestionMatiereRemote;
@@ -13,7 +15,8 @@ import com.ingesup.beans.persistence.Note;
  * Session Bean implementation class GestionMatiere
  */
 @Stateless
-public class GestionMatiereBean implements GestionMatiereRemote {
+@Remote(GestionMatiereRemote.class)
+public class GestionMatiereBean implements GestionMatiereRemote, Serializable {
 
 	private ArrayList<Matiere> collectionMatiere = new ArrayList<Matiere>();
 	private ArrayList<Note> collectionNote = new ArrayList<Note>();

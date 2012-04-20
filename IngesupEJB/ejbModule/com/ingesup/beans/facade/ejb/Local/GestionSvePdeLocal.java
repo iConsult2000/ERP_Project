@@ -3,10 +3,12 @@ package com.ingesup.beans.facade.ejb.Local;
 import java.util.Collection;
 
 import javax.annotation.security.PermitAll;
+import javax.ejb.Local;
 
 import com.ingesup.beans.persistence.Etudiant;
 import com.ingesup.beans.persistence.Personne;
 
+@Local
 public interface GestionSvePdeLocal {
 	/**
 	 * Ajout d'un éléve

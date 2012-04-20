@@ -1,12 +1,15 @@
 package com.ingesup.beans.facade.ejb;
 
+import java.io.Serializable;
 import java.util.Collection;
 
+import javax.ejb.Local;
 import javax.ejb.Remote;
 import javax.ejb.Stateful;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
+import com.ingesup.beans.facade.ejb.Local.GestionSvePdeLocal;
 import com.ingesup.beans.facade.ejb.Remote.GestionSvePdeRemote;
 import com.ingesup.beans.persistence.Etudiant;
 import com.ingesup.beans.persistence.Personne;
@@ -16,7 +19,8 @@ import com.ingesup.beans.persistence.Personne;
  */
 @Stateful(name="GestionSvePdeStateful", description="Service Pedagogique")
 @Remote(GestionSvePdeRemote.class)
-public class GestionSvePdeBean implements GestionSvePdeRemote {
+@Local(GestionSvePdeLocal.class)
+public class GestionSvePdeBean implements GestionSvePdeRemote, Serializable {
 
 	@PersistenceContext EntityManager em;
     /**
