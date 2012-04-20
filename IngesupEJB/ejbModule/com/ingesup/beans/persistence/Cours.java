@@ -20,7 +20,7 @@ public class Cours extends Evenement implements Serializable{
 	private String nomCours;
 	private String description;
 	private String information;
-	private int idPersonne;
+	private int idPersonne; //Professeur
 	private int idMatiere;
 
 	public Collection<Document> document = new ArrayList<Document>();
@@ -37,6 +37,7 @@ public class Cours extends Evenement implements Serializable{
 	/**
 	 * @return the nomCours
 	 */
+	@Column(length = 64	)
 	public String getNomCours() {
 		return nomCours;
 	}
@@ -52,7 +53,6 @@ public class Cours extends Evenement implements Serializable{
 	/**
 	 * @return the description
 	 */
-	@Column(length=30)
 	public String getDescription() {
 		return description;
 	}
@@ -68,7 +68,6 @@ public class Cours extends Evenement implements Serializable{
 	/**
 	 * @return the information
 	 */
-	@Column(length=30)
 	public String getInformation() {
 		return information;
 	}

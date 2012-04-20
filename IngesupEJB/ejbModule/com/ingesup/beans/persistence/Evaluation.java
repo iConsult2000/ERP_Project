@@ -3,6 +3,7 @@ package com.ingesup.beans.persistence;
 import java.io.Serializable;
 import java.util.Set;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
@@ -35,6 +36,7 @@ public class Evaluation extends Evenement implements Serializable {
 	/**
 	 * @return the libelleEval
 	 */
+	@Column(length = 65	)
 	public String getLibelleEval() {
 		return libelleEval;
 	}

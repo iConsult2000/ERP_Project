@@ -15,7 +15,7 @@ public abstract class Document implements Serializable{
 	 */
 	private static final long serialVersionUID = 2076788817259020416L;
 	private int idDoc;
-	private int idPersonne;
+	private int idPersonne; //Professeur
 	private int idEvent;
 
 
