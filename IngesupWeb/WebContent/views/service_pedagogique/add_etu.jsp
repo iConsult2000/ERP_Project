@@ -1,5 +1,5 @@
 <div id="formulaire_etudiant">
-<form method="post" action="">
+<form method="post" action="/AjoutPersonne">
 	<table>
 		<tr>
 			<td align="right"><p>Nom</p></td><td><input type="text" name="nom" /></td>
