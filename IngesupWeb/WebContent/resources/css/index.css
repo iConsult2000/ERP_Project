@@ -211,10 +211,10 @@ body {
 #contener-body-view table.formulaire_evenement input.titre{
 	width: 395px;
 }
-#contener-body-view table.formulaire_evenement input.date{
+#contener-body-view table.formulaire_evenement input.date, table.gestion input.date{
 	width: 96px;
 }
-#contener-body-view table.formulaire_evenement input.heure{
+#contener-body-view table.formulaire_evenement input.heure, table.gestion input.heure{
 	width: 90px;
 }
 #contener-body-view table.even input.lieu, select.cour, textarea.desc{
@@ -222,6 +222,9 @@ body {
 }
 #contener-body-view div.gestion{
 	padding-left: 10px;
+}
+#contener-body-view table.gestion{
+	width: 100%;
 }
 #contener-body-view div.gestion p{
 	font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
