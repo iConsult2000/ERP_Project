@@ -22,8 +22,8 @@ public abstract class Personne implements Serializable {
 	private String prenomPers;
 	private String emailPers;
 	private Adresse adressePers;
-	private int telephone;
-	private int typePers;
+	private String telephone;
+	
 	
 
 	
@@ -32,14 +32,14 @@ public abstract class Personne implements Serializable {
 	}
 
 	public Personne(String nomPers, String prenomPers,
-			String emailPers, Adresse adressePers, int telephone, int typePers) {
+			String emailPers, Adresse adressePers, String telephone) {
 		super();
 		this.nomPers = nomPers;
 		this.prenomPers = prenomPers;
 		this.emailPers = emailPers;
 		this.adressePers = adressePers;
 		this.telephone = telephone;
-		this.typePers = typePers;
+		
 	}
 
 	/**
@@ -119,28 +119,16 @@ public abstract class Personne implements Serializable {
 		this.adressePers = adressePers;
 	}
 	@Column(length=10)
-	public int getTelephone() {
+	public String getTelephone() {
 		return telephone;
 	}
 
-	public void setTelephone(int telephone) {
+	public void setTelephone(String telephone) {
 		this.telephone = telephone;
 	}
 
-	/**
-	 * @return the typePers
-	 */
-	public int getTypePers() {
-		return typePers;
-	}
+	
 
-
-	/**
-	 * @param typePers the typePers to set
-	 */
-	public void setTypePers(int typePers) {
-		this.typePers = typePers;
-	}
 
 	
 

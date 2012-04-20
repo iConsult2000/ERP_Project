@@ -33,8 +33,8 @@ public class Professeur extends Personne implements Serializable {
 		super();
 	}
 	
-	public Professeur(String nomPers, String prenomPers, String emailPers,Adresse adressePers, int telephone, int typePers,String statut, String competence) {
-		super(nomPers, prenomPers, emailPers, adressePers, telephone, typePers);
+	public Professeur(String nomPers, String prenomPers, String emailPers,Adresse adressePers, String telephone,String statut, String competence) {
+		super(nomPers, prenomPers, emailPers, adressePers, telephone);
 		this.statut = statut;
 		this.competence = competence;
 	}
