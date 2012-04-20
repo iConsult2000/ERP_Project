@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
@@ -30,8 +31,8 @@ public class Etudiant extends Personne implements Serializable {
 	}
 	
 	
-	public Etudiant(String nomPers, String prenomPers, String emailPers, Adresse adressePers, String telephone, int typePers, int idClasse) {
-		super(nomPers, prenomPers, emailPers, adressePers, telephone, typePers);
+	public Etudiant(String nomPers, String prenomPers, String emailPers, Adresse adressePers, String telephone, int idClasse) {
+		super(nomPers, prenomPers, emailPers, adressePers, telephone);
 		this.idClasse = idClasse;
 	}
 	

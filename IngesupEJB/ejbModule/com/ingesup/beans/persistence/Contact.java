@@ -48,7 +48,7 @@ public class Contact implements Serializable{
 	/**
 	 * @return the siren
 	 */
-	@Column(length=15)
+	@Column(length=14)
 	public String getSiren() {
 		return siren;
 	}
@@ -63,7 +63,7 @@ public class Contact implements Serializable{
 	/**
 	 * @return the nomContact
 	 */
-	@Column(length=15)
+	@Column(length=50)
 	public String getNomContact() {
 		return nomContact;
 	}
@@ -79,7 +79,7 @@ public class Contact implements Serializable{
 	/**
 	 * @return the prenomContact
 	 */
-	@Column(length=15)
+	@Column(length=55)
 	public String getPrenomContact() {
 		return prenomContact;
 	}
@@ -95,6 +95,7 @@ public class Contact implements Serializable{
 	/**
 	 * @return the telContact
 	 */
+	@Column(length=10)
 	public String getTelContact() {
 		return telContact;
 	}
@@ -110,7 +111,7 @@ public class Contact implements Serializable{
 	/**
 	 * @return the emailContact
 	 */
-	@Column(length=15)
+	@Column(length=64)
 	public String getEmailContact() {
 		return emailContact;
 	}
@@ -126,7 +127,7 @@ public class Contact implements Serializable{
 	/**
 	 * @return the posteContact
 	 */
-	@Column(length=15)
+	@Column(length=50)
 	public String getPosteContact() {
 		return posteContact;
 	}

@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collection;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
 
@@ -32,8 +33,8 @@ public class Professeur extends Personne implements Serializable {
 		super();
 	}
 	
-	public Professeur(String nomPers, String prenomPers, String emailPers,Adresse adressePers, String telephone, int typePers,String statut, String competence) {
-		super(nomPers, prenomPers, emailPers, adressePers, telephone, typePers);
+	public Professeur(String nomPers, String prenomPers, String emailPers,Adresse adressePers, String telephone,String statut, String competence) {
+		super(nomPers, prenomPers, emailPers, adressePers, telephone);
 		this.statut = statut;
 		this.competence = competence;
 	}
@@ -41,6 +42,7 @@ public class Professeur extends Personne implements Serializable {
 	/**
 	 * @return the statut
 	 */
+	
 	public String getStatut() {
 		return statut;
 	}

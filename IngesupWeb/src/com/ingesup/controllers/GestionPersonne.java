@@ -48,7 +48,7 @@ public class GestionPersonne extends HttpServlet {
 		
 		Adresse adresse = new Adresse("7 Rue de la mort", "Enfer", 777);
 		
-		Etudiant e = new Etudiant(nom, prenom, email, adresse, "0631323135", 1, 1);
+		Etudiant e = new Etudiant(nom, prenom, email, adresse, "0631323135", 1);
 		
 		gestionSvePdeLocal.addEtudiant(e);
 		

@@ -50,7 +50,7 @@ public class Classe implements Serializable{
 	/**
 	 * @return the nomClasse
 	 */
-	@Column(length=12)
+	@Column(length=50)
 	public String getNomClasse() {
 		return nomClasse;
 	}
@@ -66,7 +66,6 @@ public class Classe implements Serializable{
 	/**
 	 * @return the specialite
 	 */
-	@Column(length=64)
 	public String getSpecialite() {
 		return specialite;
 	}
