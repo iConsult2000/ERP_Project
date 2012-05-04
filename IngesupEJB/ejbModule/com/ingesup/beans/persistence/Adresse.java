@@ -1,8 +1,13 @@
 package com.ingesup.beans.persistence;
 
+import java.io.Serializable;
 
-public class Adresse {
+
+public class Adresse implements Serializable{
 	
+	
+
+
 	private String rue;
 	private String ville;
 	private int codePostal;
@@ -19,6 +24,10 @@ public class Adresse {
 		this.codePostal = codePostal;
 	}
 
+	/**
+	 * @return the idAdresse
+	 */
+		
 	public String getRue() {
 		return rue;
 	}

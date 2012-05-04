@@ -32,7 +32,11 @@ public class Etudiant extends Personne implements Serializable {
 	
 	
 	public Etudiant(String nomPers, String prenomPers, String emailPers, Adresse adressePers, String telephone, int idClasse) {
-		super(nomPers, prenomPers, emailPers, adressePers, telephone);
+		this.nomPers = nomPers;
+		this.prenomPers = prenomPers;
+		this.emailPers = emailPers;
+		this.adressePers = adressePers;
+		this.telephone= telephone;
 		this.idClasse = idClasse;
 		this.membreBde=false;
 		this.delegue=false;

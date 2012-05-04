@@ -10,9 +10,5 @@
             <dependent-object/>
             <dependency-type>uses</dependency-type>
         </dependent-module>
-        <dependent-module archiveName="IngesupClient.jar" deploy-path="/" handle="module:/resource/IngesupClient/IngesupClient">
-            <dependent-object/>
-            <dependency-type>uses</dependency-type>
-        </dependent-module>
     </wb-module>
 </project-modules>

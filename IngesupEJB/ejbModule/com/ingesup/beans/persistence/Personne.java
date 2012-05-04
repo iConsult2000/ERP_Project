@@ -17,12 +17,12 @@ public abstract class Personne implements Serializable {
 	 */
 	private static final long serialVersionUID = 2431787526161529487L;
 	
-	private int idPersonne;
-	private String nomPers;
-	private String prenomPers;
-	private String emailPers;
-	private Adresse adressePers;
-	private String telephone;
+	protected int idPersonne;
+	protected String nomPers;
+	protected String prenomPers;
+	protected String emailPers;
+	protected Adresse adressePers;
+	protected String telephone;
 	
 	
 
@@ -31,16 +31,7 @@ public abstract class Personne implements Serializable {
 
 	}
 
-	public Personne(String nomPers, String prenomPers,
-			String emailPers, Adresse adressePers, String telephone) {
-		super();
-		this.nomPers = nomPers;
-		this.prenomPers = prenomPers;
-		this.emailPers = emailPers;
-		this.adressePers = adressePers;
-		this.telephone = telephone;
-		
-	}
+	
 
 	/**
 	 * @return the idPersonne

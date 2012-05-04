@@ -20,7 +20,7 @@ import com.ingesup.beans.persistence.Personne;
 @Stateful(name="GestionSvePdeStateful", description="Service Pedagogique")
 @Remote(GestionSvePdeRemote.class)
 @Local(GestionSvePdeLocal.class)
-public class GestionSvePdeBean implements GestionSvePdeRemote, Serializable {
+public class GestionSvePdeBean implements GestionSvePdeRemote, GestionSvePdeLocal, Serializable {
 
 	@PersistenceContext EntityManager em;
     /**
