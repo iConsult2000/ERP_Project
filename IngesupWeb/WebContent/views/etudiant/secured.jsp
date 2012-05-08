@@ -20,7 +20,7 @@
 		<br>
 		<hr>
 		<p>Bienvenue sur ce site génialissime !</p>
-		<a href="logout">Fermer la session</a>
+		<a href="/IngesupWeb/logout">Fermer la session</a>
 	</div>
 	<div>Vous êtes dans l'espace securisé  des etudiants</div>
 
