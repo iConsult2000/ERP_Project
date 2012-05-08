@@ -153,25 +153,11 @@ body {
 	
 }
 
-#contener-body-menu li._Red a{
-	color: #990000; 
-}
-
-#contener-body-menu li._Blue a{
-	color: #0e97a4; 
-}
-
-#contener-body-menu li._Yellow a{
-	color: #B79000; 
-}
-
-#contener-body-menu li._Black a{
-	color: #000; 
-}
-
-#contener-body-menu li._Green a{
-	color: #088A08; 
-}
+#contener-body-menu li._Red a{color: #990000;}
+#contener-body-menu li._Blue a{color: #0e97a4;}
+#contener-body-menu li._Yellow a{color: #B79000;}
+#contener-body-menu li._Black a{color: #000;}
+#contener-body-menu li._Green a{color: #088A08;}
 
 /*Gestion*/
 

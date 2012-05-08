@@ -188,7 +188,7 @@ public class CalendarController extends HttpServlet {
 		HttpSession session = request.getSession();
 		session.setAttribute("listEvt", lstEvent);
 		
-		getServletContext().getRequestDispatcher("/views/service_pedagogique/Gestion.jsp").forward(request,response);
+		getServletContext().getRequestDispatcher("/views/service_pedagogique/Gestion_cour.jsp").forward(request,response);
 		
 	}
 
