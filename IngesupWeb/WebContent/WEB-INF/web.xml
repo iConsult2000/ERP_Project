@@ -178,6 +178,7 @@
 		<web-resource-collection>
 			<web-resource-name>SecuredRessources2</web-resource-name>
 			<url-pattern>/views/etudiant/secured.jsp</url-pattern>
+			<url-pattern>/views/etudiant/Agenda.jsp</url-pattern>
 <!-- 			<url-pattern>/views/etudiant/*</url-pattern>	pour toutes les autres			 -->
 		</web-resource-collection>
 		<auth-constraint>
@@ -185,6 +186,20 @@
 			<role-name>etudiant</role-name>
 		</auth-constraint>
 	</security-constraint>
+	
+  <security-constraint>
+		<display-name>Contrainte_Global</display-name>
+		<web-resource-collection>
+			<web-resource-name>SecuredRessourcesGlobal</web-resource-name>
+			<url-pattern>/Auth</url-pattern>
+		</web-resource-collection>
+		<auth-constraint>
+			<description>Consultation des informations</description>			
+			<role-name>etudiant</role-name>
+			<role-name>gestion</role-name>
+		</auth-constraint>
+	</security-constraint>
+
 	<login-config>
 		<auth-method>FORM</auth-method>
 		<form-login-config>

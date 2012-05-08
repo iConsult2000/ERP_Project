@@ -1,6 +1,6 @@
 	<form method="post"
-		action="/IngesupWeb">
-		<table border="0">
+		action="./Auth">
+		<table>
 			<tr>
 				<td>Login</td>
 				<td><input type="text" name="j_username"></td>

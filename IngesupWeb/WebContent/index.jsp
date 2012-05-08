@@ -16,17 +16,16 @@
 			<img alt="ingesup-logo" src="resources/pictures/ingesup_logo.jpg">
 			
 			<div id="contener-header-form">
-				<% if(session.getAttribute("id") != null && session.getAttribute("mdp") != null){ %>
-					<%@ include file="formulaires/logout.jsp" %>
+				<% if(session.getAttribute("type") != null){ %>
+					<a href="logout">Fermer la session</a>
 				<% }else{ %>
-					<%@ include file="formulaires/login.jsp" %>
-					
+					<a href="Auth">Connection</a>
 				<% } %>
 			</div>
 		</div>
 		<div id="contener-body">
 		
-			<% if(session.getAttribute("id") != null && session.getAttribute("mdp") != null){ %>
+			<% if(session.getAttribute("type") != null){ %>
 				<% //if(session.getAttribute("id").equals("sp") && session.getAttribute("mdp").equals("sp")){ %>
 					<div id="contener-body-menu">
 								<% String link = "utils/menu_"+session.getAttribute("type")+".jsp"; %>
