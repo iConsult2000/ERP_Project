@@ -40,9 +40,14 @@ public class Authentification extends HttpServlet {
 		session.setAttribute("id", request.getParameter("id"));
 		session.setAttribute("mdp", request.getParameter("mdp"));
 		
-		//type
-		session.setAttribute("type", "service_pedagogique");
-		
+		if (request.isUserInRole("gestion")) {
+			//type
+			session.setAttribute("type", "service_pedagogique");
+		}
+		else if(request.isUserInRole("etudiant")){
+			//type
+			session.setAttribute("type", "etudiant");
+		}
 		//redirection
 		request.getRequestDispatcher("/").forward(request, response);
 	}
