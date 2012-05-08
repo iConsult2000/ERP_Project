@@ -184,10 +184,11 @@
     <servlet-name>AuthDownServlet</servlet-name>
     <url-pattern>/AuthDown</url-pattern>
   </servlet-mapping>
+ 
   <servlet>
     <description></description>
-    <display-name>CalendarServlet</display-name>
-    <servlet-name>CalendarServlet</servlet-name>
+    <display-name>AjouterCalendarServlet</display-name>
+    <servlet-name>AjouterCalendarServlet</servlet-name>
     <servlet-class>com.ingesup.controllers.CalendarController</servlet-class>
     <init-param>
       <param-name>operation</param-name>
@@ -195,9 +196,74 @@
     </init-param>
   </servlet>
   <servlet-mapping>
-    <servlet-name>CalendarServlet</servlet-name>
+    <servlet-name>AjouterCalendarServlet</servlet-name>
     <url-pattern>/ajouter</url-pattern>
   </servlet-mapping>
+  
+   <servlet>
+    <description></description>
+    <display-name>RechercherCalendarServlet</display-name>
+    <servlet-name>RechercherCalendarServlet</servlet-name>
+    <servlet-class>com.ingesup.controllers.CalendarController</servlet-class>
+    <init-param>
+      <param-name>operation</param-name>
+      <param-value>chercher</param-value>
+    </init-param>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>RechercherCalendarServlet</servlet-name>
+    <url-pattern>/chercher</url-pattern>
+  </servlet-mapping>
+  
+  
+  <servlet>
+    <description></description>
+    <display-name>UpdateCalendarServlet</display-name>
+    <servlet-name>UpdateCalendarServlet</servlet-name>
+    <servlet-class>com.ingesup.controllers.CalendarController</servlet-class>
+    <init-param>
+      <param-name>operation</param-name>
+      <param-value>update</param-value>
+    </init-param>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>UpdateCalendarServlet</servlet-name>
+    <url-pattern>/update</url-pattern>
+  </servlet-mapping>
+  
+  
+  <servlet>
+    <description></description>
+    <display-name>getEvtCalendarServlet</display-name>
+    <servlet-name>getEvtCalendarServlet</servlet-name>
+    <servlet-class>com.ingesup.controllers.CalendarController</servlet-class>
+    <init-param>
+      <param-name>operation</param-name>
+      <param-value>getEvt</param-value>
+    </init-param>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>getEvtCalendarServlet</servlet-name>
+    <url-pattern>/getEvt</url-pattern>
+  </servlet-mapping>
+  
+  
+  
+  <servlet>
+    <description></description>
+    <display-name>DelCalendarServlet</display-name>
+    <servlet-name>DelCalendarServlet</servlet-name>
+    <servlet-class>com.ingesup.controllers.CalendarController</servlet-class>
+    <init-param>
+      <param-name>operation</param-name>
+      <param-value>supprimer</param-value>
+    </init-param>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>DelCalendarServlet</servlet-name>
+    <url-pattern>/supprimer</url-pattern>
+  </servlet-mapping>
+   
   <servlet>
     <description></description>
     <display-name>GestionPersonne</display-name>

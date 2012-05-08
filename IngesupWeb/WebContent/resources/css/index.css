@@ -186,8 +186,8 @@ body {
 	position: absolute;
 }
 
-#contener-body-view div#formulaire_evenement,div#formulaire_etudiant, div#formulaire_professeur,
-					div#formulaire_classe {
+#contener-body-view div#formulaire_evenement,div#formulaire_etudiant,div#formulaire_professeur,
+					div#formulaire_classe,div#formulaire_upd_evenement {
 	background-color: #F5F5F5;
 	border: 1px solid #000;
 	border-radius: 10px;
