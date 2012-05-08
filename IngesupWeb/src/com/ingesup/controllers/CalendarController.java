@@ -85,11 +85,11 @@ public class CalendarController extends HttpServlet {
 		if (getInitParameter("operation").equals("getEvt")) getEvt(request,response);
 		
 		
-		request.getRequestDispatcher("/").forward(request, response);		
+				
 		
 	}
 	
-	private void getEvt(HttpServletRequest request, HttpServletResponse response) {
+	private void getEvt(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		
 		int numEvt = Integer.parseInt(request.getParameter("num"));
@@ -98,10 +98,44 @@ public class CalendarController extends HttpServlet {
 		List<CalendarEventEntry> lstEvent = (List<CalendarEventEntry>)session.getAttribute("listEvt");
 		CalendarEventEntry evtToUpdate = (CalendarEventEntry)lstEvent.get(numEvt);
 		
+		if(evtToUpdate!=null){
+		 String[] rawDate =  evtToUpdate.getTimes().get(0).getStartTime().toUiString().split(" ");
+		 String heuredebut = rawDate[1];
+		 rawDate = rawDate[0].split("-");
+		 String datedebut = rawDate[2]+"/"+rawDate[1]+"/"+rawDate[0];
+		 
+		 
+		rawDate = evtToUpdate.getTimes().get(0).getEndTime().toUiString().split(" ");
+		String heurefin = rawDate[1];
+		rawDate = rawDate[0].split("-");
+		String datefin = rawDate[2]+"/"+rawDate[1]+"/"+rawDate[0];
+		
+		String titre = evtToUpdate.getTitle().getPlainText();
+		String desc =  evtToUpdate.getPlainTextContent();
+		
+		session.setAttribute("heuredebut", heuredebut);
+		session.setAttribute("heurefin", heurefin);
+		
+		session.setAttribute("datedebut", datedebut);
+		session.setAttribute("datefin", datefin);
+		
+		session.setAttribute("titre", titre);
+		session.setAttribute("desc", desc);
+		
+		
+		session.setAttribute("numEvt", numEvt);
+		
+		
+		getServletContext().getRequestDispatcher("/views/service_pedagogique/update_event.jsp").forward(request,response);
+		
+		}
+		
+		
+		
 		
 	}
 
-	private void searchEvt(HttpServletRequest request,HttpServletResponse response) {
+	private void searchEvt(HttpServletRequest request,HttpServletResponse response) throws ServletException, IOException {
 		
 		String  datedebut = normalizeDate(request.getParameter("date1"),"00:00");
 		String  datefin = normalizeDate(request.getParameter("date2"),"23:59");
@@ -154,11 +188,11 @@ public class CalendarController extends HttpServlet {
 		HttpSession session = request.getSession();
 		session.setAttribute("listEvt", lstEvent);
 		
-		
+		getServletContext().getRequestDispatcher("/views/service_pedagogique/Gestion.jsp").forward(request,response);
 		
 	}
 
-	private void addEvt(HttpServletRequest request, HttpServletResponse response) throws IOException
+	private void addEvt(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException
 	{
 		//L'url ou les données sont stockées.
 		URL feedUrl = null;
@@ -207,6 +241,8 @@ public class CalendarController extends HttpServlet {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		
+		request.getRequestDispatcher("/").forward(request, response);
 	}
 	
 	
@@ -221,9 +257,49 @@ public class CalendarController extends HttpServlet {
 		else return "";
 	}
 	
-	private void updateEvt(HttpServletRequest request, HttpServletResponse response)
+	private void updateEvt(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
 	{
 		
+		HttpSession session = request.getSession();
+		List<CalendarEventEntry> lstEvent = (List<CalendarEventEntry>)session.getAttribute("listEvt");
+		CalendarEventEntry retrievedEntry = lstEvent.get((Integer) session.getAttribute("numEvt"));
+		
+		
+		String titre = request.getParameter("titre");
+		
+		String  datedebut = request.getParameter("date1");
+		String  datefin = request.getParameter("date2");
+		
+		String heuredebut = request.getParameter("heure1");
+		String heurefin =  request.getParameter("heure2");
+		
+		String description = request.getParameter("desc");
+	
+		datedebut = normalizeDate(datedebut,heuredebut);
+		datefin = normalizeDate(datefin,heurefin);
+		
+		
+		try {					
+				
+			 CalendarEventEntry newEntry =  new CalendarEventEntry();
+			 newEntry.setTitle(new PlainTextConstruct(titre));
+			 newEntry.setContent(new PlainTextConstruct(description));
+			 DateTime startTime = DateTime.parseDateTime(datedebut);
+			 DateTime endTime = DateTime.parseDateTime(datefin);
+			 When eventTimes = new When();
+			 eventTimes.setStartTime(startTime);
+			 eventTimes.setEndTime(endTime);
+			 newEntry.addTime(eventTimes);
+			 URL editUrl = new URL(retrievedEntry.getEditLink().getHref());
+			 CalendarEventEntry updatedEntry = (CalendarEventEntry)client.update(editUrl, newEntry);
+			 System.out.println("évenement modifié");
+
+		} catch (ServiceException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+						
+		request.getRequestDispatcher("/").forward(request, response);
 	}
 	
 	private void deletEvt(HttpServletRequest request, HttpServletResponse response)
