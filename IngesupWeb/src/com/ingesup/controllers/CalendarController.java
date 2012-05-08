@@ -92,6 +92,13 @@ public class CalendarController extends HttpServlet {
 	private void getEvt(HttpServletRequest request, HttpServletResponse response) {
 		// TODO Auto-generated method stub
 		
+		int numEvt = Integer.parseInt(request.getParameter("num"));
+		HttpSession session = request.getSession();
+		
+		List<CalendarEventEntry> lstEvent = (List<CalendarEventEntry>)session.getAttribute("listEvt");
+		CalendarEventEntry evtToUpdate = (CalendarEventEntry)lstEvent.get(numEvt);
+		
+		
 	}
 
 	private void searchEvt(HttpServletRequest request,HttpServletResponse response) {

@@ -40,6 +40,7 @@
 <%@ include file="add_etu.jsp" %>
 <%@ include file="add_prof.jsp" %>
 <%@ include file="add_classe.jsp" %>
+<%@ include file="update_event.jsp"%>
 
 <div class="gestion">
 	<table class="gestion">
