@@ -7,14 +7,24 @@
 		document.getElementById("formulaire_evenement").style.visibility="hidden";
 		document.getElementById("layer1").style.visibility="hidden";
 	}
+	function new_udp_even(){
+		document.getElementById("layer1").style.visibility="visible";
+		document.getElementById("formulaire_udp_evenement").style.visibility="visible";
+	}
+	function hide_udp_even(){
+		document.getElementById("formulaire_udp_evenement").style.visibility="hidden";
+		document.getElementById("layer1").style.visibility="hidden";
+	}
 </script>
 <br>
 <%@ include file="add_event.jsp" %>
+<%@ include file="update_event.jsp" %>
 
 <div class="gestion">
 	<table class="gestion">
 		<tr>
-			<td colspan="2"><p style="font-weight: bold;">Cour</p>
+		    <form method="post" action="chercher">
+			<td colspan="2"><p style="font-weight: bold;">Cours</p>
 			<p>Recherche</p>
 			<hr>
 			<p>Titre<input type="text" name="titre"/> <span style="color:black;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -29,6 +39,8 @@
 			<hr>
 			<p>Gestion des cours</p>
 			<input type="button" value="Ajouter" onClick="new_even()"/></td>
+			</form>
 		</tr>
+		<tr>
 	</table>
 	</div>
