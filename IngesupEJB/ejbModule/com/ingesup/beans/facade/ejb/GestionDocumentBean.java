@@ -14,6 +14,7 @@ import com.ingesup.beans.facade.ejb.Remote.GestionDocumentRemote;
 import com.ingesup.beans.persistence.Document;
 import com.ingesup.beans.persistence.DocumentDITO;
 
+
 @Stateless
 @Remote(GestionDocumentRemote.class)
 public class GestionDocumentBean implements GestionDocumentRemote, Serializable {
