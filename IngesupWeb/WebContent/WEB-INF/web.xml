@@ -88,6 +88,7 @@
     <servlet-name>DocumentServlet</servlet-name>
     <url-pattern>/Document</url-pattern>
   </servlet-mapping>
+  
   <servlet>
     <description></description>
     <display-name>GestionServlet</display-name>
@@ -102,6 +103,67 @@
     <servlet-name>GestionServlet</servlet-name>
     <url-pattern>/Gestion</url-pattern>
   </servlet-mapping>
+  
+    <servlet>
+    <description></description>
+    <display-name>GestionClasseServlet</display-name>
+    <servlet-name>GestionClasseServlet</servlet-name>
+    <servlet-class>com.ingesup.controllers.Menu</servlet-class>
+    <init-param>
+      <param-name>choix</param-name>
+      <param-value>Gestion_classe</param-value>
+    </init-param>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>GestionClasseServlet</servlet-name>
+    <url-pattern>/Gestion_classe</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <description></description>
+    <display-name>GestionEtudiantServlet</display-name>
+    <servlet-name>GestionEtudiantServlet</servlet-name>
+    <servlet-class>com.ingesup.controllers.Menu</servlet-class>
+    <init-param>
+      <param-name>choix</param-name>
+      <param-value>Gestion_etudiant</param-value>
+    </init-param>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>GestionEtudiantServlet</servlet-name>
+    <url-pattern>/Gestion_etudiant</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <description></description>
+    <display-name>GestionProfesseurServlet</display-name>
+    <servlet-name>GestionProfesseurServlet</servlet-name>
+    <servlet-class>com.ingesup.controllers.Menu</servlet-class>
+    <init-param>
+      <param-name>choix</param-name>
+      <param-value>Gestion_professeur</param-value>
+    </init-param>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>GestionProfesseurServlet</servlet-name>
+    <url-pattern>/Gestion_professeur</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <description></description>
+    <display-name>GestionCourServlet</display-name>
+    <servlet-name>GestionCourServlet</servlet-name>
+    <servlet-class>com.ingesup.controllers.Menu</servlet-class>
+    <init-param>
+      <param-name>choix</param-name>
+      <param-value>Gestion_cour</param-value>
+    </init-param>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>GestionCourServlet</servlet-name>
+    <url-pattern>/Gestion_cour</url-pattern>
+  </servlet-mapping>
+  
   <servlet>
     <description></description>
     <display-name>AuthServlet</display-name>
