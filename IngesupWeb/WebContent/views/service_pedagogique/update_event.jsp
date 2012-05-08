@@ -1,4 +1,6 @@
 <!-- Tableau obligatoire ! C'est lui qui contiendra le calendrier ! -->
+<%@page import="com.google.gdata.data.calendar.CalendarEventEntry"%>
+<%@page import="java.util.List"%>
 <table class="ds_box" cellpadding="0" cellspacing="0" id="ds_conclass" style="display: none;">
 	<tr>
 		<td id="ds_calclass"></td>
@@ -12,12 +14,23 @@ String leTitre="";
 String heuredebut="";
 String heurefin="";
 
-if (session.getAttribute("evt") != null) {
-		 datedebut =  (String)session.getAttribute("datedebut");
-		 datefin = (String)session.getAttribute("datefin");
-		 leTitre = (String)session.getAttribute("titre");
-		 heuredebut = (String)session.getAttribute("heuredebut");
-		 heurefin =  (String)session.getAttribute("heurefin");
+CalendarEventEntry evt = (CalendarEventEntry) session.getAttribute("evt");
+
+
+if(evt!=null){
+	 String[] rawDate =  evt.getTimes().get(0).getStartTime().toUiString().split(" ");
+	 heuredebut = rawDate[1];
+	 rawDate = rawDate[0].split("-");
+	 datedebut = rawDate[2]+"/"+rawDate[1]+"/"+rawDate[0];
+	 
+	 
+	rawDate = evt.getTimes().get(0).getEndTime().toUiString().split(" ");
+	heurefin = rawDate[1];
+	rawDate = rawDate[0].split("-");
+	datefin = rawDate[2]+"/"+rawDate[1]+"/"+rawDate[0];
+	
+	String titre = evt.getTitle().getPlainText();
+	String desc =  evt.getPlainTextContent();
 }
 		%>
 

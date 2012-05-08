@@ -5,22 +5,27 @@
 		document.getElementById("layer1").style.visibility="visible";
 		document.getElementById("formulaire_evenement").style.visibility="visible";
 	}
+	
 	function hide_even(){
 		document.getElementById("formulaire_evenement").style.visibility="hidden";
 		document.getElementById("layer1").style.visibility="hidden";
 	}
-	function new_udp_even(){
+	
+	function new_udp_even(value){
+		
 		document.getElementById("layer1").style.visibility="visible";
+		//document.getElementById("formulaire_udp_evenement").setAttribute("idEvt", value);
 		document.getElementById("formulaire_udp_evenement").style.visibility="visible";
 	}
+	
 	function hide_udp_even(){
 		document.getElementById("formulaire_udp_evenement").style.visibility="hidden";
 		document.getElementById("layer1").style.visibility="hidden";
 	}
 </script>
 <br>
-<%@ include file="add_event.jsp" %>
-<%@ include file="update_event.jsp" %>
+<%@ include file="add_event.jsp"%>
+<%@ include file="update_event.jsp"%>
 
 <div class="gestion">
 	<table class="gestion">
@@ -44,13 +49,12 @@
 			<input type="button" value="Ajouter" onClick="new_even()"/></td>
 			</form>
 		</tr>
-			<% List<CalendarEventEntry> listEvt = (List<CalendarEventEntry>) session.getAttribute("listEvt");
+			<%  listEvt = (List<CalendarEventEntry>) session.getAttribute("listEvt");
 			if (listEvt != null ){
 			for(int i = 0; i<listEvt.size();i++ ){%>
 				<tr>
 						<td><%=listEvt.get(i).getTimes().get(0).getStartTime().toUiString()%>-<%=listEvt.get(i).getTimes().get(0).getEndTime().toUiString() %></td>
-						<td><a href="getEvt?num=<%=i %>"><%=listEvt.get(i).getTitle().getPlainText() %></a></td>			
-												
+						<td><a href="supprimer?numEvt=<%=i %>"><%=listEvt.get(i).getTitle().getPlainText() %></a></td>
 				</tr>
 							
 			 <% }}%>

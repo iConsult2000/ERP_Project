@@ -99,7 +99,7 @@ public class CalendarController extends HttpServlet {
 		CalendarEventEntry evtToUpdate = (CalendarEventEntry)lstEvent.get(numEvt);
 		
 		if(evtToUpdate!=null){
-		 String[] rawDate =  evtToUpdate.getTimes().get(0).getStartTime().toUiString().split(" ");
+		 /*String[] rawDate =  evtToUpdate.getTimes().get(0).getStartTime().toUiString().split(" ");
 		 String heuredebut = rawDate[1];
 		 rawDate = rawDate[0].split("-");
 		 String datedebut = rawDate[2]+"/"+rawDate[1]+"/"+rawDate[0];
@@ -120,11 +120,10 @@ public class CalendarController extends HttpServlet {
 		session.setAttribute("datefin", datefin);
 		
 		session.setAttribute("titre", titre);
-		session.setAttribute("desc", desc);
+		session.setAttribute("desc", desc);*/
 		
 		
-		session.setAttribute("numEvt", numEvt);
-		
+		session.setAttribute("evt", evtToUpdate);
 		
 		getServletContext().getRequestDispatcher("/views/service_pedagogique/update_event.jsp").forward(request,response);
 		
@@ -187,8 +186,8 @@ public class CalendarController extends HttpServlet {
 		
 		HttpSession session = request.getSession();
 		session.setAttribute("listEvt", lstEvent);
-		
-		getServletContext().getRequestDispatcher("/views/service_pedagogique/Gestion_cour.jsp").forward(request,response);
+		request.getRequestDispatcher("/").forward(request, response);
+		//getServletContext().getRequestDispatcher("/views/service_pedagogique/Gestion_cour.jsp").forward(request,response);
 		
 	}
 
@@ -302,9 +301,27 @@ public class CalendarController extends HttpServlet {
 		request.getRequestDispatcher("/").forward(request, response);
 	}
 	
-	private void deletEvt(HttpServletRequest request, HttpServletResponse response)
+	private void deletEvt(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
 	{
+		HttpSession session = request.getSession();
+		List<CalendarEventEntry> lstEvent = (List<CalendarEventEntry>)session.getAttribute("listEvt");
+		int numEvt = Integer.parseInt(request.getParameter("numEvt"));
 		
+		CalendarEventEntry retrievedEntry = lstEvent.get(numEvt);
+		
+		try {
+			retrievedEntry.delete();
+			lstEvent.remove(numEvt);
+			System.out.println("evenement supprimmer");
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (ServiceException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		session.setAttribute("lstEvent", lstEvent);
+		request.getRequestDispatcher("/").forward(request, response);
 	}
 
 }
