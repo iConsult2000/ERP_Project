@@ -14,15 +14,18 @@
 	<div id="contener">
 		<div id="contener-header">
 			<img alt="ingesup-logo" src="resources/pictures/ingesup_logo.jpg">
+			
 			<div id="contener-header-form">
 				<% if(session.getAttribute("id") != null && session.getAttribute("mdp") != null){ %>
 					<%@ include file="formulaires/logout.jsp" %>
 				<% }else{ %>
 					<%@ include file="formulaires/login.jsp" %>
+					
 				<% } %>
 			</div>
 		</div>
 		<div id="contener-body">
+		
 			<% if(session.getAttribute("id") != null && session.getAttribute("mdp") != null){ %>
 				<% //if(session.getAttribute("id").equals("sp") && session.getAttribute("mdp").equals("sp")){ %>
 					<div id="contener-body-menu">

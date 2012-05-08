@@ -49,7 +49,7 @@ public class CalendarController extends HttpServlet {
         super();
         
         Properties systemSettings = System.getProperties(); 
-    	System.getProperties().put( "proxySet", "true" ); 
+    	System.getProperties().put( "proxySet", "false" ); 
     	systemSettings.put("http.proxyHost", "proxy.etudiant.insia.org"); 
     	systemSettings.put("http.proxyPort", "3128"); 
     	systemSettings.put("https.proxyHost", "proxy.etudiant.insia.org"); 

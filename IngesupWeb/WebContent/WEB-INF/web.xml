@@ -146,4 +146,58 @@
     <servlet-name>GestionPersonne</servlet-name>
     <url-pattern>/AjoutPersonne</url-pattern>
   </servlet-mapping>
+  <servlet>
+		<description></description>
+		<display-name>LogoutServlet</display-name>
+		<servlet-name>LogoutServlet</servlet-name>
+		<servlet-class>com.ingesup.controllers.LogoutServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>LogoutServlet</servlet-name>
+		<url-pattern>/logout</url-pattern>
+	</servlet-mapping>
+  
+<!--   Implementation du service identification et autorisation d'accès aux ressources 
+	  par acteur -->
+  <security-constraint>
+		<display-name>Contrainte_1</display-name>
+		<web-resource-collection>
+			<web-resource-name>SecuredRessources1</web-resource-name>			
+<!-- 			<url-pattern>/views/service_pedagogique/*</url-pattern>  pour toutes les autres-->
+				<url-pattern>/views/service_pedagogique/secured.jsp</url-pattern>
+			
+		</web-resource-collection>
+		<auth-constraint>
+			<description>Gestion de l'etablissement</description>
+			<role-name>gestion</role-name>
+		</auth-constraint>
+	</security-constraint>
+
+  <security-constraint>
+		<display-name>Contrainte_2</display-name>
+		<web-resource-collection>
+			<web-resource-name>SecuredRessources2</web-resource-name>
+			<url-pattern>/views/etudiant/secured.jsp</url-pattern>
+<!-- 			<url-pattern>/views/etudiant/*</url-pattern>	pour toutes les autres			 -->
+		</web-resource-collection>
+		<auth-constraint>
+			<description>Consultation des informations</description>			
+			<role-name>etudiant</role-name>
+		</auth-constraint>
+	</security-constraint>
+	<login-config>
+		<auth-method>FORM</auth-method>
+		<form-login-config>
+		<form-login-page>/formulaires/loginAuth.jsp</form-login-page>
+		<form-error-page>/formulaires/error.jsp</form-error-page>
+		</form-login-config>
+	</login-config>
+
+	<security-role>
+		<role-name>gestion</role-name>
+	</security-role>
+	<security-role>
+		<role-name>etudiant</role-name>
+	</security-role>	
+  
 </web-app>

@@ -1,5 +1,5 @@
 	<form method="post"
-		action="/IngesupWeb">
+		action="<%=response.encodeURL("j_security_check")%>">
 		<table border="0">
 			<tr>
 				<td>Login</td>
@@ -11,9 +11,6 @@
 			</tr>
 			<tr>
 				<td><input type="submit" value="Login"></td>
-				<td><a href="logout">Fermer la session</a></td>
 			</tr>
 		</table>
 	</form>
-
-<!-- Le formulaire renvoyait vers l'url /Auth -->

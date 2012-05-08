@@ -28,12 +28,14 @@ INSERT INTO Principals VALUES ('', 'manuel', 'mztYihJJkbNWK+MG5z7ZmA==');
 INSERT INTO Principals VALUES ('', 'yohann', 'EMC4Ib4kShMQI3skbQDbxQ==');
 INSERT INTO Principals VALUES ('', 'julien', 'IwWxwnzmzsKWb2A1KaTAIQ==');
 INSERT INTO Principals VALUES ('', 'lori', 'uIS39WkGLU9ylXcgwidfDg==');
+INSERT INTO Principals VALUES ('', 'svepde', 'JYHRGBFTskNxRHcubg6WzA==');
 
-INSERT INTO Roles VALUES ('', 'steeve', 'visitor', 'Roles');
+INSERT INTO Roles VALUES ('', 'steeve', 'etudiant', 'Roles');
 INSERT INTO Roles VALUES ('', 'manuel', 'shopper', 'Roles');
-INSERT INTO Roles VALUES ('', 'yohann', 'visitor', 'Roles');
-INSERT INTO Roles VALUES ('', 'julien', 'visitor', 'Roles');
-INSERT INTO Roles VALUES ('', 'lori', 'visitor', 'Roles');
+INSERT INTO Roles VALUES ('', 'yohann', 'etudiant', 'Roles');
+INSERT INTO Roles VALUES ('', 'julien', 'etudiant', 'Roles');
+INSERT INTO Roles VALUES ('', 'lori', 'etudiant', 'Roles');
+INSERT INTO Roles VALUES ('', 'srvpde', 'gestion', 'Roles');
 
 
 ********************authic2k-ds.xml to JBOSS server**********************
@@ -105,6 +107,7 @@ manuel 10n*!
 yohann 11p*!
 julien 12q*!
 lori \<13r*
+svepde Ingesup2012*
 
 Methode unix pour encrypter avant de stocker en BDD
 >echo -n [PASSWORD] | openssl dgst -md5 -binary | openssl base64
