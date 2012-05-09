@@ -16,11 +16,13 @@
 			<img alt="ingesup-logo" src="resources/pictures/ingesup_logo.jpg">
 			
 			<div id="contener-header-form">
+			<p>
 				<% if(session.getAttribute("type") != null){ %>
 					<a href="logout">Fermer la session</a>
 				<% }else{ %>
-					<a href="Auth">Connection</a>
+					<a href="Auth">Connexion</a>
 				<% } %>
+				</p>
 			</div>
 		</div>
 		<div id="contener-body">
