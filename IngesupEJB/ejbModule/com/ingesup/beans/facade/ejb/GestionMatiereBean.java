@@ -16,7 +16,7 @@ import com.ingesup.beans.persistence.Note;
 /**
  * Session Bean implementation class GestionMatiere
  */
-@Stateless()
+@Stateless(name="GestionMatiereBeanStateless", description="Gestion des matieres")
 @SecurityDomain(value="domainIC2K")
 @Remote(GestionMatiereRemote.class)
 public class GestionMatiereBean implements GestionMatiereRemote, Serializable {

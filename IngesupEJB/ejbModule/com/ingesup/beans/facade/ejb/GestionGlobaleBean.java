@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.security.Principal;
 
 import javax.annotation.security.RolesAllowed;
+import javax.ejb.Remote;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -23,6 +24,7 @@ import com.ingesup.beans.persistence.ServicePedagogique;
  */
 @Stateless(name = "GestionGlobaleStateless", description = "outils commun")
 @SecurityDomain(value="domainIC2K")
+@Remote(GestionGlobaleRemote.class)
 public class GestionGlobaleBean implements GestionGlobaleRemote, Serializable {
 
 	@PersistenceContext

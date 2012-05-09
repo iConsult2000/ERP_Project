@@ -27,7 +27,7 @@ public class GestionPersonne extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 
-	@EJB GestionSvePdeBean gspb;
+	
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
@@ -98,12 +98,18 @@ public class GestionPersonne extends HttpServlet {
 		Collection<Personne> ResultEtu = new ArrayList();
 		
 		HttpSession session = request.getSession();
+		try{
+			InitialContext ctx = new InitialContext();
+			GestionSvePdeRemote gspb = (GestionSvePdeRemote) ctx.lookup("Ingesup/GestionSvePdeStateful/remote");
+			if(nom != null) ResultEtu = gspb.searchEtudiantByName(nom);
+			else if(idClasse != 0) ResultEtu = gspb.searchEtudiantByClasse(idClasse);
+			else ResultEtu = gspb.getAllEtudiants();
+			
+			session.setAttribute("listEtu", ResultEtu);
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
 		
-		if(nom != null) ResultEtu = gspb.searchEtudiantByName(nom);
-		else if(idClasse != 0) ResultEtu = gspb.searchEtudiantByClasse(idClasse);
-		else ResultEtu = gspb.getAllEtudiants();
-		
-		session.setAttribute("listEtu", ResultEtu);
 		// redirection
 		request.getRequestDispatcher("/").forward(request, response);
 	}
