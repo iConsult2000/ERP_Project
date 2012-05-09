@@ -21,7 +21,7 @@
 					<a href="logout">Fermer la session</a>
 				<% }else{ %>
 				
-				<img alt="ingesup-logo" src="resources/pictures/icon_spacer.gif"><a href="Auth">Se connecter</a>
+				<img alt="ingesup-logo" src="resources/pictures/log_in.png"><a href="Auth">Se connecter</a>
 				<% } %>
 				</p>
 			</div>
