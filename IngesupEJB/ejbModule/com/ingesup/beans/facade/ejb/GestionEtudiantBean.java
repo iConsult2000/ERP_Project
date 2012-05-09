@@ -5,7 +5,6 @@ import java.io.Serializable;
 import javax.ejb.Remote;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
-import javax.persistence.NamedQuery;
 import javax.persistence.PersistenceContext;
 
 import com.ingesup.beans.facade.ejb.Remote.GestionEtudiantRemote;
