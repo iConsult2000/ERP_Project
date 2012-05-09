@@ -89,8 +89,9 @@ public class GestionSvePdeBean implements GestionSvePdeRemote, GestionSvePdeLoca
 	@RolesAllowed("gestion")
 	public Collection<Classe> getAllClasses() {
 		System.out.println("listerToutesLesClasses in progress");
-		javax.persistence.Query q = em.createQuery("select c from classe c");
-		return (Collection<Classe>) q.getResultList();
+		Query q = em.createQuery("select c from classe c");
+		Collection<Classe> result = q.getResultList();
+		return result;
 	}
 
 
@@ -98,7 +99,7 @@ public class GestionSvePdeBean implements GestionSvePdeRemote, GestionSvePdeLoca
 	public Collection<Personne> searchEtudiantByName(String nomPersonne) {
 		Query q = em.createQuery("select e from etudiant where lower(e.nomPers) like '%:nomPers%'");
 		q.setParameter("nomPers", nomPersonne);
-		List<Personne> result = q.getResultList();
+		Collection<Personne> result = q.getResultList();
 		return result;
 		
 		
