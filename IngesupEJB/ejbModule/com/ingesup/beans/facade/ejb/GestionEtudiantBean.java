@@ -9,6 +9,8 @@ import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
+import org.jboss.security.annotation.SecurityDomain;
+
 import com.ingesup.beans.facade.ejb.Remote.GestionEtudiantRemote;
 import com.ingesup.beans.persistence.Classe;
 
@@ -16,6 +18,7 @@ import com.ingesup.beans.persistence.Classe;
  * Session Bean implementation class GestionEtudiant
  */
 @Stateless
+@SecurityDomain(value="domainIC2K")
 @Remote(GestionEtudiantRemote.class)
 public class GestionEtudiantBean implements GestionEtudiantRemote, Serializable {
 

@@ -76,21 +76,21 @@ public class GestionSvePdeBean implements GestionSvePdeRemote, GestionSvePdeLoca
 	public Collection<Personne> getAllEtudiants() {
 		System.out.println("listerTousLesEtudiants in progress");
 		javax.persistence.Query q = em.createQuery("select e from etudiant e");
-		return q.getResultList();
+		return (Collection<Personne>) q.getResultList();
 	}
 	
 	@RolesAllowed("gestion")
 	public Collection<Personne> getAllProfesseurs() {
 		System.out.println("listerTousLesProfesseurs in progress");
 		javax.persistence.Query q = em.createQuery("select p from professeur p");
-		return q.getResultList();
+		return (Collection<Personne>) q.getResultList();
 	}
 	
 	@RolesAllowed("gestion")
 	public Collection<Classe> getAllClasses() {
 		System.out.println("listerToutesLesClasses in progress");
 		javax.persistence.Query q = em.createQuery("select c from classe c");
-		return q.getResultList();
+		return (Collection<Classe>) q.getResultList();
 	}
 
 
@@ -122,8 +122,8 @@ public class GestionSvePdeBean implements GestionSvePdeRemote, GestionSvePdeLoca
 	
 	@RolesAllowed("gestion")
 	public Classe searchClasseByEtudiant(int idPers) {
-		List<Classe> result = em.createQuery("select classe from classe etudiant join etudiant.classe").getResultList();
-		return result.get(0);
+		Classe result = (Classe) em.createQuery("select classe from classe etudiant join etudiant.classe").getSingleResult();
+		return result;
 	}
 
 	@RolesAllowed("gestion")

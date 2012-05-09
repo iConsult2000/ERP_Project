@@ -10,12 +10,16 @@ import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
+import org.jboss.security.annotation.SecurityDomain;
+
 import com.ingesup.beans.facade.ejb.Remote.GestionDocumentRemote;
+import com.ingesup.beans.persistence.Classe;
 import com.ingesup.beans.persistence.Document;
 import com.ingesup.beans.persistence.DocumentDITO;
 
 
 @Stateless
+@SecurityDomain(value="domainIC2K")
 @Remote(GestionDocumentRemote.class)
 public class GestionDocumentBean implements GestionDocumentRemote, Serializable {
 

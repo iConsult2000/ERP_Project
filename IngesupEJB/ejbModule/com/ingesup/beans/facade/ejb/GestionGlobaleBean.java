@@ -29,8 +29,6 @@ public class GestionGlobaleBean implements GestionGlobaleRemote, Serializable {
 	EntityManager em;
 
 	private Principal principal;
-	private SecurityContext sc;
-
 	/**
 	 * Default constructor.
 	 */
@@ -40,9 +38,9 @@ public class GestionGlobaleBean implements GestionGlobaleRemote, Serializable {
 
 	private void initialize() throws Exception {
 
-		sc = (SecurityContext) SecurityContextFactory
+		SecurityContextFactory
 				.createSecurityContext("domainIC2K");
-		principal = sc.getCallerPrincipal();
+		principal = SecurityContext.getCallerPrincipal();
 
 	}
 
@@ -56,12 +54,12 @@ public class GestionGlobaleBean implements GestionGlobaleRemote, Serializable {
 		}
 		
 		Personne personne = null;
-	      if (sc.isCallerInRole("etudiant")) {
+	      if (SecurityContext.isCallerInRole("etudiant")) {
 		    	Query q = em.createQuery("select e from etudiant e where e.nomPers = :nomPers");
 		    	q.setParameter("nomPers", principal.getName());
 		    	personne = (Etudiant) q.getSingleResult();
 		    	
-		    } else if (sc.isCallerInRole("gestion")) {
+		    } else if (SecurityContext.isCallerInRole("gestion")) {
 		    	Query q = em.createQuery("select svepde from servicepedagogique svepde where svepde.nomPers = :nomPers");
 		    	q.setParameter("nomPers", principal.getName());
 		    	personne = (ServicePedagogique) q.getSingleResult();
