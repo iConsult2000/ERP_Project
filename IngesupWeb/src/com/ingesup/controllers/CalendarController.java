@@ -8,6 +8,9 @@ import java.net.URL;
 import java.util.List;
 import java.util.Properties;
 
+import javax.naming.Context;
+import javax.naming.InitialContext;
+import javax.naming.NamingException;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -31,6 +34,9 @@ import com.google.gdata.data.calendar.CalendarEventFeed;
 import com.google.gdata.data.extensions.When;
 import com.google.gdata.util.AuthenticationException;
 import com.google.gdata.util.ServiceException;
+import com.ingesup.beans.facade.ejb.Remote.GestionEtudiantRemote;
+import com.ingesup.beans.facade.ejb.Remote.GestionGlobaleRemote;
+import com.ingesup.beans.facade.ejb.Remote.GestionSvePdeRemote;
 
 /**
  * Servlet implementation class Calendar
@@ -71,12 +77,43 @@ public class CalendarController extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
+		HttpSession session = request.getSession(true);
+		String type = (String)session.getAttribute("type");
+		
+		
+		
+		
 		client = new CalendarService("API Project");
 		try {
 			client.setUserCredentials("erpingesuparis@gmail.com", "iConsult2000");
 		} catch (AuthenticationException e) {
 			e.printStackTrace();
 		}
+		
+		if(type == "etudiant"){
+			
+			
+			try {
+				Context context = new InitialContext();
+				System.out.println("etudiant");
+
+				GestionGlobaleRemote beanfacadeRemote = (GestionGlobaleRemote) context
+						.lookup("Ingesup/GestionGlobaleStateless/remote");
+
+				int idPers = beanfacadeRemote.getConnected();
+				System.out.println(idPers);
+				
+				GestionEtudiantRemote etudiant = (GestionEtudiantRemote) context
+						.lookup("Ingesup/GestionEtudiantStateless/remote");
+				
+				String idAgenda = etudiant.getNumAgendaByEtudiant(idPers);
+				System.out.println("num agenda :"+ idAgenda);
+
+			} catch (NamingException err) {
+				err.printStackTrace();
+			}
+		}
+		
 		
 		if (getInitParameter("operation").equals("ajouter")) addEvt(request,response);
 		if (getInitParameter("operation").equals("modifier")) updateEvt(request,response);
