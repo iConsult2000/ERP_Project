@@ -269,11 +269,31 @@
     <display-name>GestionPersonne</display-name>
     <servlet-name>GestionPersonne</servlet-name>
     <servlet-class>com.ingesup.controllers.GestionPersonne</servlet-class>
+    <init-param>
+      <param-name>operation</param-name>
+      <param-value>AjoutPersonne</param-value>
+    </init-param>
   </servlet>
   <servlet-mapping>
     <servlet-name>GestionPersonne</servlet-name>
     <url-pattern>/AjoutPersonne</url-pattern>
   </servlet-mapping>
+  
+    <servlet>
+    <description></description>
+    <display-name>SearchPersonne</display-name>
+    <servlet-name>SearchPersonne</servlet-name>
+    <servlet-class>com.ingesup.controllers.GestionPersonne</servlet-class>
+    <init-param>
+      <param-name>operation</param-name>
+      <param-value>Search_etu</param-value>
+    </init-param>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>SearchPersonne</servlet-name>
+    <url-pattern>/Search_etu</url-pattern>
+  </servlet-mapping>
+  
   <servlet>
 		<description></description>
 		<display-name>LogoutServlet</display-name>
