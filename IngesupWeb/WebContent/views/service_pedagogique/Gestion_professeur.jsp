@@ -14,7 +14,7 @@
 <div class="gestion">
 	<table class="gestion">
 		<tr>
-			<td align="left"><p style="font-weight: bold;">Profésseurs</p>
+			<td align="left"><p style="font-weight: bold;">Professeurs</p>
 			<input type="button" value="Ajouter" onClick="new_person_prof()"/></td>
 		</tr>
 	</table>

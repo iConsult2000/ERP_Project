@@ -3,9 +3,13 @@
 	<application-policy xmlns="urn:jboss:security-beans:1.0"
 		name="domainIC2K">
 		<authentication>
-			<!-- <login-module code="org.jboss.security.auth.spi.UsersRolesLoginModule" -->
-			<!-- flag="required"> -->
-			<!-- </login-module> -->
+			<login-module code="org.jboss.security.ClientLoginModule"
+				flag="required">
+				<!-- Any existing security context will be restored on logout -->
+				<module-option name="restore-login-identity">true</module-option>
+				<module-option name="multi-threaded">true</module-option>
+				<module-option name="password-stacking">useFirstPass</module-option>
+			</login-module>
 			<login-module code="org.jboss.security.auth.spi.DatabaseServerLoginModule"
 				flag="required">
 				<module-option name="dsJndiName">java:/AuthDS</module-option>
@@ -13,11 +17,12 @@
 				<module-option name="hashAlgorithm">MD5</module-option>
 				<module-option name="hashEncoding">base64</module-option>
 				<module-option name="principalsQuery">select Password from Principals
-					where PrincipalID=?</module-option>
+					where PrincipalID=?
+				</module-option>
 				<module-option name="rolesQuery"> select Role, RoleGroup from Roles
-					where PrincipalID=?</module-option>
+					where PrincipalID=?
+				</module-option>
 			</login-module>
-
 		</authentication>
 	</application-policy>
 </deployment>
