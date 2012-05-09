@@ -25,6 +25,13 @@ public interface GestionSvePdeRemote {
 	
 	public Personne searchEtudiant(int idPers);
 	
+	/**
+	 * Recuperer la liste des étudiants de la Classe
+	 * @param idClasse
+	 * @return list of Classe
+	 */
+	public Collection<Personne> searchEtudiantByClasse(int idClasse);
+	
 	
 	public Collection<Personne> searchEtudiantByName(String nomPersonne);
 	

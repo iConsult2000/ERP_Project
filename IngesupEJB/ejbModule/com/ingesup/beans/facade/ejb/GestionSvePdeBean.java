@@ -132,6 +132,11 @@ public class GestionSvePdeBean implements GestionSvePdeRemote, GestionSvePdeLoca
 		return result;
 	}
 
+	@RolesAllowed("gestion")
+	public Collection<Personne> searchEtudiantByClasse(int idClasse){
+		List<Personne> result = em.createQuery("select etudiant from classe etudiant join etudiant.classe").getResultList();
+		return result;
+	}
 
 	
 
