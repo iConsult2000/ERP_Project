@@ -50,10 +50,15 @@ public class GestionPersonne extends HttpServlet {
 		String nom = request.getParameter("nom");
 		String prenom = request.getParameter("prenom");
 		String email = request.getParameter("email");
+		String rue = request.getParameter("rue");
+		String ville = request.getParameter("ville");
+		int cp = Integer.parseInt(request.getParameter("cp"));
+		String numero = request.getParameter("numero");
+		int classe = Integer.parseInt(request.getParameter("classe"));
 
-		Adresse adresse = new Adresse("7 Rue de la mort", "Enfer", 777);
+		Adresse adresse = new Adresse(rue, ville, cp);
 
-		Etudiant e = new Etudiant(nom, prenom, email, adresse, "0631323135", 1);
+		Etudiant e = new Etudiant(nom, prenom, email, adresse, numero, classe);
 
 		try {
 			Context context = new InitialContext();
