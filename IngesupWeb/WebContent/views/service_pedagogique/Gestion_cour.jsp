@@ -49,7 +49,7 @@
 			<input type="button" value="Ajouter" onClick="new_even()"/></td>
 			</form>
 		</tr>
-			<%  listEvt = (List<CalendarEventEntry>) session.getAttribute("listEvt");
+			<% List<CalendarEventEntry> listEvt = (List<CalendarEventEntry>) session.getAttribute("listEvt");
 			if (listEvt != null ){
 			for(int i = 0; i<listEvt.size();i++ ){%>
 				<tr>
