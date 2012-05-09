@@ -7,6 +7,8 @@ import java.util.Collection;
 import javax.ejb.Remote;
 import javax.ejb.Stateless;
 
+import org.jboss.security.annotation.SecurityDomain;
+
 import com.ingesup.beans.facade.ejb.Remote.GestionMatiereRemote;
 import com.ingesup.beans.persistence.Matiere;
 import com.ingesup.beans.persistence.Note;
@@ -14,7 +16,8 @@ import com.ingesup.beans.persistence.Note;
 /**
  * Session Bean implementation class GestionMatiere
  */
-@Stateless
+@Stateless()
+@SecurityDomain(value="domainIC2K")
 @Remote(GestionMatiereRemote.class)
 public class GestionMatiereBean implements GestionMatiereRemote, Serializable {
 
