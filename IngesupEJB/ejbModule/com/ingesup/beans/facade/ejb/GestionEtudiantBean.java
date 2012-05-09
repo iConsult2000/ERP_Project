@@ -1,7 +1,9 @@
 package com.ingesup.beans.facade.ejb;
 
 import java.io.Serializable;
+import java.util.List;
 
+import javax.annotation.security.RolesAllowed;
 import javax.ejb.Remote;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -33,4 +35,15 @@ public class GestionEtudiantBean implements GestionEtudiantRemote, Serializable 
     	return q.getNo_agenda();
     }
 
+    @RolesAllowed("etudiant")
+	public String getNumAgendaByEtudiant(int idPers) {
+    	List<Classe> result = em.createQuery("select classe from classe etudiant join etudiant.classe").getResultList();
+		return result.get(0).getNo_agenda();
+	}
+
+	
+	public Classe searchClasseByEtudiant(int idPers) {
+		List<Classe> result = em.createQuery("select classe from classe etudiant join etudiant.classe").getResultList();
+		return result.get(0);
+	}
 }
