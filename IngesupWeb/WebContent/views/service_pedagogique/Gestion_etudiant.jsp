@@ -1,3 +1,5 @@
+<%@page import="java.util.Collection"%>
+<%@page import="com.ingesup.beans.persistence.Personne"%>
 <script type="text/javascript">
 	function new_person_etu(){
 		document.getElementById("layer1").style.visibility="visible";
@@ -39,5 +41,22 @@
 			</td>
 		</tr>
 		</form>
+	</table>
+	<table>
+	<thead>
+	<th>Id</th>
+	<th>Nom</th>
+	</thead>
+		<tbody>
+			<% Collection<Personne> listEtu = (Collection<Personne>) session.getAttribute("listEtu");
+				if (listEtu != null ){
+				for(Personne p : listEtu){%>
+					<tr>
+							<td><%= p.getIdPersonne()%></td>
+							<td><%= p.getNomPers() %></td>
+					</tr>
+								
+			 <% }}%>
+		</tbody>
 	</table>
 </div>
