@@ -16,29 +16,29 @@ public interface GestionSvePdeRemote {
 	/**
 	 * Ajout d'un éléve
 	 */
-	@RolesAllowed("gestion")	
+		
 	public void addEtudiant(Etudiant etudiant);
 	
 	/**
 	 * Recherche d'un eleve
 	 */
-	@RolesAllowed({"gestion","enseignant"})
+	
 	public Personne searchEtudiant(int idPers);
 	
-	@RolesAllowed({"gestion","enseignant"})
+	
 	public Collection<Personne> searchEtudiantByName(String nomPersonne);
 	
 	/**
 	 * Recuperer tous les etudiants 
 	 */
-	@RolesAllowed("gestion")	
+		
 	public Collection<Personne> getAllEtudiants();
 	
 	/**
 	 * Ajout d'un professeur
 	 * @param prof
 	 */
-	@RolesAllowed("gestion")
+	
 	public void addProfesseur(Professeur prof);
 	
 	/**
@@ -46,7 +46,7 @@ public interface GestionSvePdeRemote {
 	 * @param idPers
 	 * @return
 	 */
-	@RolesAllowed("gestion")
+	
 	public Personne searchProfesseur(int idPers);
 	
 	/**
@@ -54,27 +54,27 @@ public interface GestionSvePdeRemote {
 	 * @param nomPersonne
 	 * @return Personne
 	 */
-	@RolesAllowed("gestion")
+	
 	public Collection<Personne> searchProfesseurByName(String nomPersonne);
 	
 	/**
 	 * Recuperer tous les etudiants 
 	 */
-	@RolesAllowed("gestion")
+	
 	public Collection<Personne> getAllProfesseurs();
 	
 	/**
 	 * 
 	 * @return collection of classes
 	 */
-	@RolesAllowed("gestion")
+	
 	public Collection<Classe> getAllClasses();
 	
 	/**
 	 * Ajout d'une classe
 	 * @param prof
 	 */
-	@RolesAllowed("gestion")
+	
 	public void addClasse(Classe classe);
 	
 	/**
@@ -82,7 +82,7 @@ public interface GestionSvePdeRemote {
 	 * @param idClasse
 	 * @return Classe
 	 */
-	@RolesAllowed("gestion")
+	
 	public Classe searchClasse(int idClasse);
 	
 	/**
@@ -90,7 +90,7 @@ public interface GestionSvePdeRemote {
 	 * @param specialite
 	 * @return list of Classe
 	 */
-	@RolesAllowed("gestion")
+	
 	public Collection<Classe> searchClasseBySpecialite(String specialite);
 	
 	/**
@@ -98,7 +98,7 @@ public interface GestionSvePdeRemote {
 	 * @param idPers
 	 * @return classe 
 	 */
-	@RolesAllowed("gestion")
+	
 	public Classe searchClasseByEtudiant(int idPers);
 	
 	/**
@@ -106,7 +106,7 @@ public interface GestionSvePdeRemote {
 	 * @param idPers
 	 * @return list of Classe 
 	 */
-	@RolesAllowed("gestion")
+	
 	public Collection<Classe> searchClasseByProfesseur(int idPers);
 	
 }
