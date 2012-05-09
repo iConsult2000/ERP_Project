@@ -17,5 +17,27 @@
 			<td align="left"><p style="font-weight: bold;">Etudiants</p>
 			<input type="button" value="Ajouter" onClick="new_person_etu()"/></td>
 		</tr>
+		<form method="post" action="./Search_etu">
+		<tr>	    
+			<td>
+				<p>Recherche</p>
+				<hr>
+				<p>
+					Nom<input type="text" name="nom"/>
+					<span style="color:black;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ou&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+					Classe
+					<select name="classe">
+						<% GestionSvePdeBean _gspb = new GestionSvePdeBean();
+						   Collection<Classe> _AllClasses = _gspb.getAllClasses(); 
+						   for(Classe c : AllClasses){%>
+							<option value="<% c.getIdClasse(); %>"><% c.getNomClasse(); %></option>
+						<% } %>
+					</select>
+				</p>
+				<input type="submit" value="Valider"/>
+				<hr>
+			</td>
+		</tr>
+		</form>
 	</table>
-	</div>
+</div>
