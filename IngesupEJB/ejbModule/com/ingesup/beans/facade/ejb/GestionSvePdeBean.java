@@ -102,10 +102,7 @@ public class GestionSvePdeBean implements GestionSvePdeRemote, GestionSvePdeLoca
 
 	@RolesAllowed("gestion")
 	public Collection<Personne> searchProfesseurByName(String nomPersonne) {
-		Query q = em.createQuery("select p from Professeur p where lower(p.nomPers) like %:nomPers% ");
-		q.setParameter("nomPers", nomPersonne);
-		List<Personne> result = q.getResultList();
-		return result;
+		return  em.createNamedQuery("findIdProfesseurByName").setParameter("nomPers", "%"+nomPersonne+"%").getResultList();
 	}
 
 	@RolesAllowed("gestion")

@@ -53,6 +53,7 @@ public class GestionPersonne extends HttpServlet {
 		
 		if (getInitParameter("operation").equals("AjoutPersonne")) addEtu(request,response);
 		if (getInitParameter("operation").equals("Search_etu")) searchEtu(request,response);
+		if (getInitParameter("operation").equals("Search_prof")) searchProf(request,response);
 	}
 	
 	private void addEtu(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -107,6 +108,29 @@ public class GestionPersonne extends HttpServlet {
 			else ResultEtu = gspb.getAllEtudiants();
 			
 			session.setAttribute("listEtu", ResultEtu);
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
+		
+		// redirection
+		request.getRequestDispatcher("/").forward(request, response);
+	}
+	
+	private void searchProf(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		String nom = request.getParameter("nom");
+		
+		Collection<Personne> ResultEtu = new ArrayList();
+		//System.out.println("la valeur idClasse :" + idClasse);
+		//System.out.println("la valeur nom :" + nom);
+		HttpSession session = request.getSession();
+		try{
+			InitialContext ctx = new InitialContext();
+			GestionSvePdeRemote gspb = (GestionSvePdeRemote) ctx.lookup("Ingesup/GestionSvePdeStateful/remote");
+			if (nom != "") ResultEtu = gspb.searchProfesseurByName(nom);
+			else ResultEtu = gspb.getAllProfesseurs();
+			
+			session.setAttribute("listProf", ResultEtu);
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
 		}

@@ -286,6 +286,22 @@
     <servlet-name>SearchPersonne</servlet-name>
     <url-pattern>/Search_etu</url-pattern>
   </servlet-mapping>
+
+  <servlet>
+    <description></description>
+    <display-name>SearchProfesseur</display-name>
+    <servlet-name>SearchProfesseur</servlet-name>
+    <servlet-class>com.ingesup.controllers.GestionPersonne</servlet-class>
+    <init-param>
+      <param-name>operation</param-name>
+      <param-value>Search_prof</param-value>
+    </init-param>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>SearchProfesseur</servlet-name>
+    <url-pattern>/Search_prof</url-pattern>
+  </servlet-mapping>
+  
   <servlet>
     <description></description>
     <display-name>LogoutServlet</display-name>

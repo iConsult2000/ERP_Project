@@ -43,6 +43,7 @@
 		</tr>
 		</form>
 	</table>
+	<br />
 	<% 	if(session.getAttribute("listEtu") != null){
 		Collection<Personne> listEtu = (Collection<Personne>) session.getAttribute("listEtu");%>
 	<table>
