@@ -57,12 +57,12 @@ public class GestionGlobaleBean implements GestionGlobaleRemote, Serializable {
 		
 		Personne personne = null;
 	      if (SecurityContext.isCallerInRole("etudiant")) {
-		    	Query q = em.createQuery("select e from etudiant e where e.nomPers = :nomPers");
+		    	Query q = em.createQuery("select e from etudiant e where lower(e.nomPers) = :nomPers");
 		    	q.setParameter("nomPers", principal.getName());
 		    	personne = (Etudiant) q.getSingleResult();
 		    	
 		    } else if (SecurityContext.isCallerInRole("gestion")) {
-		    	Query q = em.createQuery("select svepde from servicepedagogique svepde where svepde.nomPers = :nomPers");
+		    	Query q = em.createQuery("select svepde from servicepedagogique svepde where lower(svepde.nomPers) = :nomPers");
 		    	q.setParameter("nomPers", principal.getName());
 		    	personne = (ServicePedagogique) q.getSingleResult();
 			}
