@@ -43,10 +43,9 @@ public class Menu extends HttpServlet {
 		
 		if (getInitParameter("choix").equals("Gestion_etudiant")) gestion_etudiant(request,response);
 		if (getInitParameter("choix").equals("Gestion_classe")) gestion_classe(request,response);
-		else{
-			//redirection
-			request.getRequestDispatcher("/").forward(request, response);
-		}
+		if (getInitParameter("choix").equals("Gestion_professeur")) gestion_professeur(request,response);
+		if (getInitParameter("choix").equals("Gestion_cour")) gestion_cour(request,response);
+		
 		
 	}
 
@@ -96,4 +95,19 @@ public class Menu extends HttpServlet {
 		//redirection
 		request.getRequestDispatcher("/").forward(request, response);
 	}
+	
+	private void gestion_professeur(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		
+		//redirection
+		request.getRequestDispatcher("/").forward(request, response);
+	}
+	
+	private void gestion_cour(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		
+		//redirection
+		request.getRequestDispatcher("/").forward(request, response);
+	}
+	
 }
