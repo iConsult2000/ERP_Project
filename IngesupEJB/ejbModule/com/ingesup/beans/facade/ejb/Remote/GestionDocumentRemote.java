@@ -16,7 +16,7 @@ public interface GestionDocumentRemote {
 	 * @param idMatiere
 	 * @return
 	 */
-	@PermitAll
+
 	Collection<Document> getListDocuments(int idPersonne, int idMatiere);
 	
 	/**
@@ -24,6 +24,6 @@ public interface GestionDocumentRemote {
 	 * @param idDoc
 	 * @return
 	 */
-	@PermitAll
+	
 	File getDocument(int idDoc);
 }

@@ -14,7 +14,7 @@ public interface GestionMatiereRemote {
 	 * @param idClasse
 	 * @return
 	 */
-	@PermitAll
+
 	Collection<Matiere> getListMatiere(int idClasse);
 	
 	/**
@@ -23,6 +23,6 @@ public interface GestionMatiereRemote {
 	 * @param idMatiere
 	 * @return
 	 */
-	@PermitAll
+	
 	Collection<Note> getListNotes(int idPersonne, int idMatiere);
 }

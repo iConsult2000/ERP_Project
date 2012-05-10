@@ -5,6 +5,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collection;
 
+import javax.annotation.security.RolesAllowed;
 import javax.ejb.Remote;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -18,7 +19,7 @@ import com.ingesup.beans.persistence.Document;
 import com.ingesup.beans.persistence.DocumentDITO;
 
 
-@Stateless
+@Stateless(name="GestionDocumentBeanStateless")
 @SecurityDomain(value="domainIC2K")
 @Remote(GestionDocumentRemote.class)
 public class GestionDocumentBean implements GestionDocumentRemote, Serializable {
@@ -46,6 +47,7 @@ public class GestionDocumentBean implements GestionDocumentRemote, Serializable 
 	 * @param idMatiere
 	 * @return
 	 */
+	@RolesAllowed("enseignant")
 	public Collection<Document> getListDocuments(int idPersonne, int idMatiere) {
 		initialize();
 		return collectionDoc;
