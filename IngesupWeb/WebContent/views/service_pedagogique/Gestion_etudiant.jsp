@@ -29,11 +29,11 @@
 					<span style="color:black;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ou&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
 					Classe
 					<select name="classe">
-						<% GestionSvePdeBean _gspb = new GestionSvePdeBean();
-						   Collection<Classe> _AllClasses = _gspb.getAllClasses(); 
-						   for(Classe c : AllClasses){%>
+						<% if(session.getAttribute("AllClasses") != null){
+							Collection<Classe> _AllClasses = (Collection<Classe>) session.getAttribute("AllClasses"); 
+						   for(Classe c : _AllClasses){%>
 							<option value="<% c.getIdClasse(); %>"><% c.getNomClasse(); %></option>
-						<% } %>
+						<% }} %>
 					</select>
 				</p>
 				<input type="submit" value="Valider"/>
@@ -41,6 +41,8 @@
 			</td>
 		</tr>
 		</form>
+	<% 	if(session.getAttribute("listEtu") != null){
+		Collection<Personne> listEtu = (Collection<Personne>) session.getAttribute("listEtu");%>
 	</table>
 	<table>
 	<thead>
@@ -48,15 +50,12 @@
 	<th>Nom</th>
 	</thead>
 		<tbody>
-			<% Collection<Personne> listEtu = (Collection<Personne>) session.getAttribute("listEtu");
-				if (listEtu != null ){
-				for(Personne p : listEtu){%>
+				<% for(Personne p : listEtu){%>
 					<tr>
 							<td><%= p.getIdPersonne()%></td>
 							<td><%= p.getNomPers() %></td>
 					</tr>
-								
-			 <% }}%>
 		</tbody>
 	</table>
+	<% }}%>
 </div>

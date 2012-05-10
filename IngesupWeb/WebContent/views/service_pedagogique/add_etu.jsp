@@ -1,6 +1,5 @@
 <%@page import="java.util.Collection"%>
 <%@page import="com.ingesup.beans.persistence.Classe"%>
-<%@page import="com.ingesup.beans.facade.ejb.GestionSvePdeBean" %>
 
 <div id="formulaire_etudiant">
 <form method="post" action="./AjoutPersonne">
@@ -36,11 +35,11 @@
 		</tr>
 		<tr>
 			<td align="right"><p>Classe</p></td><td><select name="classe">
-			<% GestionSvePdeBean gspb = new GestionSvePdeBean();
-			   Collection<Classe> AllClasses = gspb.getAllClasses(); 
+			<% if(session.getAttribute("AllClasses") != null){
+				Collection<Classe> AllClasses = (Collection<Classe>) session.getAttribute("AllClasses"); 
 			   for(Classe c : AllClasses){%>
 				<option value="<% c.getIdClasse(); %>"><% c.getNomClasse(); %></option>
-			<% } %>
+			<% }} %>
 			</select></td>
 		</tr>
 		<tr>
