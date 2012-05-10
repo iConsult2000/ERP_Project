@@ -98,13 +98,13 @@ public class GestionPersonne extends HttpServlet {
 		// TODO Auto-generated method stub
 		
 		Collection<Personne> ResultEtu = new ArrayList();
-		System.out.println("la valeur idClasse :" + idClasse);
-		System.out.println("la valeur nom :" + nom);
+		//System.out.println("la valeur idClasse :" + idClasse);
+		//System.out.println("la valeur nom :" + nom);
 		HttpSession session = request.getSession();
 		try{
 			InitialContext ctx = new InitialContext();
 			GestionSvePdeRemote gspb = (GestionSvePdeRemote) ctx.lookup("Ingesup/GestionSvePdeStateful/remote");
-			if (!nom.isEmpty()) ResultEtu = gspb.searchEtudiantByName(nom);
+			if (nom != "") ResultEtu = gspb.searchEtudiantByName(nom);
 			else if(idClasse != 0) ResultEtu = gspb.searchEtudiantByClasse(idClasse);
 			else ResultEtu = gspb.getAllEtudiants();
 			

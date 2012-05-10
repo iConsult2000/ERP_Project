@@ -13,7 +13,9 @@ import javax.persistence.OneToOne;
 import javax.persistence.PrimaryKeyJoinColumn;
 
 @Entity
-@NamedQueries({@NamedQuery(name="findIdClasseByEmail", query="select idClasse from Etudiant where emailPers=:emailPers")
+@NamedQueries({
+	@NamedQuery(name="findIdClasseByEmail", query="select idClasse from Etudiant where emailPers=:emailPers"),
+	@NamedQuery(name="findIdEtudiantByName", query="select e from Etudiant e where nomPers like :nomPers")
 })
 public class Etudiant extends Personne implements Serializable {
 	/**
