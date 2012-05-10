@@ -46,7 +46,7 @@ public class GestionGlobaleBean implements GestionGlobaleRemote, Serializable {
 
 	}
 
-	@RolesAllowed({"gestion","enseignant"})
+	@RolesAllowed({"gestion","enseignant","etudiant"})
 	public int getConnected() {
 		try {
 			initialize();
