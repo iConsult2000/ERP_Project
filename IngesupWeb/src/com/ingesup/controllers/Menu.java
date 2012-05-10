@@ -42,6 +42,7 @@ public class Menu extends HttpServlet {
 		session.setAttribute("menu", (String)this.getInitParameter("choix"));
 		
 		if (getInitParameter("choix").equals("Gestion_etudiant")) gestion_etudiant(request,response);
+		if (getInitParameter("choix").equals("Gestion_classe")) gestion_classe(request,response);
 		else{
 			//redirection
 			request.getRequestDispatcher("/").forward(request, response);
@@ -57,6 +58,26 @@ public class Menu extends HttpServlet {
 	}
 	
 	private void gestion_etudiant(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		HttpSession session = request.getSession();
+		try {
+			Context context = new InitialContext();
+
+			GestionSvePdeRemote beanfacadeRemote = (GestionSvePdeRemote) context
+					.lookup("Ingesup/GestionSvePdeStateful/remote");
+			
+			Collection<Classe> AllClasses = beanfacadeRemote.getAllClasses();
+			
+			session.setAttribute("AllClasses", AllClasses);
+		} catch (NamingException err) {
+			err.printStackTrace();
+		}
+		
+		//redirection
+		request.getRequestDispatcher("/").forward(request, response);
+	}
+	
+	private void gestion_classe(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		HttpSession session = request.getSession();
 		try {

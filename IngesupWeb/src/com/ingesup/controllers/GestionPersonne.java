@@ -4,7 +4,6 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collection;
 
-import javax.ejb.EJB;
 import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
@@ -14,7 +13,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.ingesup.beans.facade.ejb.GestionSvePdeBean;
 import com.ingesup.beans.facade.ejb.Remote.GestionSvePdeRemote;
 import com.ingesup.beans.persistence.Adresse;
 import com.ingesup.beans.persistence.Etudiant;
@@ -52,11 +50,9 @@ public class GestionPersonne extends HttpServlet {
 	protected void doPost(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		int idClasse = Integer.valueOf(request.getParameter("classe"));
-		String nom = request.getParameter("nom");
 		
 		if (getInitParameter("operation").equals("AjoutPersonne")) addEtu(request,response);
-		if (getInitParameter("operation").equals("Search_etu")) searchEtu(request,response,nom,idClasse);
+		if (getInitParameter("operation").equals("Search_etu")) searchEtu(request,response);
 	}
 	
 	private void addEtu(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -94,8 +90,10 @@ public class GestionPersonne extends HttpServlet {
 		request.getRequestDispatcher("/").forward(request, response);
 	}
 	
-	private void searchEtu(HttpServletRequest request, HttpServletResponse response, String nom, int idClasse) throws ServletException, IOException {
+	private void searchEtu(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		int idClasse = Integer.valueOf(request.getParameter("classe"));
+		String nom = request.getParameter("nom");
 		
 		Collection<Personne> ResultEtu = new ArrayList();
 		//System.out.println("la valeur idClasse :" + idClasse);

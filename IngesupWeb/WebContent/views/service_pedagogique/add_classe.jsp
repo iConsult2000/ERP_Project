@@ -1,5 +1,5 @@
 <div id="formulaire_classe">
-<form method="post" action="">
+<form method="post" action="./AddClasse">
 	<table>
 		<tr>
 			<td align="right"><p>Nom</p></td><td><input type="text" name="nom" /></td>
