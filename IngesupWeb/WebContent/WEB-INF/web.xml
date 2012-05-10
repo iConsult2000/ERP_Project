@@ -18,6 +18,22 @@
     <servlet-name>AgendaServlet</servlet-name>
     <url-pattern>/Agenda</url-pattern>
   </servlet-mapping>
+  
+  
+  
+  <servlet>
+    <description></description>
+    <display-name>getAgenda</display-name>
+    <servlet-name>getAgenda</servlet-name>
+    <servlet-class>com.ingesup.controllers.CalendarController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>getAgenda</servlet-name>
+    <url-pattern>/getAgenda</url-pattern>
+  </servlet-mapping>
+  
+  
+  
   <servlet>
     <description></description>
     <display-name>NoteServlet</display-name>

@@ -17,7 +17,7 @@ import com.ingesup.beans.persistence.Classe;
 /**
  * Session Bean implementation class GestionEtudiant
  */
-@Stateless
+@Stateless(name="GestionEtudiantStateless")
 @SecurityDomain(value="domainIC2K")
 @Remote(GestionEtudiantRemote.class)
 public class GestionEtudiantBean implements GestionEtudiantRemote, Serializable {
