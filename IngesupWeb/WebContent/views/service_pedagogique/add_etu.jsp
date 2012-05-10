@@ -38,7 +38,7 @@
 			<% if(session.getAttribute("AllClasses") != null){
 				Collection<Classe> AllClasses = (Collection<Classe>) session.getAttribute("AllClasses"); 
 			   for(Classe c : AllClasses){%>
-				<option value="<% c.getIdClasse(); %>"><% c.getNomClasse(); %></option>
+				<option value="<%= c.getIdClasse() %>"><%= c.getNomClasse()+" "+c.getAnneeCycle() %></option>
 			<% }} %>
 			</select></td>
 		</tr>

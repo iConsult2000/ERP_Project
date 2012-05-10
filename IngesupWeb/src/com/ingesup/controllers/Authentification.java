@@ -8,6 +8,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.jboss.aspects.security.SecurityContext;
+
 /**
  * Servlet implementation class Authentification
  */
@@ -27,6 +29,9 @@ public class Authentification extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		HttpSession session = request.getSession(true);
+		
+		String login = SecurityContext.getCurrentPrincipal().getName();
+		session.setAttribute("login", login);
 		
 		if (request.isUserInRole("gestion")) {session.setAttribute("type", "service_pedagogique");}
 		else if(request.isUserInRole("etudiant")){session.setAttribute("type", "etudiant");}

@@ -1,6 +1,7 @@
 package com.ingesup.beans.facade.ejb.Remote;
-import javax.annotation.security.PermitAll;
 import javax.ejb.Remote;
+
+import com.ingesup.beans.persistence.Classe;
 
 @Remote
 public interface GestionEtudiantRemote {
@@ -17,6 +18,13 @@ public interface GestionEtudiantRemote {
 	 * @param idPers
 	 * @return no_agenda
 	 */
-	public String getNumAgendaByEtudiant(int idPers);
+	public String getNumAgendaByEtudiant(String email);
+	
+	/**Recupere la Classe à partir de l'email
+	 * 
+	 * @param email
+	 * @return
+	 */
+//	public Classe getEtudiantClasse(String email);
 	
 }

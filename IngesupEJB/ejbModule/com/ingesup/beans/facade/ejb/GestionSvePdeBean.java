@@ -52,7 +52,7 @@ public class GestionSvePdeBean implements GestionSvePdeRemote, GestionSvePdeLoca
 	
     @RolesAllowed("gestion")
 	public void addClasse(Classe classe) {
-		// TODO Auto-generated method stub
+		em.persist(classe);
 		
 	}
 	
@@ -68,28 +68,27 @@ public class GestionSvePdeBean implements GestionSvePdeRemote, GestionSvePdeLoca
 
 	@RolesAllowed("gestion")
 	public Classe searchClasse(int idClasse) {
-		// TODO Auto-generated method stub
-		return null;
+		return em.find(Classe.class, idClasse);
 	}
 
 	@RolesAllowed("gestion")
 	public Collection<Personne> getAllEtudiants() {
 		System.out.println("listerTousLesEtudiants in progress");
-		javax.persistence.Query q = em.createQuery("select e from etudiant e");
+		javax.persistence.Query q = em.createQuery("select e from Etudiant e");
 		return (Collection<Personne>) q.getResultList();
 	}
 	
 	@RolesAllowed("gestion")
 	public Collection<Personne> getAllProfesseurs() {
 		System.out.println("listerTousLesProfesseurs in progress");
-		javax.persistence.Query q = em.createQuery("select p from professeur p");
+		javax.persistence.Query q = em.createQuery("select p from Professeur p");
 		return (Collection<Personne>) q.getResultList();
 	}
 	
 	@RolesAllowed("gestion")
 	public Collection<Classe> getAllClasses() {
 		System.out.println("listerToutesLesClasses in progress");
-		Query q = em.createQuery("select c from classe c");
+		Query q = em.createQuery("select c from Classe c");
 		Collection<Classe> result = q.getResultList();
 		return result;
 	}
@@ -97,7 +96,7 @@ public class GestionSvePdeBean implements GestionSvePdeRemote, GestionSvePdeLoca
 
 	@RolesAllowed({"gestion","enseignant"})
 	public Collection<Personne> searchEtudiantByName(String nomPersonne) {
-		Query q = em.createQuery("select e from etudiant where lower(e.nomPers) like '%:nomPers%'");
+		Query q = em.createQuery("select e from Etudiant e where lower(e.nomPers) like '%:nomPers%'");
 		q.setParameter("nomPers", nomPersonne);
 		Collection<Personne> result = q.getResultList();
 		return result;
@@ -107,7 +106,7 @@ public class GestionSvePdeBean implements GestionSvePdeRemote, GestionSvePdeLoca
 
 	@RolesAllowed("gestion")
 	public Collection<Personne> searchProfesseurByName(String nomPersonne) {
-		Query q = em.createQuery("select p from professeur where lower(p.nomPers) like '%:nomPers%'");
+		Query q = em.createQuery("select p from Professeur p where lower(p.nomPers) like '%:nomPers%'");
 		q.setParameter("nomPers", nomPersonne);
 		List<Personne> result = q.getResultList();
 		return result;
@@ -115,7 +114,7 @@ public class GestionSvePdeBean implements GestionSvePdeRemote, GestionSvePdeLoca
 
 	@RolesAllowed("gestion")
 	public Collection<Classe> searchClasseBySpecialite(String specialite) {
-		Query q = em.createQuery("select c from classe where lower(c.specialite) like '%:specialite%'");
+		Query q = em.createQuery("select c from Classe where lower(c.specialite) like '%:specialite%'");
 		q.setParameter("specialite", specialite);
 		List<Classe> result = q.getResultList();
 		return result;
@@ -123,19 +122,19 @@ public class GestionSvePdeBean implements GestionSvePdeRemote, GestionSvePdeLoca
 	
 	@RolesAllowed("gestion")
 	public Classe searchClasseByEtudiant(int idPers) {
-		Classe result = (Classe) em.createQuery("select classe from classe etudiant join etudiant.classe").getSingleResult();
+		Classe result = (Classe) em.createQuery("select Classe from Classe Etudiant join Etudiant.Classe").getSingleResult();
 		return result;
 	}
 
 	@RolesAllowed("gestion")
 	public Collection<Classe> searchClasseByProfesseur(int idPers) {
-		List<Classe> result = em.createQuery("select classe from classe professeur join professeur.classe").getResultList();
+		List<Classe> result = em.createQuery("select Classe from Classe Professeur join Professeur.Classe").getResultList();
 		return result;
 	}
 
 	@RolesAllowed("gestion")
 	public Collection<Personne> searchEtudiantByClasse(int idClasse){
-		List<Personne> result = em.createQuery("select etudiant from classe etudiant join etudiant.classe").getResultList();
+		List<Personne> result = em.createQuery("select Etudiant from Classe Etudiant join Etudiant.Classe").getResultList();
 		return result;
 	}
 

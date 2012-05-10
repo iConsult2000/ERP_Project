@@ -23,16 +23,14 @@ import com.ingesup.beans.persistence.ServicePedagogique;
 /**
  * Session Bean implementation class GestionGlobale
  */
-@Stateless(name="GestionGlobaleStateless")
-@SecurityDomain(value="domainIC2K")
+@Stateless(name = "GestionGlobaleStateless")
+@SecurityDomain(value = "domainIC2K")
 @Remote(GestionGlobaleRemote.class)
 public class GestionGlobaleBean implements GestionGlobaleRemote, Serializable {
 
 	@PersistenceContext
 	EntityManager em;
 
-	
-	
 	/**
 	 * Default constructor.
 	 */
@@ -40,31 +38,36 @@ public class GestionGlobaleBean implements GestionGlobaleRemote, Serializable {
 		// TODO Auto-generated constructor stub
 	}
 
-	
-	@RolesAllowed({"gestion","enseignant","etudiant"})
+	@RolesAllowed({ "gestion", "enseignant", "etudiant" })
 	public int getConnected() {
 		System.out.println("Beginning getConnected");
-		Principal principal = SecurityAssociation.getPrincipal();
+		Principal principal = SecurityContext.getCallerPrincipal();
+		System.out.println("PrincipalCaller : " + SecurityContext.getCallerPrincipal().getName());
+		System.out.println("PrincipalCurrent : " + SecurityContext.getCurrentPrincipal().getName());
 		
 		
-	      if (SecurityContext.isCallerInRole("etudiant")) {
-		    	Query q = em.createQuery("select e from etudiant e where lower(e.nomPers) = :nomPers");
-		    	q.setParameter("nomPers", principal.getName());
-		    	return ((Etudiant) q.getSingleResult()).getIdPersonne();
-		    	
-		    } else if (SecurityContext.isCallerInRole("gestion")) {
-		    	Query q = em.createQuery("select svepde from servicepedagogique svepde where lower(svepde.nomPers) = :nomPers");
-		    	q.setParameter("nomPers", principal.getName());
-		    	return ((ServicePedagogique) q.getSingleResult()).getIdPersonne();
-			} else {
-	      
-	      return 0;
-			}
+		if (SecurityContext.isCurrentInRole("etudiant")) {
+			Query q = em
+					.createQuery("select e from Etudiant e where lower(e.nomPers) = :nomPers");
+			q.setParameter("nomPers", principal.getName());
+			System.out.println("End getConnected pass 1");
+			return ((Etudiant) q.getSingleResult()).getIdPersonne();
+
+		} else if (SecurityContext.isCurrentInRole("gestion")) {
+			Query q = em
+					.createQuery("select svepde from ServicePedagogique svepde where lower(svepde.nomPers) = :nomPers");
+			q.setParameter("nomPers", principal.getName());
+			System.out.println("End getConnected pass 2");
+			return ((ServicePedagogique) q.getSingleResult()).getIdPersonne();
+		} else {
+			System.out.println("End getConnected pass 3");
+			return 0;
+		}
 	}
-	
-	 @RolesAllowed({"etudiant","gestion","enseignant"})
-	    public String getNumAgenda(int idClasse) {
-	    	Classe q = em.find(Classe.class, idClasse);
-	    	return q.getNo_agenda();
-	    }
+
+	@RolesAllowed({ "etudiant", "gestion", "enseignant" })
+	public String getNumAgenda(int idClasse) {
+		Classe q = em.find(Classe.class, idClasse);
+		return q.getNo_agenda();
+	}
 }

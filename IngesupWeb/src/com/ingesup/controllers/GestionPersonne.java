@@ -52,8 +52,11 @@ public class GestionPersonne extends HttpServlet {
 	protected void doPost(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		int idClasse = Integer.valueOf(request.getParameter("classe"));
+		String nom = request.getParameter("nom");
+		
 		if (getInitParameter("operation").equals("AjoutPersonne")) addEtu(request,response);
-		if (getInitParameter("operation").equals("Search_etu")) searchEtu(request,response);
+		if (getInitParameter("operation").equals("Search_etu")) searchEtu(request,response,nom,idClasse);
 	}
 	
 	private void addEtu(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -91,17 +94,17 @@ public class GestionPersonne extends HttpServlet {
 		request.getRequestDispatcher("/").forward(request, response);
 	}
 	
-	private void searchEtu(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	private void searchEtu(HttpServletRequest request, HttpServletResponse response, String nom, int idClasse) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		int idClasse = Integer.parseInt(request.getParameter("classe"));
-		String nom = request.getParameter("nom");
-		Collection<Personne> ResultEtu = new ArrayList();
 		
+		Collection<Personne> ResultEtu = new ArrayList();
+		System.out.println("la valeur idClasse :" + idClasse);
+		System.out.println("la valeur nom :" + nom);
 		HttpSession session = request.getSession();
 		try{
 			InitialContext ctx = new InitialContext();
 			GestionSvePdeRemote gspb = (GestionSvePdeRemote) ctx.lookup("Ingesup/GestionSvePdeStateful/remote");
-			if(nom != null) ResultEtu = gspb.searchEtudiantByName(nom);
+			if (!nom.isEmpty()) ResultEtu = gspb.searchEtudiantByName(nom);
 			else if(idClasse != 0) ResultEtu = gspb.searchEtudiantByClasse(idClasse);
 			else ResultEtu = gspb.getAllEtudiants();
 			

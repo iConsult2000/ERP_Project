@@ -29,10 +29,11 @@
 					<span style="color:black;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ou&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
 					Classe
 					<select name="classe">
+						<option value="0"></option>
 						<% if(session.getAttribute("AllClasses") != null){
 							Collection<Classe> _AllClasses = (Collection<Classe>) session.getAttribute("AllClasses"); 
 						   for(Classe c : _AllClasses){%>
-							<option value="<% c.getIdClasse(); %>"><% c.getNomClasse(); %></option>
+							<option value="<%= c.getIdClasse() %>"><%= c.getNomClasse()+" "+c.getAnneeCycle() %></option>
 						<% }} %>
 					</select>
 				</p>

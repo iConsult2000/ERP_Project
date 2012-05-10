@@ -14,7 +14,6 @@ import javax.persistence.PersistenceContext;
 import org.jboss.security.annotation.SecurityDomain;
 
 import com.ingesup.beans.facade.ejb.Remote.GestionDocumentRemote;
-import com.ingesup.beans.persistence.Classe;
 import com.ingesup.beans.persistence.Document;
 import com.ingesup.beans.persistence.DocumentDITO;
 
@@ -23,6 +22,13 @@ import com.ingesup.beans.persistence.DocumentDITO;
 @SecurityDomain(value="domainIC2K")
 @Remote(GestionDocumentRemote.class)
 public class GestionDocumentBean implements GestionDocumentRemote, Serializable {
+
+
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 2734275421051252786L;
 
 	@PersistenceContext
 	EntityManager em;
@@ -59,6 +65,7 @@ public class GestionDocumentBean implements GestionDocumentRemote, Serializable 
 	 * @param idDoc
 	 * @return
 	 */
+	@RolesAllowed({"etudiant","gestion","enseignant"})
 	public File getDocument(int idDoc) {		
 		boolean fileExist = file.exists();
 

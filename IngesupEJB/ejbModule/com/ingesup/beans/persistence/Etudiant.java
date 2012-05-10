@@ -6,11 +6,15 @@ import java.util.Set;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.PrimaryKeyJoinColumn;
 
 @Entity
+@NamedQueries({@NamedQuery(name="findIdClasseByEmail", query="select idClasse from Etudiant where emailPers=:emailPers")
+})
 public class Etudiant extends Personne implements Serializable {
 	/**
 	 * 
@@ -119,7 +123,7 @@ public class Etudiant extends Personne implements Serializable {
 	 * OneToMany relationship with Cours
 	 */
 	/**
-	 * ManyToMany relationship with Note
+	 * ManyToMany relationship with Absence
 	 */
 	@OneToMany(mappedBy = "idPersonne")
 	public Set<Absence> getAbsences() {

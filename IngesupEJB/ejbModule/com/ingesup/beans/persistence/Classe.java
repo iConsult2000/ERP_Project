@@ -11,9 +11,13 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 
 @Entity
+@NamedQueries({@NamedQuery(name="findNoAgendaById", query="select no_agenda from Classe where idClasse=:idClasse")
+})
 public class Classe implements Serializable{
 	/**
 	 * 
