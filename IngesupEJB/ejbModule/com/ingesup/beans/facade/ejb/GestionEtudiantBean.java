@@ -33,6 +33,7 @@ public class GestionEtudiantBean implements GestionEtudiantRemote, Serializable 
     /**
      * Return the agenda number for a school
      */
+    @RolesAllowed({"etudiant","gestion"})
     public String getNumAgenda(int idClasse) {
     	Classe q = em.find(Classe.class, idClasse);
     	return q.getNo_agenda();
@@ -44,7 +45,7 @@ public class GestionEtudiantBean implements GestionEtudiantRemote, Serializable 
 		return result.get(0).getNo_agenda();
 	}
 
-	
+    @RolesAllowed("etudiant")
 	public Classe searchClasseByEtudiant(int idPers) {
 		List<Classe> result = em.createQuery("select classe from classe etudiant join etudiant.classe").getResultList();
 		return result.get(0);
