@@ -78,7 +78,7 @@ public class CalendarController extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		HttpSession session = request.getSession(true);
-		String type = (String)session.getAttribute("type");
+		
 		
 		
 		
@@ -89,8 +89,8 @@ public class CalendarController extends HttpServlet {
 		} catch (AuthenticationException e) {
 			e.printStackTrace();
 		}
-		
-		if(type == "etudiant"){
+		System.out.println("Testing isUserInRole");
+		if(request.isUserInRole("etudiant")){
 			
 			
 			try {
