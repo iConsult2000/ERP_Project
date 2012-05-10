@@ -55,7 +55,7 @@ public class CalendarController extends HttpServlet {
 		super();
 
 		Properties systemSettings = System.getProperties();
-		System.getProperties().put("proxySet", "true");
+		System.getProperties().put("proxySet", "false");
 		systemSettings.put("http.proxyHost", "proxy.etudiant.insia.org");
 		systemSettings.put("http.proxyPort", "3128");
 		systemSettings.put("https.proxyHost", "proxy.etudiant.insia.org");
@@ -108,11 +108,9 @@ public class CalendarController extends HttpServlet {
 				
 				session.setAttribute("idAgenda", idAgenda);
 
-				getServletContext().getRequestDispatcher(
-						"/views/etudiant/Agenda.jsp").forward(
-						request, response);
+				 getServletContext().getRequestDispatcher("/views/etudiant/Agenda.jsp").forward(request, response);
+				//getServletContext().getRequestDispatcher("/").forward(request, response);
 				
-
 			} catch (NamingException err) {
 				err.printStackTrace();
 			}
