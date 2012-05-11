@@ -1,3 +1,5 @@
+<%@page import="java.util.Collection"%>
+<%@page import="com.ingesup.beans.persistence.Classe"%>
 <script type="text/javascript">
 	function new_classe(){
 		document.getElementById("layer1").style.visibility="visible";
@@ -18,4 +20,17 @@
 			<input type="button" value="Ajouter" onClick="new_classe()"/></td>
 		</tr>
 	</table>
-	</div>
+	<br />
+	<table>
+		<thead>
+			<th>Classes</th>
+		</thead>
+		<tbody>
+			<% if(session.getAttribute("AllClasses") != null){
+				Collection<Classe> _AllClasses = (Collection<Classe>) session.getAttribute("AllClasses"); 
+			   for(Classe c : _AllClasses){%>
+				<tr><td><%= c.getNomClasse()+" "+c.getAnneeCycle() %></td></tr>
+			<% }} %>
+		</tbody>
+	</table>
+</div>

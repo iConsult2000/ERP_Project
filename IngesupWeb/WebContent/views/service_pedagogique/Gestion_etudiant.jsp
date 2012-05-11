@@ -25,7 +25,7 @@
 				<p>Recherche</p>
 				<hr>
 				<p>
-					Nom<input type="text" name="nom"/>
+					Nom <input type="text" name="nom"/>
 					<span style="color:black;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ou&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
 					Classe
 					<select name="classe">
@@ -42,21 +42,27 @@
 			</td>
 		</tr>
 		</form>
+	</table>
+	<br />
 	<% 	if(session.getAttribute("listEtu") != null){
 		Collection<Personne> listEtu = (Collection<Personne>) session.getAttribute("listEtu");%>
-	</table>
 	<table>
 	<thead>
 	<th>Id</th>
 	<th>Nom</th>
+	<th>Prenom</th>
+	<th>Email</th>
 	</thead>
 		<tbody>
 				<% for(Personne p : listEtu){%>
 					<tr>
 							<td><%= p.getIdPersonne()%></td>
 							<td><%= p.getNomPers() %></td>
+							<td><%= p.getPrenomPers() %></td>
+							<td><%= p.getEmailPers() %></td>
 					</tr>
+				<% } %>
 		</tbody>
 	</table>
-	<% }}%>
+	<% }%>
 </div>

@@ -18,9 +18,6 @@
     <servlet-name>AgendaServlet</servlet-name>
     <url-pattern>/Agenda</url-pattern>
   </servlet-mapping>
-  
-  
-  
   <servlet>
     <description></description>
     <display-name>getAgenda</display-name>
@@ -31,9 +28,6 @@
     <servlet-name>getAgenda</servlet-name>
     <url-pattern>/getAgenda</url-pattern>
   </servlet-mapping>
-  
-  
-  
   <servlet>
     <description></description>
     <display-name>NoteServlet</display-name>
@@ -104,7 +98,6 @@
     <servlet-name>DocumentServlet</servlet-name>
     <url-pattern>/Document</url-pattern>
   </servlet-mapping>
-  
   <servlet>
     <description></description>
     <display-name>GestionServlet</display-name>
@@ -119,8 +112,7 @@
     <servlet-name>GestionServlet</servlet-name>
     <url-pattern>/Gestion</url-pattern>
   </servlet-mapping>
-  
-    <servlet>
+  <servlet>
     <description></description>
     <display-name>GestionClasseServlet</display-name>
     <servlet-name>GestionClasseServlet</servlet-name>
@@ -134,7 +126,6 @@
     <servlet-name>GestionClasseServlet</servlet-name>
     <url-pattern>/Gestion_classe</url-pattern>
   </servlet-mapping>
-  
   <servlet>
     <description></description>
     <display-name>GestionEtudiantServlet</display-name>
@@ -149,7 +140,6 @@
     <servlet-name>GestionEtudiantServlet</servlet-name>
     <url-pattern>/Gestion_etudiant</url-pattern>
   </servlet-mapping>
-  
   <servlet>
     <description></description>
     <display-name>GestionProfesseurServlet</display-name>
@@ -164,7 +154,6 @@
     <servlet-name>GestionProfesseurServlet</servlet-name>
     <url-pattern>/Gestion_professeur</url-pattern>
   </servlet-mapping>
-  
   <servlet>
     <description></description>
     <display-name>GestionCourServlet</display-name>
@@ -179,7 +168,6 @@
     <servlet-name>GestionCourServlet</servlet-name>
     <url-pattern>/Gestion_cour</url-pattern>
   </servlet-mapping>
-  
   <servlet>
     <description></description>
     <display-name>AuthServlet</display-name>
@@ -200,7 +188,6 @@
     <servlet-name>AuthDownServlet</servlet-name>
     <url-pattern>/AuthDown</url-pattern>
   </servlet-mapping>
- 
   <servlet>
     <description></description>
     <display-name>AjouterCalendarServlet</display-name>
@@ -215,8 +202,7 @@
     <servlet-name>AjouterCalendarServlet</servlet-name>
     <url-pattern>/ajouter</url-pattern>
   </servlet-mapping>
-  
-   <servlet>
+  <servlet>
     <description></description>
     <display-name>RechercherCalendarServlet</display-name>
     <servlet-name>RechercherCalendarServlet</servlet-name>
@@ -230,8 +216,6 @@
     <servlet-name>RechercherCalendarServlet</servlet-name>
     <url-pattern>/chercher</url-pattern>
   </servlet-mapping>
-  
-  
   <servlet>
     <description></description>
     <display-name>UpdateCalendarServlet</display-name>
@@ -246,8 +230,6 @@
     <servlet-name>UpdateCalendarServlet</servlet-name>
     <url-pattern>/update</url-pattern>
   </servlet-mapping>
-  
-  
   <servlet>
     <description></description>
     <display-name>getEvtCalendarServlet</display-name>
@@ -262,9 +244,6 @@
     <servlet-name>getEvtCalendarServlet</servlet-name>
     <url-pattern>/getEvt</url-pattern>
   </servlet-mapping>
-  
-  
-  
   <servlet>
     <description></description>
     <display-name>DelCalendarServlet</display-name>
@@ -279,7 +258,6 @@
     <servlet-name>DelCalendarServlet</servlet-name>
     <url-pattern>/supprimer</url-pattern>
   </servlet-mapping>
-   
   <servlet>
     <description></description>
     <display-name>GestionPersonne</display-name>
@@ -294,8 +272,7 @@
     <servlet-name>GestionPersonne</servlet-name>
     <url-pattern>/AjoutPersonne</url-pattern>
   </servlet-mapping>
-  
-    <servlet>
+  <servlet>
     <description></description>
     <display-name>SearchPersonne</display-name>
     <servlet-name>SearchPersonne</servlet-name>
@@ -309,74 +286,94 @@
     <servlet-name>SearchPersonne</servlet-name>
     <url-pattern>/Search_etu</url-pattern>
   </servlet-mapping>
+
+  <servlet>
+    <description></description>
+    <display-name>SearchProfesseur</display-name>
+    <servlet-name>SearchProfesseur</servlet-name>
+    <servlet-class>com.ingesup.controllers.GestionPersonne</servlet-class>
+    <init-param>
+      <param-name>operation</param-name>
+      <param-value>Search_prof</param-value>
+    </init-param>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>SearchProfesseur</servlet-name>
+    <url-pattern>/Search_prof</url-pattern>
+  </servlet-mapping>
   
   <servlet>
-		<description></description>
-		<display-name>LogoutServlet</display-name>
-		<servlet-name>LogoutServlet</servlet-name>
-		<servlet-class>com.ingesup.controllers.LogoutServlet</servlet-class>
-	</servlet>
-	<servlet-mapping>
-		<servlet-name>LogoutServlet</servlet-name>
-		<url-pattern>/logout</url-pattern>
-	</servlet-mapping>
+    <description></description>
+    <display-name>LogoutServlet</display-name>
+    <servlet-name>LogoutServlet</servlet-name>
+    <servlet-class>com.ingesup.controllers.LogoutServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>LogoutServlet</servlet-name>
+    <url-pattern>/logout</url-pattern>
+  </servlet-mapping>
   
-<!--   Implementation du service identification et autorisation d'accès aux ressources 
-	  par acteur -->
-  <security-constraint>
-		<display-name>Contrainte_1</display-name>
-		<web-resource-collection>
-			<web-resource-name>SecuredRessources1</web-resource-name>			
-<!-- 			<url-pattern>/views/service_pedagogique/*</url-pattern>  pour toutes les autres-->
-				<url-pattern>/views/service_pedagogique/secured.jsp</url-pattern>
-			
-		</web-resource-collection>
-		<auth-constraint>
-			<description>Gestion de l'etablissement</description>
-			<role-name>gestion</role-name>
-		</auth-constraint>
-	</security-constraint>
-
-  <security-constraint>
-		<display-name>Contrainte_2</display-name>
-		<web-resource-collection>
-			<web-resource-name>SecuredRessources2</web-resource-name>
-			<url-pattern>/views/etudiant/secured.jsp</url-pattern>
-			<url-pattern>/views/etudiant/Agenda.jsp</url-pattern>
-<!-- 			<url-pattern>/views/etudiant/*</url-pattern>	pour toutes les autres			 -->
-		</web-resource-collection>
-		<auth-constraint>
-			<description>Consultation des informations</description>			
-			<role-name>etudiant</role-name>
-		</auth-constraint>
-	</security-constraint>
-	
-  <security-constraint>
-		<display-name>Contrainte_Global</display-name>
-		<web-resource-collection>
-			<web-resource-name>SecuredRessourcesGlobal</web-resource-name>
-			<url-pattern>/Auth</url-pattern>
-		</web-resource-collection>
-		<auth-constraint>
-			<description>Consultation des informations</description>			
-			<role-name>etudiant</role-name>
-			<role-name>gestion</role-name>
-		</auth-constraint>
-	</security-constraint>
-
-	<login-config>
-		<auth-method>FORM</auth-method>
-		<form-login-config>
-		<form-login-page>/formulaires/loginAuth.jsp</form-login-page>
-		<form-error-page>/formulaires/error.jsp</form-error-page>
-		</form-login-config>
-	</login-config>
-
-	<security-role>
-		<role-name>gestion</role-name>
-	</security-role>
-	<security-role>
-		<role-name>etudiant</role-name>
-	</security-role>	
+  <servlet>
+    <description></description>
+    <display-name>GestionClasse</display-name>
+    <servlet-name>GestionClasse</servlet-name>
+    <servlet-class>com.ingesup.controllers.GestionClasse</servlet-class>
+    <init-param>
+      <param-name>operation</param-name>
+      <param-value>AddClasse</param-value>
+    </init-param>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>GestionClasse</servlet-name>
+    <url-pattern>/AddClasse</url-pattern>
+  </servlet-mapping>
   
+  <security-constraint>
+    <display-name>Contrainte_1</display-name>
+    <web-resource-collection>
+      <web-resource-name>SecuredRessources1</web-resource-name>
+      <url-pattern>/views/service_pedagogique/secured.jsp</url-pattern>
+    </web-resource-collection>
+    <auth-constraint>
+      <description>Gestion de l'etablissement</description>
+      <role-name>gestion</role-name>
+    </auth-constraint>
+  </security-constraint>
+  <security-constraint>
+    <display-name>Contrainte_2</display-name>
+    <web-resource-collection>
+      <web-resource-name>SecuredRessources2</web-resource-name>
+      <url-pattern>/views/etudiant/secured.jsp</url-pattern>
+      <url-pattern>/views/etudiant/Agenda.jsp</url-pattern>
+    </web-resource-collection>
+    <auth-constraint>
+      <description>Consultation des informations</description>
+      <role-name>etudiant</role-name>
+    </auth-constraint>
+  </security-constraint>
+  <security-constraint>
+    <display-name>Contrainte_Global</display-name>
+    <web-resource-collection>
+      <web-resource-name>SecuredRessourcesGlobal</web-resource-name>
+      <url-pattern>/Auth</url-pattern>
+    </web-resource-collection>
+    <auth-constraint>
+      <description>Consultation des informations</description>
+      <role-name>etudiant</role-name>
+      <role-name>gestion</role-name>
+    </auth-constraint>
+  </security-constraint>
+  <login-config>
+    <auth-method>FORM</auth-method>
+    <form-login-config>
+      <form-login-page>/formulaires/loginAuth.jsp</form-login-page>
+      <form-error-page>/formulaires/error.jsp</form-error-page>
+    </form-login-config>
+  </login-config>
+  <security-role>
+    <role-name>gestion</role-name>
+  </security-role>
+  <security-role>
+    <role-name>etudiant</role-name>
+  </security-role>
 </web-app>

@@ -20,6 +20,7 @@ import com.ingesup.beans.persistence.Classe;
 import com.ingesup.beans.persistence.Etudiant;
 import com.ingesup.beans.persistence.Personne;
 import com.ingesup.beans.persistence.Professeur;
+import com.ingesup.beans.persistence.ServicePedagogique;
 
 /**
  * Session Bean implementation class GestionSvePde
@@ -96,20 +97,12 @@ public class GestionSvePdeBean implements GestionSvePdeRemote, GestionSvePdeLoca
 
 	@RolesAllowed({"gestion","enseignant"})
 	public Collection<Personne> searchEtudiantByName(String nomPersonne) {
-		Query q = em.createQuery("select e from Etudiant e where lower(e.nomPers) like '%:nomPers%'");
-		q.setParameter("nomPers", nomPersonne);
-		Collection<Personne> result = q.getResultList();
-		return result;
-		
-		
+		return  em.createNamedQuery("findIdEtudiantByName").setParameter("nomPers", "%"+nomPersonne+"%").getResultList();
 	}
 
 	@RolesAllowed("gestion")
 	public Collection<Personne> searchProfesseurByName(String nomPersonne) {
-		Query q = em.createQuery("select p from Professeur p where lower(p.nomPers) like '%:nomPers%'");
-		q.setParameter("nomPers", nomPersonne);
-		List<Personne> result = q.getResultList();
-		return result;
+		return  em.createNamedQuery("findIdProfesseurByName").setParameter("nomPers", "%"+nomPersonne+"%").getResultList();
 	}
 
 	@RolesAllowed("gestion")
@@ -134,7 +127,10 @@ public class GestionSvePdeBean implements GestionSvePdeRemote, GestionSvePdeLoca
 
 	@RolesAllowed("gestion")
 	public Collection<Personne> searchEtudiantByClasse(int idClasse){
-		List<Personne> result = em.createQuery("select Etudiant from Classe Etudiant join Etudiant.Classe").getResultList();
+		//List<Personne> result = em.createQuery("select Etudiant from Classe Etudiant join Etudiant.Classe").getResultList();
+		Query q = em.createQuery("select e from Etudiant e where lower(e.idClasse) = :idClasse");
+		q.setParameter("idClasse", idClasse);
+		List<Personne> result = q.getResultList();
 		return result;
 	}
 

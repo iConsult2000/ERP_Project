@@ -6,12 +6,17 @@ import java.util.Collection;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
 @Entity
+@NamedQueries({
+	@NamedQuery(name="findIdProfesseurByName", query="select p from Professeur p where nomPers like :nomPers")
+})
 public class Professeur extends Personne implements Serializable {
 
 	
