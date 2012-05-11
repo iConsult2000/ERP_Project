@@ -82,7 +82,7 @@ public class CalendarController extends HttpServlet {
 			HttpServletResponse response) throws ServletException, IOException {
 
 		HttpSession session = request.getSession(true);
-
+		
 		client = new CalendarService("API Project");
 		try {
 			client.setUserCredentials("erpingesuparis@gmail.com",
@@ -120,7 +120,7 @@ public class CalendarController extends HttpServlet {
 
 			if (getInitParameter("operation").equals("ajouter"))
 				addEvt(request, response);
-			if (getInitParameter("operation").equals("modifier"))
+			if (getInitParameter("operation").equals("update"))
 				updateEvt(request, response);
 			if (getInitParameter("operation").equals("supprimer"))
 				deletEvt(request, response);
@@ -136,7 +136,7 @@ public class CalendarController extends HttpServlet {
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
 
-		int numEvt = Integer.parseInt(request.getParameter("num"));
+		int numEvt = Integer.parseInt(request.getParameter("numEvt"));
 		HttpSession session = request.getSession();
 
 		List<CalendarEventEntry> lstEvent = (List<CalendarEventEntry>) session
@@ -173,8 +173,9 @@ public class CalendarController extends HttpServlet {
 			 */
 
 			session.setAttribute("evt", evtToUpdate);
-
-			getServletContext().getRequestDispatcher(
+			session.setAttribute("numEvt", numEvt);
+			
+			request.getRequestDispatcher(
 					"/views/service_pedagogique/update_event.jsp").forward(
 					request, response);
 
@@ -244,7 +245,6 @@ public class CalendarController extends HttpServlet {
 		HttpSession session = request.getSession();
 		session.setAttribute("listEvt", lstEvent);
 		request.getRequestDispatcher("/").forward(request, response);
-		// getServletContext().getRequestDispatcher("/views/service_pedagogique/Gestion_cour.jsp").forward(request,response);
 
 	}
 
@@ -310,14 +310,14 @@ public class CalendarController extends HttpServlet {
 			return "";
 	}
 
-	private void updateEvt(HttpServletRequest request,
-			HttpServletResponse response) throws ServletException, IOException {
+	private void updateEvt(HttpServletRequest request,HttpServletResponse response) throws ServletException, IOException {
 
 		HttpSession session = request.getSession();
-		List<CalendarEventEntry> lstEvent = (List<CalendarEventEntry>) session
-				.getAttribute("listEvt");
-		CalendarEventEntry retrievedEntry = lstEvent.get((Integer) session
-				.getAttribute("numEvt"));
+		List<CalendarEventEntry> lstEvent = (List<CalendarEventEntry>) session.getAttribute("listEvt");
+		
+		int num = (Integer)session.getAttribute("numEvt");
+		System.out.println(""+num);
+		CalendarEventEntry retrievedEntry = lstEvent.get((Integer) session.getAttribute("numEvt"));
 
 		String titre = request.getParameter("titre");
 
@@ -334,19 +334,27 @@ public class CalendarController extends HttpServlet {
 
 		try {
 
-			CalendarEventEntry newEntry = new CalendarEventEntry();
-			newEntry.setTitle(new PlainTextConstruct(titre));
-			newEntry.setContent(new PlainTextConstruct(description));
+			URL editUrl = new URL(retrievedEntry.getEditLink().getHref());
+	
+
+			retrievedEntry.setTitle(new PlainTextConstruct(titre));
+			retrievedEntry.setContent(new PlainTextConstruct(description));
 			DateTime startTime = DateTime.parseDateTime(datedebut);
 			DateTime endTime = DateTime.parseDateTime(datefin);
 			When eventTimes = new When();
 			eventTimes.setStartTime(startTime);
 			eventTimes.setEndTime(endTime);
-			newEntry.addTime(eventTimes);
-			URL editUrl = new URL(retrievedEntry.getEditLink().getHref());
+			retrievedEntry.addTime(eventTimes);
+			
 			CalendarEventEntry updatedEntry = (CalendarEventEntry) client
-					.update(editUrl, newEntry);
+					.update(editUrl, retrievedEntry);
+			
+			if(updatedEntry!= null) 
+				lstEvent.set((Integer) session.getAttribute("numEvt"),updatedEntry);
+			
+			
 			System.out.println("évenement modifié");
+			session.setAttribute("listEvt", lstEvent);
 
 		} catch (ServiceException e) {
 			// TODO Auto-generated catch block

@@ -13,6 +13,7 @@ String datefin="";
 String leTitre="";
 String heuredebut="";
 String heurefin="";
+String desc="";
 
 CalendarEventEntry evt = (CalendarEventEntry) session.getAttribute("evt");
 
@@ -29,10 +30,10 @@ if(evt!=null){
 	rawDate = rawDate[0].split("-");
 	datefin = rawDate[2]+"/"+rawDate[1]+"/"+rawDate[0];
 	
-	String titre = evt.getTitle().getPlainText();
-	String desc =  evt.getPlainTextContent();
+	leTitre = evt.getTitle().getPlainText();
+	desc =  evt.getPlainTextContent();
 }
-		%>
+%>
 
 <div id="formulaire_upd_evenement">
 	<form method="post" action="update">
@@ -67,7 +68,7 @@ if(evt!=null){
 				</tr>
 				<tr>
 					<td class="desc"><p>Description </p></td>
-					<td><textarea class="desc" rows="3" name="desc"></textarea></td>
+					<td><textarea class="desc" rows="3" name="desc" value="<%=desc%>"></textarea></td>
 				</tr>
 			</table></td>
 	</tr>
