@@ -45,9 +45,16 @@ public class Menu extends HttpServlet {
 		if (getInitParameter("choix").equals("Gestion_classe")) gestion_classe(request,response);
 		if (getInitParameter("choix").equals("Gestion_professeur")) gestion_professeur(request,response);
 		if (getInitParameter("choix").equals("Gestion_cour")) gestion_cour(request,response);
+		if (getInitParameter("choix").equals("Note")) gestion_note(request,response);
+		if (getInitParameter("choix").equals("Abscence")) gestion_abscence(request,response);
+		if (getInitParameter("choix").equals("Messagerie")) gestion_messagerie(request,response);
+		if (getInitParameter("choix").equals("Document")) gestion_document(request,response);
+		if (getInitParameter("choix").equals("Groupe")) gestion_groupe(request,response);
+		if (getInitParameter("choix").equals("QCM")) gestion_qcm(request,response);
 		
 		
 	}
+
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
@@ -110,4 +117,45 @@ public class Menu extends HttpServlet {
 		request.getRequestDispatcher("/").forward(request, response);
 	}
 	
+	private void gestion_note(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		
+		//redirection
+		request.getRequestDispatcher("/").forward(request, response);
+	}
+
+	private void gestion_qcm(HttpServletRequest request,
+			HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		//redirection
+				request.getRequestDispatcher("/").forward(request, response);
+	}
+
+	private void gestion_groupe(HttpServletRequest request,
+			HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		//redirection
+				request.getRequestDispatcher("/").forward(request, response);
+	}
+
+	private void gestion_document(HttpServletRequest request,
+			HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		//redirection
+				request.getRequestDispatcher("/").forward(request, response);
+	}
+
+	private void gestion_messagerie(HttpServletRequest request,
+			HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		//redirection
+				request.getRequestDispatcher("/").forward(request, response);
+	}
+
+	private void gestion_abscence(HttpServletRequest request,
+			HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		//redirection
+				request.getRequestDispatcher("/").forward(request, response);
+	}	
 }
