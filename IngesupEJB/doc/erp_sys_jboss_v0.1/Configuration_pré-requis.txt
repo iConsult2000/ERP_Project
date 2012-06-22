@@ -62,7 +62,13 @@ update Etudiant set emailPers='y.bray@ingesup.com' where prenomPers='Yohann';
 update Etudiant set emailPers='j.pitou@ingesup.com' where prenomPers='Julien';
 update Etudiant set emailPers='l.ferrand@ingesup.com' where prenomPers='Lori';
 
-
+// Table Contrat
+alter table Contrat add (idPersonne int(11));
+update Contrat set idPersonne = 2 where idContrat = 1;
+update Contrat set idPersonne = 3 where idContrat = 2;
+update Contrat set idPersonne = 4 where idContrat = 3;
+update Contrat set idPersonne = 5 where idContrat = 4;
+update Contrat set idPersonne = 6 where idContrat = 5;
 
 ********************authic2k-ds.xml to JBOSS server**********************
 <?xml version="1.0" encoding="UTF-8"?>
