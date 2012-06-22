@@ -13,14 +13,14 @@
 <body>
 	<div id="contener">
 		<div id="contener-header">
-			<img alt="ingesup-logo" src="resources/pictures/ingesup_logo.jpg">
+			<a href="./"><img alt="ingesup-logo" src="resources/pictures/ingesup_logo.jpg"></a>
 			
 			<div id="contener-header-form">
 			<p>
 				<% if(session.getAttribute("type") != null){ %>
-					<a href="logout">Fermer la session</a>
+					<a href="logout">Deconnexion</a>
 				<% }else{ %>
-				
+					
 				<img alt="ingesup-logo" src="resources/pictures/log_in.png"><a href="Auth">Se connecter</a>
 				<% } %>
 				</p>
@@ -39,10 +39,11 @@
 							<% String link_view = "views/"+session.getAttribute("type")+"/"+session.getAttribute("menu")+".jsp"; %>
 							<jsp:include page="<%=link_view %>"/>
 						<% }else{ %>
-						<iframe width="560" height="315" src="http://www.youtube.com/embed/3v0DlwBahCU" frameborder="0" allowfullscreen></iframe>
 						<% } %>
 					</div>
 				<% //} %>
+			<% }else{ %>
+				<jsp:include page="views/public.jsp"/>
 			<% } %>
 		</div>
 		<div id="contener-footer">
