@@ -17,6 +17,7 @@ import org.jboss.security.annotation.SecurityDomain;
 import com.ingesup.beans.facade.ejb.Local.GestionSvePdeLocal;
 import com.ingesup.beans.facade.ejb.Remote.GestionSvePdeRemote;
 import com.ingesup.beans.persistence.Classe;
+import com.ingesup.beans.persistence.Entreprise;
 import com.ingesup.beans.persistence.Etudiant;
 import com.ingesup.beans.persistence.Personne;
 import com.ingesup.beans.persistence.Professeur;
@@ -132,6 +133,12 @@ public class GestionSvePdeBean implements GestionSvePdeRemote, GestionSvePdeLoca
 		q.setParameter("idClasse", idClasse);
 		List<Personne> result = q.getResultList();
 		return result;
+	}
+
+	@RolesAllowed("gestion")
+	public Entreprise searchEntrepriseByEtudiantId(int idPers) {		
+		  String siren =  em.createNamedQuery("findIdEntrepriseByEtudiant").setParameter("idPers",idPers).getSingleResult().toString();
+		  return em.find(Entreprise.class, siren);
 	}
 
 	
