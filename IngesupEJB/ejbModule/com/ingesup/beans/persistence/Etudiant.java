@@ -1,6 +1,8 @@
 package com.ingesup.beans.persistence;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
@@ -29,6 +31,7 @@ public class Etudiant extends Personne implements Serializable {
 	public Set<Note> notes;
 	public Set<Cours> cours;
 	public Set<Absence> absences;
+	public Collection<Contrat> listContrat = new ArrayList<Contrat>();
 	 
 
 	public Etudiant(){
@@ -94,19 +97,15 @@ public class Etudiant extends Personne implements Serializable {
 	public Classe classe;
 
 	/**
-	 * OneToOne relationship between etudiant and contrat
-	 * 
+	 * One to many relation ship between Etudiant and Contrat
 	 */
-	public Contrat contrat;
-
-	@OneToOne(cascade = CascadeType.ALL)
-	@PrimaryKeyJoinColumn
-	public Contrat getContrat() {
-		return contrat;
+	@OneToMany(mappedBy = "idPersonne")
+	public Collection<Contrat> getContrat() {
+		return this.listContrat;
 	}
 
-	public void setContrat(Contrat newcontrat) {
-		this.contrat = newcontrat;
+	public void setContrat(Collection<Contrat> newlistContrat) {
+		this.listContrat = newlistContrat;
 	}
 
 	/**
@@ -121,9 +120,7 @@ public class Etudiant extends Personne implements Serializable {
 		this.notes = notes;
 	}
 
-	/**
-	 * OneToMany relationship with Cours
-	 */
+	
 	/**
 	 * ManyToMany relationship with Absence
 	 */

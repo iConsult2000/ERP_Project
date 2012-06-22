@@ -12,11 +12,13 @@ import javax.persistence.ManyToOne;
 
 @Entity
 public class Contrat implements Serializable{
+	
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 5469402452671684431L;
 	private int idContrat;
+	private int idPersonne;
 	private String siren;
 	private String libelleContrat;
 	private Calendar dateDebutCont;
@@ -128,5 +130,26 @@ public class Contrat implements Serializable{
 	 */
 	@ManyToOne
 	public Entreprise entreprise;
+	
+	
+	/**
+	 * @return the idPersonne
+	 */
+	public int getIdPersonne() {
+		return idPersonne;
+	}
+
+	/**
+	 * @param idPers the idPers to set
+	 */
+	public void setIdPersonne(int idPersonne) {
+		this.idPersonne = idPersonne;
+	}
+
+	/**
+	 * ManyToOne relationship with Etudiant
+	 */
+	@ManyToOne
+	public Etudiant Etudiant;
 
 }
