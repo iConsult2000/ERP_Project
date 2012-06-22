@@ -258,6 +258,23 @@
     <servlet-name>DelCalendarServlet</servlet-name>
     <url-pattern>/supprimer</url-pattern>
   </servlet-mapping>
+
+  <servlet>
+    <description></description>
+    <display-name>ViewInfoEtudiant</display-name>
+    <servlet-name>ViewInfoEtudiant</servlet-name>
+    <servlet-class>com.ingesup.controllers.GestionPersonne</servlet-class>
+    <init-param>
+      <param-name>operation</param-name>
+      <param-value>view_info_etudiant</param-value>
+    </init-param>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ViewInfoEtudiant</servlet-name>
+    <url-pattern>/view_info_etudiant</url-pattern>
+  </servlet-mapping>
+  
+  
   <servlet>
     <description></description>
     <display-name>GestionPersonne</display-name>

@@ -9,6 +9,9 @@
 		document.getElementById("formulaire_etudiant").style.visibility="hidden";
 		document.getElementById("layer1").style.visibility="hidden";
 	}
+	function show_info(value){
+		new_person_etu();
+	}
 </script>
 <br>
 <%@ include file="add_etu.jsp" %>
@@ -56,10 +59,10 @@
 		<tbody>
 				<% for(Personne p : listEtu){%>
 					<tr>
-							<td><%= p.getIdPersonne()%></td>
+							<td><a  href="view_info_etudiant?id=<%= p.getIdPersonne()%>"><%= p.getIdPersonne()%></a></td>
 							<td><%= p.getNomPers() %></td>
 							<td><%= p.getPrenomPers() %></td>
-							<td class="show_info" ><a href="p.getEmailPers()"><%= p.getEmailPers() %></a></td>
+							<td><%= p.getEmailPers() %></td>
 					</tr>
 				<% } %>
 		</tbody>

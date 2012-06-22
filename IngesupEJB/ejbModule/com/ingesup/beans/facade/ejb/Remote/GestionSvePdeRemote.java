@@ -1,11 +1,10 @@
 package com.ingesup.beans.facade.ejb.Remote;
 import java.util.Collection;
 
-import javax.annotation.security.PermitAll;
-import javax.annotation.security.RolesAllowed;
 import javax.ejb.Remote;
 
 import com.ingesup.beans.persistence.Classe;
+import com.ingesup.beans.persistence.Entreprise;
 import com.ingesup.beans.persistence.Etudiant;
 import com.ingesup.beans.persistence.Personne;
 import com.ingesup.beans.persistence.Professeur;
@@ -116,6 +115,12 @@ public interface GestionSvePdeRemote {
 	
 	public Collection<Classe> searchClasseByProfesseur(int idPers);
 	
+	/**
+	 * 
+	 * @param idPers
+	 * @return Entreprise
+	 */
+	public Entreprise searchEntrepriseByEtudiantId(int idPers);
 }
 	
 		
