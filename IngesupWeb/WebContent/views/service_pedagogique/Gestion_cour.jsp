@@ -1,5 +1,7 @@
 <%@page import="com.google.gdata.data.calendar.CalendarEventEntry"%>
+<%@page import="com.ingesup.beans.persistence.Classe"%>
 <%@page import="java.util.List"%>
+<%@page import="java.util.Collection"%>
 <script type="text/javascript">
 	function new_even(){
 		document.getElementById("layer1").style.visibility="visible";
@@ -37,6 +39,7 @@
 				<td colspan="2"><p style="font-weight: bold;">Cours</p>
 					<p>Recherche</p>
 					<hr>
+					
 					<p>Titre<input type="text" name="titre"/> <span style="color:black;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 					et/ou&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> De <input type="text" name="date1" onclick="ds_sh(this);" class="date" />
 					<input type="text" name="heure1" value="00:00" 
@@ -46,6 +49,19 @@
 					onfocus="if(this.value == '00:00') { this.value = ''; }"
 					onblur="if(this.value == '') { this.value = '00:00'; }" class="heure" />
 					</p>
+					
+					<p>				
+					Classe
+					<select name="classe">
+						<option value="0"></option>
+						<% if(session.getAttribute("AllClasses") != null){
+							Collection<Classe> _AllClasses = (Collection<Classe>) session.getAttribute("AllClasses"); 
+						   for(Classe c : _AllClasses){%>
+							<option value="<%= c.getNomClasse()+""+c.getAnneeCycle() %>"><%= c.getNomClasse()+" "+c.getAnneeCycle() %></option>
+						<% }} %>
+					</select>
+					</p>
+					
 					<input type="submit" value="Valider"/>
 					<hr>
 				</td>
