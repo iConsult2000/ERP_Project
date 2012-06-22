@@ -109,8 +109,7 @@ public class CalendarController extends HttpServlet {
 				session.setAttribute("idAgenda", idAgenda);
 				session.setAttribute("menu", "Agenda");
 
-				 //getServletContext().getRequestDispatcher("/views/etudiant/Agenda.jsp").forward(request, response);
-				 getServletContext().getRequestDispatcher("/").forward(request, response);
+				getServletContext().getRequestDispatcher("/").forward(request, response);
 
 			} catch (NamingException err) {
 				err.printStackTrace();
