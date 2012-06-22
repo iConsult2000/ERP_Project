@@ -50,8 +50,9 @@ body {
 #contener-body {
 	background-color: #FFF;
 	width: 100%;
-	height: auto;
-	min-height: 600px;
+	height:auto;
+	min-height:600px;
+	color:red;
 	border-bottom: solid 1px #000;
 	border-top: solid 1px #000; 
 }
@@ -62,17 +63,27 @@ body {
 	height: 25px;
 	border-radius: 0 0 20px 20px;
 	border-bottom: solid 1px #0E97A4;
+
 }
 
 #contener-footer p{
 	padding-top: 5px;
 }
 
+#connect{
+	align: center;
+	margin: 200px 350px;
+	color: #000000;
+}
+
+
+
+
 #contener-body-menu{
 	width: 15%;
-	height: 100%;
 	border: solid 0px #0E97A4;
 	float: left;
+	color:blue;
 }
 
 #contener-body-menu ul{
@@ -104,9 +115,9 @@ body {
 
 #contener-body-view{
 	width: 85%;
-	height: 100%;
 	float: right;
 	border: solid 0px red;
+	color:yellow;
 }
 
 #contener-body-view iframe{
@@ -208,7 +219,13 @@ body {
 	width: 300px;
 }
 #contener-body-view div.gestion{
+	padding-top: 0px;
+	height: 500px;
 	padding-left: 10px;
+}
+#contener-body-view div.gestion div.show_cour{
+	height: 400px;
+	overflow: auto;
 }
 #contener-body-view table.gestion{
 	width: 100%;

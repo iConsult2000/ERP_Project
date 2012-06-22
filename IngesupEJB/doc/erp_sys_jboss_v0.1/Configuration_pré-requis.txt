@@ -37,6 +37,32 @@ INSERT INTO Roles VALUES ('', 'julien', 'etudiant', 'Roles');
 INSERT INTO Roles VALUES ('', 'lori', 'etudiant', 'Roles');
 INSERT INTO Roles VALUES ('', 'srvpde', 'gestion', 'Roles');
 
+***************************UPDATE******************************************
+// Table Principals dans AUTHIC2K
+
+update Principals set PrincipalID='s.dacalor@ingesup.com' where PrincipalID='steeve';
+update Principals set PrincipalID='m.phejar@ingesup.com' where PrincipalID='manuel';
+update Principals set PrincipalID='y.bray@ingesup.com' where PrincipalID='yohann';
+update Principals set PrincipalID='j.pitou@ingesup.com' where PrincipalID='julien';
+update Principals set PrincipalID='l.ferrand@ingesup.com' where PrincipalID='lori';
+update Principals set PrincipalID='svepde@ingesup.com' where PrincipalID='svepde';
+
+// Table Roles dans AUTHIC2K
+update Roles set PrincipalID='s.dacalor@ingesup.com' where PrincipalID='steeve';
+update Roles set PrincipalID='m.phejar@ingesup.com' where PrincipalID='manuel';
+update Roles set PrincipalID='y.bray@ingesup.com' where PrincipalID='yohann';
+update Roles set PrincipalID='j.pitou@ingesup.com' where PrincipalID='julien';
+update Roles set PrincipalID='l.ferrand@ingesup.com' where PrincipalID='lori';
+update Roles set PrincipalID='svepde@ingesup.com' where PrincipalID='svepde';
+
+// Table Etudiant dans PRODIC2K
+update Etudiant set emailPers='s.dacalor@ingesup.com' where prenomPers='Steeve';
+update Etudiant set emailPers='m.phejar@ingesup.com' where prenomPers='Manuel';
+update Etudiant set emailPers='y.bray@ingesup.com' where prenomPers='Yohann';
+update Etudiant set emailPers='j.pitou@ingesup.com' where prenomPers='Julien';
+update Etudiant set emailPers='l.ferrand@ingesup.com' where prenomPers='Lori';
+
+
 
 ********************authic2k-ds.xml to JBOSS server**********************
 <?xml version="1.0" encoding="UTF-8"?>

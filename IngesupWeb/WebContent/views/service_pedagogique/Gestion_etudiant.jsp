@@ -59,7 +59,7 @@
 							<td><%= p.getIdPersonne()%></td>
 							<td><%= p.getNomPers() %></td>
 							<td><%= p.getPrenomPers() %></td>
-							<td><%= p.getEmailPers() %></td>
+							<td class="show_info" ><a href="p.getEmailPers()"><%= p.getEmailPers() %></a></td>
 					</tr>
 				<% } %>
 		</tbody>

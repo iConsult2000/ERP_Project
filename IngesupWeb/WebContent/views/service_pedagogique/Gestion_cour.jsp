@@ -51,25 +51,28 @@
 				</td>
 			</form>
 		</tr>
-			<% List<CalendarEventEntry> listEvt = (List<CalendarEventEntry>) session.getAttribute("listEvt");
-			
-			if (listEvt != null ){
-				String startDate="";
-				String endDate="";
-				String titre="";
-				String startHour="";
-				String endHour="";
+	</table>
+	<div class="show_cour">
+		<table>
+				<% List<CalendarEventEntry> listEvt = (List<CalendarEventEntry>) session.getAttribute("listEvt");
 				
-			for(int i = 0; i<listEvt.size();i++ ){
-			CalendarEventEntry event = listEvt.get(i);
-			
-			String[] rawDate =  event.getTimes().get(0).getStartTime().toUiString().split(" ");
-			startHour = rawDate[1];
-			rawDate = rawDate[0].split("-");
-			startDate = rawDate[2]+"/"+rawDate[1]+"/"+rawDate[0];
-			 
-			 
-			rawDate = event.getTimes().get(0).getEndTime().toUiString().split(" ");
+				if (listEvt != null ){
+					String startDate="";
+					String endDate="";
+					String titre="";
+					String startHour="";
+					String endHour="";
+					
+				for(int i = 0; i<listEvt.size();i++ ){
+				CalendarEventEntry event = listEvt.get(i);
+				
+				String[] rawDate =  event.getTimes().get(0).getStartTime().toUiString().split(" ");
+				startHour = rawDate[1];
+				rawDate = rawDate[0].split("-");
+				startDate = rawDate[2]+"/"+rawDate[1]+"/"+rawDate[0];
+				 
+				 
+				rawDate = event.getTimes().get(0).getEndTime().toUiString().split(" ");
 			endHour = rawDate[1];
 			rawDate = rawDate[0].split("-");
 			endDate = rawDate[2]+"/"+rawDate[1]+"/"+rawDate[0];
@@ -85,4 +88,5 @@
 							
 			 <% }}%>
 	</table>
+	</div>
 </div>
