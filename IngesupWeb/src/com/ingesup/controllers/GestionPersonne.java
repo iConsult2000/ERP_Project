@@ -41,6 +41,7 @@ public class GestionPersonne extends HttpServlet {
 	protected void doGet(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		if (getInitParameter("operation").equals("view_info_etudiant")) viewInfo(request,response);
 	}
 
 	/**
@@ -54,8 +55,36 @@ public class GestionPersonne extends HttpServlet {
 		if (getInitParameter("operation").equals("AjoutPersonne")) addEtu(request,response);
 		if (getInitParameter("operation").equals("Search_etu")) searchEtu(request,response);
 		if (getInitParameter("operation").equals("Search_prof")) searchProf(request,response);
+		
 	}
 	
+	private void viewInfo(HttpServletRequest request,
+			HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		int id = Integer.parseInt(request.getParameter("id"));
+		HttpSession session = request.getSession();
+		try {
+			Context context = new InitialContext();
+			System.out.println("Recherche de l’EJB");
+
+			GestionSvePdeRemote beanfacadeRemote = (GestionSvePdeRemote) context
+					.lookup("Ingesup/GestionSvePdeStateful/remote");
+			
+			System.out.println("L'étudiant " + id
+					+ " a bien été sélectionné!");
+			
+			Etudiant e = (Etudiant) beanfacadeRemote.searchEtudiant(id);
+			session.setAttribute("Etu", e);
+			session.setAttribute("menu", "view_info_etudiant");
+
+		} catch (NamingException err) {
+			err.printStackTrace();
+		}
+		
+		// redirection
+		request.getRequestDispatcher("/").forward(request, response);
+	}
+
 	private void addEtu(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		String nom = request.getParameter("nom");
