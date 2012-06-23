@@ -109,8 +109,7 @@ public class CalendarController extends HttpServlet {
 				session.setAttribute("idAgenda", idAgenda);
 				session.setAttribute("menu", "Agenda");
 
-				 //getServletContext().getRequestDispatcher("/views/etudiant/Agenda.jsp").forward(request, response);
-				 getServletContext().getRequestDispatcher("/").forward(request, response);
+				getServletContext().getRequestDispatcher("/").forward(request, response);
 
 			} catch (NamingException err) {
 				err.printStackTrace();
@@ -176,9 +175,8 @@ public class CalendarController extends HttpServlet {
 			session.setAttribute("evt", evtToUpdate);
 			session.setAttribute("numEvt", numEvt);
 			
-			request.getRequestDispatcher(
-					"/views/service_pedagogique/update_event.jsp").forward(
-					request, response);
+			session.setAttribute("menu", "update_event");
+			request.getRequestDispatcher("/").forward(request, response);
 
 		}
 
@@ -190,12 +188,12 @@ public class CalendarController extends HttpServlet {
 		String datedebut = normalizeDate(request.getParameter("date1"), "00:00");
 		String datefin = normalizeDate(request.getParameter("date2"), "23:59");
 		String titre = request.getParameter("titre");
+		String classe = request.getParameter("classe");
 
 		// L'url ou les données sont stockées.
 		URL feedUrl = null;
 		try {
-			feedUrl = new URL("https://www.google.com/calendar/feeds/" + SIGL2
-					+ "/private/full");
+			feedUrl = new URL("https://www.google.com/calendar/feeds/"+classe.trim()+"/private/full");
 		} catch (MalformedURLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
