@@ -15,6 +15,7 @@ import javax.servlet.http.HttpSession;
 
 import com.ingesup.beans.facade.ejb.Remote.GestionSvePdeRemote;
 import com.ingesup.beans.persistence.Adresse;
+import com.ingesup.beans.persistence.Entreprise;
 import com.ingesup.beans.persistence.Etudiant;
 import com.ingesup.beans.persistence.Personne;
 
@@ -74,7 +75,13 @@ public class GestionPersonne extends HttpServlet {
 					+ " a bien été sélectionné!");
 			
 			Etudiant e = (Etudiant) beanfacadeRemote.searchEtudiant(id);
+			//Classe c = beanfacadeRemote.searchClasseByEtudiant(id);
+			Entreprise en = beanfacadeRemote.searchEntrepriseByEtudiantId(id);
+			
+			
 			session.setAttribute("Etu", e);
+			session.setAttribute("Entreprise", en);
+			//session.setAttribute("Classe", c);
 			session.setAttribute("menu", "view_info_etudiant");
 
 		} catch (NamingException err) {
