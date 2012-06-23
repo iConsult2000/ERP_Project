@@ -1,6 +1,8 @@
 package com.ingesup.controllers;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Collection;
 
 import javax.naming.InitialContext;
 import javax.servlet.ServletException;
@@ -40,8 +42,31 @@ public class GestionClasse extends HttpServlet {
 		// TODO Auto-generated method stub
 		
 		if (getInitParameter("operation").equals("AddClasse")) addClasse(request,response);
+		if (getInitParameter("operation").equals("Search_classe")) searchClasse(request,response);
 	}
 	
+	private void searchClasse(HttpServletRequest request,
+			HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+				String nom = request.getParameter("nom");
+				
+				Collection<Classe> ResultClasse = new ArrayList();
+				HttpSession session = request.getSession();
+				try{
+					InitialContext ctx = new InitialContext();
+					GestionSvePdeRemote gspb = (GestionSvePdeRemote) ctx.lookup("Ingesup/GestionSvePdeStateful/remote");
+					if (nom != "") ResultClasse = gspb.searchClasseBySpecialite(nom);
+					else ResultClasse = gspb.getAllClasses();
+					
+					session.setAttribute("listClasse", ResultClasse);
+				} catch (Exception e) {
+					System.out.println(e.getMessage());
+				}
+				
+				// redirection
+				request.getRequestDispatcher("/").forward(request, response);
+			}
+
 	private void addClasse(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		

@@ -16,7 +16,9 @@ import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 
 @Entity
-@NamedQueries({@NamedQuery(name="findNoAgendaById", query="select no_agenda from Classe where idClasse=:idClasse")
+@NamedQueries({
+@NamedQuery(name="findNoAgendaById", query="select no_agenda from Classe where idClasse=:idClasse"),
+@NamedQuery(name="findIdClasseBySpecialite", query="select c from Classe c where lower(c.specialite) like :specialite")
 })
 public class Classe implements Serializable{
 	/**

@@ -306,6 +306,22 @@
 
   <servlet>
     <description></description>
+    <display-name>SearchClasse</display-name>
+    <servlet-name>SearchClasse</servlet-name>
+    <servlet-class>com.ingesup.controllers.GestionClasse</servlet-class>
+    <init-param>
+      <param-name>operation</param-name>
+      <param-value>Search_classe</param-value>
+    </init-param>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>SearchClasse</servlet-name>
+    <url-pattern>/Search_classe</url-pattern>
+  </servlet-mapping>
+
+
+  <servlet>
+    <description></description>
     <display-name>SearchProfesseur</display-name>
     <servlet-name>SearchProfesseur</servlet-name>
     <servlet-class>com.ingesup.controllers.GestionPersonne</servlet-class>
