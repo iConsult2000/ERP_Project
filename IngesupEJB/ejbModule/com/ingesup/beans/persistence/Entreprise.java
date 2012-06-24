@@ -137,7 +137,7 @@ public class Entreprise implements Serializable{
 	 */
 	public Collection<Contact> listcontact = new ArrayList<Contact>();
 
-	@OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER)
+	@OneToMany(cascade=CascadeType.ALL)
 	@JoinColumn(name="siren", referencedColumnName = "siren")
 	public Collection<Contact> getContact() {
 		return this.listcontact;
