@@ -7,6 +7,8 @@ import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
@@ -100,7 +102,9 @@ public class Etudiant extends Personne implements Serializable {
 	/**
 	 * One to many relation ship between Etudiant and Contrat
 	 */
-	@OneToMany(mappedBy = "idPersonne")
+	
+	@OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER)
+	@JoinColumn(name="idPersonne", referencedColumnName = "idPersonne")
 	public Collection<Contrat> getContrat() {
 		return this.listContrat;
 	}
