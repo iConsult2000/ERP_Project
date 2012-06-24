@@ -101,6 +101,13 @@ UNLOCK TABLES;
 /*!40000 ALTER TABLE `Contrat` ENABLE KEYS */;
 
 
+// Table Contact
+insert into Contact values (' ','s.sablier@organisation.net', 'SABLIER','Chef de projet', 'Sabrina','PI9974EEA','0149783234'),
+(' ','r.roger@organisation.net', 'ROGER','Chef de projet', 'Ronald','J4U5LK2POB','0149783234'),
+(' ','d.hebert@organisation.net', 'HEBERT','Chef de projet', 'Didier','639URST','0149783234'),
+(' ','a.anselot@organisation.net', 'ANSELOT','Chef de projet', 'Alex','PI9974EEA','0149783234'),
+(' ','np-ju.hopde@organisation.net', 'HOPDE','Chef de projet', 'noup-jui','PI9974YZEEA','0149783234');
+
 
 ********************authic2k-ds.xml to JBOSS server**********************
 <?xml version="1.0" encoding="UTF-8"?>
