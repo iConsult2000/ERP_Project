@@ -273,6 +273,21 @@
     <servlet-name>ViewInfoEtudiant</servlet-name>
     <url-pattern>/view_info_etudiant</url-pattern>
   </servlet-mapping>
+
+  <servlet>
+    <description></description>
+    <display-name>ViewInfoClasse</display-name>
+    <servlet-name>ViewInfoClasse</servlet-name>
+    <servlet-class>com.ingesup.controllers.GestionClasse</servlet-class>
+    <init-param>
+      <param-name>operation</param-name>
+      <param-value>view_info_classe</param-value>
+    </init-param>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ViewInfoClasse</servlet-name>
+    <url-pattern>/view_info_classe</url-pattern>
+  </servlet-mapping>
   
   
   <servlet>

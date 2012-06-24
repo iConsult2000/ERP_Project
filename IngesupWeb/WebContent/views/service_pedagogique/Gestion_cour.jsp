@@ -32,11 +32,11 @@
 <div class="gestion">
 	<table class="gestion">
 		<tr>
+			<td align="left"><p style="font-weight: bold;">Cours</p>
 			<td><input type="button" value="Ajouter" onClick="new_even()"/></td>
 		</tr>
 		<tr>
 		    <form method="post" action="chercher">
-				<td colspan="2"><p style="font-weight: bold;">Cours</p>
 					<p>Recherche</p>
 					<hr>
 					

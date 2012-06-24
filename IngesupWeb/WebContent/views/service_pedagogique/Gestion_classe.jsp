@@ -40,11 +40,15 @@
 		Collection<Classe> listClasse = (Collection<Classe>) session.getAttribute("listClasse");%>
 	<table>
 		<thead>
+			<th>Id</th>
 			<th>Classes</th>
 		</thead>
 		<tbody>
 			<% for(Classe c : listClasse){%>
-				<tr><td><%= c.getNomClasse()+" "+c.getAnneeCycle() %></td></tr>
+				<tr>
+					<td><a  href="view_info_classe?id=<%= c.getIdClasse()%>"><%= c.getIdClasse()%></a></td>
+					<td><%= c.getNomClasse()+" "+c.getAnneeCycle() %></td>
+				</tr>
 			<% } %>
 		</tbody>
 	</table>
