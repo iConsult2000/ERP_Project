@@ -101,6 +101,7 @@
 		<tr>
 			<td valign="top">
 				<table>
+				
 					<tr>
 						<td align="right"><p>Contact</p></td><td><input type="text" value="" /></td>
 					</tr>
@@ -108,9 +109,13 @@
 			</td>
 			<td valign="top">
 				<table>
+					<% for (Contrat t: etu.getContrat()){ %>
 					<tr>
-						<td align="right"><p>Contrat</p></td><td><input type="text" value="" /></td>
+						<td align="right"><p>Contrat</p></td><td><input type="text" value="<%= t.getLibelleContrat() %>" /></td>
+						<td align="right"><p>Date debut</p></td><td><input type="text" value="<%= t.getDateDebutCont() %>" /></td>
+						<td align="right"><p>Date fin</p></td><td><input type="text" value="<%= t.getDateDebutCont() %>" /></td>
 					</tr>
+					<% } %>
 				</table>			
 			</td>
 		</tr>

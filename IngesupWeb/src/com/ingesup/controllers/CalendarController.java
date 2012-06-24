@@ -231,8 +231,14 @@ public class CalendarController extends HttpServlet {
 			throws IOException, ServletException {
 		// L'url ou les données sont stockées.
 		URL feedUrl = null;
+		String classe = request.getParameter("classe");
+		
+		if(classe.trim().equals("SIGL2")) classe = this.SIGL2;
+		if(classe.trim().equals("SIGL3")) classe = this.SIGL3;
+		if(classe.trim().equals("SIGL1")) classe = this.SIGL1;
+		
 		try {
-			feedUrl = new URL("https://www.google.com/calendar/feeds/" + SIGL2
+			feedUrl = new URL("https://www.google.com/calendar/feeds/" + classe
 					+ "/private/full");
 		} catch (MalformedURLException e1) {
 			// TODO Auto-generated catch block
