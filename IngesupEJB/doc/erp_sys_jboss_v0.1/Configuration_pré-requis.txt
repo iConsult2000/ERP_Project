@@ -63,12 +63,44 @@ update Etudiant set emailPers='j.pitou@ingesup.com' where prenomPers='Julien';
 update Etudiant set emailPers='l.ferrand@ingesup.com' where prenomPers='Lori';
 
 // Table Contrat
-alter table Contrat add (idPersonne int(11));
-update Contrat set idPersonne = 2 where idContrat = 1;
-update Contrat set idPersonne = 3 where idContrat = 2;
-update Contrat set idPersonne = 4 where idContrat = 3;
-update Contrat set idPersonne = 5 where idContrat = 4;
-update Contrat set idPersonne = 6 where idContrat = 5;
+
+-- Definition of table `PRODIC2K`.`Contrat`
+--
+
+DROP TABLE IF EXISTS `PRODIC2K`.`Contrat`;
+CREATE TABLE  `PRODIC2K`.`Contrat` (
+  `idContrat` int(11) NOT NULL AUTO_INCREMENT,
+  `dateDebutCont` datetime DEFAULT NULL,
+  `dateFinCont` datetime DEFAULT NULL,
+  `dureeCont` int(11) NOT NULL,
+  `idPersonne` int(11) NOT NULL,
+  `libelleContrat` varchar(15) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `siren` varchar(15) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `idTypContr` int(11) DEFAULT NULL,
+  PRIMARY KEY (`idContrat`),
+  KEY `FK9BEFFB931562232A` (`siren`),
+  KEY `FK9BEFFB938EEE00CD` (`idPersonne`),
+  KEY `FK9BEFFB9359B4433F` (`idTypContr`),
+  CONSTRAINT `FK9BEFFB9359B4433F` FOREIGN KEY (`idTypContr`) REFERENCES `TypeContrat` (`idTypContr`),
+  CONSTRAINT `FK9BEFFB931562232A` FOREIGN KEY (`siren`) REFERENCES `Entreprise` (`siren`),
+  CONSTRAINT `FK9BEFFB938EEE00CD` FOREIGN KEY (`idPersonne`) REFERENCES `Etudiant` (`idPersonne`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `PRODIC2K`.`Contrat`
+--
+
+/*!40000 ALTER TABLE `Contrat` DISABLE KEYS */;
+LOCK TABLES `Contrat` WRITE;
+INSERT INTO `PRODIC2K`.`Contrat` VALUES  (1,'2012-05-06 12:40:01','2013-05-24 12:40:07',12,'Apprentit SI','PI9974YZEEA',1,2),
+ (2,'2012-05-31 12:43:02','2013-05-06 12:42:56',12,'Apprentit dével','J4U5LK2POB',1,3),
+ (3,'2012-05-31 12:43:02','2013-05-06 12:42:56',12,'Stagiaire admin','PI9974EEA',1,4),
+ (4,'2012-05-06 12:45:02','2013-05-06 12:42:56',12,'Apprentit ingén','639URST',2,5),
+ (5,'2012-05-06 12:45:02','2013-05-06 12:45:02',12,'Stagiaire Assis','PI9974YZEEA',2,6);
+UNLOCK TABLES;
+/*!40000 ALTER TABLE `Contrat` ENABLE KEYS */;
+
+
 
 ********************authic2k-ds.xml to JBOSS server**********************
 <?xml version="1.0" encoding="UTF-8"?>
