@@ -145,32 +145,6 @@ public class CalendarController extends HttpServlet {
 				.get(numEvt);
 
 		if (evtToUpdate != null) {
-			/*
-			 * String[] rawDate =
-			 * evtToUpdate.getTimes().get(0).getStartTime().toUiString
-			 * ().split(" "); String heuredebut = rawDate[1]; rawDate =
-			 * rawDate[0].split("-"); String datedebut =
-			 * rawDate[2]+"/"+rawDate[1]+"/"+rawDate[0];
-			 * 
-			 * 
-			 * rawDate =
-			 * evtToUpdate.getTimes().get(0).getEndTime().toUiString().
-			 * split(" "); String heurefin = rawDate[1]; rawDate =
-			 * rawDate[0].split("-"); String datefin =
-			 * rawDate[2]+"/"+rawDate[1]+"/"+rawDate[0];
-			 * 
-			 * String titre = evtToUpdate.getTitle().getPlainText(); String desc
-			 * = evtToUpdate.getPlainTextContent();
-			 * 
-			 * session.setAttribute("heuredebut", heuredebut);
-			 * session.setAttribute("heurefin", heurefin);
-			 * 
-			 * session.setAttribute("datedebut", datedebut);
-			 * session.setAttribute("datefin", datefin);
-			 * 
-			 * session.setAttribute("titre", titre);
-			 * session.setAttribute("desc", desc);
-			 */
 
 			session.setAttribute("evt", evtToUpdate);
 			session.setAttribute("numEvt", numEvt);
@@ -189,11 +163,17 @@ public class CalendarController extends HttpServlet {
 		String datefin = normalizeDate(request.getParameter("date2"), "23:59");
 		String titre = request.getParameter("titre");
 		String classe = request.getParameter("classe");
+		System.out.println(classe);
+		
+		
+		if(classe.trim().equals("SIGL2")) classe = this.SIGL2;
+		if(classe.trim().equals("SIGL3")) classe = this.SIGL3;
+		if(classe.trim().equals("SIGL1")) classe = this.SIGL1;
 
 		// L'url ou les données sont stockées.
 		URL feedUrl = null;
 		try {
-			feedUrl = new URL("https://www.google.com/calendar/feeds/"+classe.trim()+"/private/full");
+			feedUrl = new URL("https://www.google.com/calendar/feeds/"+classe+"/private/full");
 		} catch (MalformedURLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
