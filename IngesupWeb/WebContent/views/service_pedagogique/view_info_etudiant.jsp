@@ -103,7 +103,19 @@
 		<tr><td><h3>Contact</h3></td><td><h3>Contrat</h3></td></tr>
 		<tr>
 			<td valign="top">
-				
+				<table>
+					<% for (Contact c: en.getContact()){ %>
+					<tr>
+						<td align="right"><p>Contrat</p></td><td><input type="text" value="<%= c.getNomContact() %>" /></td>
+					</tr>
+					<tr>
+						<td align="right"><p>Date debut</p></td><td><input type="text" value="<%= c.getPrenomContact() %>" /></td>
+					</tr>
+					<tr>
+						<td align="right"><p>Date fin</p></td><td><input type="text" value="<%= c.getEmailContact() %>" /></td>
+					</tr>
+					<% } %>
+				</table>
 			</td>
 			<td valign="top">
 				<table>

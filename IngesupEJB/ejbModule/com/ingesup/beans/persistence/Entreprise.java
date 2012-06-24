@@ -8,7 +8,6 @@ import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
-import javax.persistence.Embeddable;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -16,6 +15,10 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
+
+import org.hibernate.annotations.FetchMode;
+import org.hibernate.annotations.Fetch;
+
 @Entity
 public class Entreprise implements Serializable{
 	/**
@@ -122,7 +125,8 @@ public class Entreprise implements Serializable{
 	 */
 	
 
-	@OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER)
+	@OneToMany(cascade=CascadeType.ALL)
+	@Fetch(FetchMode.SUBSELECT)
 	@JoinColumn(name="siren", referencedColumnName = "siren")
 	public Collection<Contrat> getContrat() {
 		return this.listcontrat;
@@ -138,6 +142,7 @@ public class Entreprise implements Serializable{
 	public Collection<Contact> listcontact = new ArrayList<Contact>();
 
 	@OneToMany(cascade=CascadeType.ALL)
+	@Fetch(FetchMode.SUBSELECT)
 	@JoinColumn(name="siren", referencedColumnName = "siren")
 	public Collection<Contact> getContact() {
 		return this.listcontact;
