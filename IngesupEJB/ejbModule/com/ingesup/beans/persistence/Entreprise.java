@@ -34,6 +34,7 @@ public class Entreprise implements Serializable{
 
 	public Collection<ChargePlacement> listchargeplacement = new ArrayList<ChargePlacement>();
 	public Collection<Contrat> listcontrat = new ArrayList<Contrat>();
+	public Collection<Contact> listcontact = new ArrayList<Contact>();
 
 	public Entreprise(){
 		this.siren = new Random(1000000000).toString();	}
@@ -139,10 +140,9 @@ public class Entreprise implements Serializable{
 	/**
 	 * OneToMany relationship with contact
 	 */
-	public Collection<Contact> listcontact = new ArrayList<Contact>();
+	
 
-	@OneToMany(cascade=CascadeType.ALL)
-	@Fetch(FetchMode.SUBSELECT)
+	@OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER)	
 	@JoinColumn(name="siren", referencedColumnName = "siren")
 	public Collection<Contact> getContact() {
 		return this.listcontact;
