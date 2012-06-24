@@ -72,14 +72,6 @@ if(evt!=null){
 				</tr>
 			</table></td>
 	</tr>
-	<tr>
-		<td class="couleur"><p>Couleur</p></td>
-		<td colspan="3"> </td>
-	</tr>
-	<tr>
-		<td colspan="4" align="right"><input type="submit" value="valider" /></td>
-	</tr>
 	</table>
 	</form>
-	<form class="close"><input type="button" value="fermer" onClick="hide_udp_even();ds_hi()" /></form>
 </div>

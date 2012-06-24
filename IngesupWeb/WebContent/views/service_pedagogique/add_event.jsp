@@ -1,3 +1,5 @@
+<%@page import="com.ingesup.beans.persistence.Classe"%>
+<%@page import="java.util.Collection"%>
 <!-- Tableau obligatoire ! C'est lui qui contiendra le calendrier ! -->
 <table class="ds_box" cellpadding="0" cellspacing="0" id="ds_conclass" style="display: none;">
 	<tr>
@@ -34,17 +36,20 @@
 				</tr>
 				<tr>
 					<td class="cour"><p>Cour </p></td>
-					<td><select class="cour"><option></option></select></td>
+					<td><select name="classe">
+						<option value="0"></option>
+						<% if(session.getAttribute("AllClasses") != null){
+							Collection<Classe> _Classes = (Collection<Classe>) session.getAttribute("AllClasses"); 
+						   for(Classe c : _Classes){%>
+							<option value="<%= c.getNomClasse()+""+c.getAnneeCycle() %>"><%= c.getNomClasse()+" "+c.getAnneeCycle() %></option>
+						<% }} %>
+					</select></td>
 				</tr>
 				<tr>
 					<td class="desc"><p>Description </p></td>
 					<td><textarea class="desc" rows="3" name="desc"></textarea></td>
 				</tr>
 			</table></td>
-	</tr>
-	<tr>
-		<td class="couleur"><p>Couleur</p></td>
-		<td colspan="3"> </td>
 	</tr>
 	<tr>
 		<td colspan="4" align="right"><input type="submit" value="valider" /></td>

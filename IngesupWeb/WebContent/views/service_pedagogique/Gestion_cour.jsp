@@ -44,12 +44,12 @@
 					et/ou&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> De <input type="text" name="date1" onclick="ds_sh(this);" class="date" />
 					<input type="text" name="heure1" value="00:00" 
 					onfocus="if(this.value == '00:00') { this.value = ''; }"
-					onblur="if(this.value == '') { this.value = '00:00'; }" class="heure" /> <br/>
+					onblur="if(this.value == '') { this.value = '00:00'; }" class="heure" />
 					A <input type="text" name="date2" onclick="ds_sh(this);" class="date" />
 					<input type="text" name="heure2" value="00:00" 
 					onfocus="if(this.value == '00:00') { this.value = ''; }"
 					onblur="if(this.value == '') { this.value = '00:00'; }" class="heure" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;			
-					Classe
+					<br/>Classe
 					<select name="classe">
 						<option value="0"></option>
 						<% if(session.getAttribute("AllClasses") != null){
