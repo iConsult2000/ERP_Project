@@ -77,7 +77,7 @@ public class GestionPersonne extends HttpServlet {
 			Etudiant e = (Etudiant) beanfacadeRemote.searchEtudiant(id);
 			//Classe c = beanfacadeRemote.searchClasseByEtudiant(id);
 			Entreprise en = beanfacadeRemote.searchEntrepriseByEtudiantId(id);
-			
+	
 			
 			session.setAttribute("Etu", e);
 			session.setAttribute("Entreprise", en);

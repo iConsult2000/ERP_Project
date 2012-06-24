@@ -1,4 +1,5 @@
 <%@page import="com.ingesup.beans.persistence.*"%>
+<%@page import="java.text.SimpleDateFormat" %>
 
 <% 	if(session.getAttribute("Etu") != null 
 		&& session.getAttribute("Entreprise") != null
@@ -6,6 +7,8 @@
 		Etudiant etu = (Etudiant) session.getAttribute("Etu");
 		Entreprise en = (Entreprise) session.getAttribute("Entreprise");
 		//Classe c = (Classe) session.getAttribute("Classe");
+		
+		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM hh:mm:ss" );
 %>
 		
 <div class="gestion">
@@ -100,20 +103,19 @@
 		<tr><td><h3>Contact</h3></td><td><h3>Contrat</h3></td></tr>
 		<tr>
 			<td valign="top">
-				<table>
-				
-					<tr>
-						<td align="right"><p>Contact</p></td><td><input type="text" value="" /></td>
-					</tr>
-				</table>
+
 			</td>
 			<td valign="top">
 				<table>
 					<% for (Contrat t: etu.getContrat()){ %>
 					<tr>
 						<td align="right"><p>Contrat</p></td><td><input type="text" value="<%= t.getLibelleContrat() %>" /></td>
-						<td align="right"><p>Date debut</p></td><td><input type="text" value="<%= t.getDateDebutCont() %>" /></td>
-						<td align="right"><p>Date fin</p></td><td><input type="text" value="<%= t.getDateDebutCont() %>" /></td>
+					</tr>
+					<tr>
+						<td align="right"><p>Date debut</p></td><td><input type="text" value="<%= t.getDateDebutCont().getTime().toGMTString() %>" /></td>
+					</tr>
+					<tr>
+						<td align="right"><p>Date fin</p></td><td><input type="text" value="<%= t.getDateDebutCont().getTime().toGMTString() %>" /></td>
 					</tr>
 					<% } %>
 				</table>			
