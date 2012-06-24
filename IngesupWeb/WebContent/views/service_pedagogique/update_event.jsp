@@ -72,6 +72,9 @@ if(evt!=null){
 				</tr>
 			</table></td>
 	</tr>
+	<tr>
+		<td colspan="4" align="right"><input type="submit" value="valider" /></td>
+	</tr>
 	</table>
 	</form>
 </div>
