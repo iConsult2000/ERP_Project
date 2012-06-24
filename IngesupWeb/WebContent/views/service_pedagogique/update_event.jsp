@@ -35,7 +35,7 @@ if(evt!=null){
 }
 %>
 
-<div id="formulaire_upd_evenement">
+<div class="gestion">
 	<form method="post" action="update">
 	<table class="formulaire_evenement">
 	<tr>

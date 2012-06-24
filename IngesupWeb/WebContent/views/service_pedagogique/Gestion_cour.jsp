@@ -27,7 +27,6 @@
 </script>
 <br>
 <%@ include file="add_event.jsp"%>
-<%@ include file="update_event.jsp"%>
 
 <div class="gestion">
 	<table class="gestion">
