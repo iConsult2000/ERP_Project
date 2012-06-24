@@ -32,9 +32,10 @@
 	<table class="gestion">
 		<tr>
 			<td align="left"><p style="font-weight: bold;">Cours</p>
-			<td><input type="button" value="Ajouter" onClick="new_even()"/></td>
+			<input type="button" value="Ajouter" onClick="new_even()"/></td>
 		</tr>
 		<tr>
+			<td>
 		    <form method="post" action="chercher">
 					<p>Recherche</p>
 					<hr>
@@ -43,13 +44,11 @@
 					et/ou&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> De <input type="text" name="date1" onclick="ds_sh(this);" class="date" />
 					<input type="text" name="heure1" value="00:00" 
 					onfocus="if(this.value == '00:00') { this.value = ''; }"
-					onblur="if(this.value == '') { this.value = '00:00'; }" class="heure" /> A <input type="text" name="date2" onclick="ds_sh(this);" class="date" />
+					onblur="if(this.value == '') { this.value = '00:00'; }" class="heure" /> <br/>
+					A <input type="text" name="date2" onclick="ds_sh(this);" class="date" />
 					<input type="text" name="heure2" value="00:00" 
 					onfocus="if(this.value == '00:00') { this.value = ''; }"
-					onblur="if(this.value == '') { this.value = '00:00'; }" class="heure" />
-					</p>
-					
-					<p>				
+					onblur="if(this.value == '') { this.value = '00:00'; }" class="heure" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;			
 					Classe
 					<select name="classe">
 						<option value="0"></option>
@@ -63,8 +62,8 @@
 					
 					<input type="submit" value="Valider"/>
 					<hr>
-				</td>
-			</form>
+				</form>
+			</td>
 		</tr>
 	</table>
 	<div class="show_cour">
@@ -102,6 +101,6 @@
 				</tr>
 							
 			 <% }}%>
-	</table>
+		</table>
 	</div>
 </div>
